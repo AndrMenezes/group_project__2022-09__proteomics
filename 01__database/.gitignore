@@ -1,0 +1,11 @@
+# Not push everything
+raw_data/*
+processed_data/*
+temp/*
+checks/*
+
+# Exception to the rule
+!raw_data/.gitkeep 
+!processed_data/.gitkeep 
+!temp/.gitkeep
+!checks/.gitkeep 
