@@ -1,28 +1,43 @@
-## 23/09/222 - Group Meeting
-1. Multiple comparisons between groups - using a robust statistical model
-  - using a empirical Bayes to estimate the variance in the demoninator of T-Test
-  limma package in bioconductor can do that
-  Another method Package [msqrob2](http://bioconductor.org/packages/release/bioc/html/msqrob2.html) can deal with this.
+# **Goals for the Project**
+(Group Meeting - 23/09/2022)
+
+
+#### **Goal 1**
+Conducting multiple comparisons between groups using a robust or more complex statistical model\
+Using an empirical Bayes to estimate the variance in the denominator of the T-Test\
+Potential ways of doing this include:
+
+* Utilizing the Limma package in bioconductor
+* Utilizing the package [msqrob2](http://bioconductor.org/packages/release/bioc/html/msqrob2.html) 
   
- 2. identify highly variable proteins/main proteins based on their expression?
-  - networking??
   
-  3. Estimatre the protein network (correlation/iteractions)
-  How to estimate the network: we think the simpiesrway is to use the pearson linear correaltion 
-  coefficient
+#### **Goal 2**
+Identify the highly variable proteins (main proteins) based off their expression\
+Potential for networking
   
-  usng this we can perform a cluster analysis to do this
-  CSPA // CSPE // DEAD // LSRF // YJIM
-  investigate FLIC
-  Persister cell formation pattern
+#### **Goal 3**
+Estimating the protein network based off their correlations/interactions
+
+* We think the simplest way to do this would be to use the **Pearson Linear Correlation Coefficient**
+
+Using this we could perform a **cluster analysis**\
+Proteins of interest include:
+
+* CspA
+* CspE
+* DeaD
+* LsrF
+* YjiM
+
+We could also investigate FliC, along with **persister cell formation pattern**
+
+#### **Other potential goals**
+Differences in resistance between ampicillin and ciprofloxacin\
+Differences between β-lactamases and ciprofloxacin
   
-  CTX-M-15
-  differece in resistance between amplicillin and cifootax(???)
-  difference betweeb beta lactam and ciprofloxacin
-  
-  using heat maps to visualize this - can 
- 
- 
+
+<div align="center">**Visualization through heat maps**</div>
+
 
 ## Data set
 
