@@ -5,11 +5,12 @@ library(readxl)
 path_data <- "./01__database/"
 
 data_raw <- read_xlsx(
-  file.path(path_data, "raw_data/Supplementary Data Stat Sigs.xlsx"),
+  file.path(path_data, "raw_data/raw_data.xlsx"),
   sheet = "All protein IDs",
   range = "A2:Y947")
-head(data_raw)
-glimpse(data_raw)
+
+# head(data_raw)
+# glimpse(data_raw)
 
 
 # Renaming ----------------------------------------------------------------
