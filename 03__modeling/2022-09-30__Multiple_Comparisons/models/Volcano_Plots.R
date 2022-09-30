@@ -1,13 +1,12 @@
 # 2022-09-30 Replicating T-Tests and Volcano Plots
-# TODO - Use cowplot to export graphs
-#      - Label proteins
+# TODO - Label proteins
 
 suppressPackageStartupMessages(library(tidyverse))
 library(readxl)
 library(ggplot2)
 library(cowplot)
 
-# Reading in data set
+# Reading in data set --------------------------------------------------------
 path_data <- "./01__database/"
 
 project_data <- read_xlsx(
@@ -18,7 +17,7 @@ project_data <- subset(project_data, select = -protein__name)
 # view(project_data)
 
 
-# Creating an empty data frame with column names
+# Creating an empty data frame -----------------------------------------------
 columns <- c("Ampicillin_p_value", "Cefotaxime_p_value", 
              "Imipenem_p_value", "Ciprofloxacin_p_value", 
              "Ampicillin_lfq", "Cefotaxime_lfq", 
@@ -28,7 +27,7 @@ analysis_values <- data.frame(matrix(nrow = 0, ncol = length(columns)))
 
 colnames(analysis_values) <- columns
 
-# Assigning p values and mean LFQ differences to dataframe
+# Assigning p values and mean LFQ differences to dataframe -------------------
 for(i in 1:nrow(project_data)){
   
   # Ampicillin
@@ -64,8 +63,10 @@ for(i in 1:nrow(project_data)){
 
 
 # Generating volcano plots --------------------------------------------------
+
 # Ampicillin plot
-ggplot(data = analysis_values, aes(x = Ampicillin_lfq, y = Ampicillin_p_value)) +
+ampicillin_plot <- ggplot(data = analysis_values, 
+                          aes(x = Ampicillin_lfq, y = Ampicillin_p_value)) +
   geom_point(size = 2/5) +
   ggtitle("Control & Ampicillin") +
   xlab(expression("log"[2]*" Difference")) + 
@@ -75,7 +76,8 @@ ggplot(data = analysis_values, aes(x = Ampicillin_lfq, y = Ampicillin_p_value)) 
   theme_bw()
 
 # Cefotaxime plot
-ggplot(data = analysis_values, aes(x = Cefotaxime_lfq, y = Cefotaxime_p_value)) +
+cefotaxime_plot <- ggplot(data = analysis_values, 
+                          aes(x = Cefotaxime_lfq, y = Cefotaxime_p_value)) +
   geom_point(size = 2/5) +
   ggtitle("Control & Cefotaxime") +
   xlab(expression("log"[2]*" Difference")) + 
@@ -85,7 +87,8 @@ ggplot(data = analysis_values, aes(x = Cefotaxime_lfq, y = Cefotaxime_p_value)) 
   theme_bw()
 
 # Imipenem plot
-ggplot(data = analysis_values, aes(x = Imipenem_lfq, y = Imipenem_p_value)) +
+imipenem_plot <- ggplot(data = analysis_values, 
+                        aes(x = Imipenem_lfq, y = Imipenem_p_value)) +
   geom_point(size = 2/5) +
   ggtitle("Control & Imipenem") +
   xlab(expression("log"[2]*" Difference")) + 
@@ -95,7 +98,8 @@ ggplot(data = analysis_values, aes(x = Imipenem_lfq, y = Imipenem_p_value)) +
   theme_bw()
 
 # Ciprofloxacin plot
-ggplot(data = analysis_values, aes(x = Ciprofloxacin_lfq, y = Ciprofloxacin_p_value)) +
+ciprofloxacin_plot <- ggplot(data = analysis_values, 
+                             aes(x = Ciprofloxacin_lfq, y = Ciprofloxacin_p_value)) +
   geom_point(size = 2/5) +
   ggtitle("Control & Ciprofloxacin") +
   xlab(expression("log"[2]*" Difference")) + 
@@ -103,3 +107,17 @@ ggplot(data = analysis_values, aes(x = Ciprofloxacin_lfq, y = Ciprofloxacin_p_va
   geom_vline(xintercept=c(-0.5, 0.5), col="red") +
   geom_hline(yintercept=-log10(0.05), col="red") +
   theme_bw()
+
+# Exporting ------------------------------------------------------------------
+export_path <- "./03__modeling/2022-09-30__Multiple_Comparisons/models"
+
+save_plot(file.path(export_path, "results/Control & Ampicillin.png"),
+          ampicillin_plot, base_height = 8, base_aspect_ratio = 1.4)
+save_plot(file.path(export_path, "results/Control & Cefotaxime.png"),
+          cefotaxime_plot, base_height = 8, base_aspect_ratio = 1.4)
+save_plot(file.path(export_path, "results/Control & Imipenem.png"),
+          imipenem_plot, base_height = 8, base_aspect_ratio = 1.4)
+save_plot(file.path(export_path, "results/Control & Ciprofloxacin.png"),
+          ciprofloxacin_plot, base_height = 8, base_aspect_ratio = 1.4)
+
+
