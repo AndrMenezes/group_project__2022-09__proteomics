@@ -16,7 +16,6 @@ project_data <- subset(project_data, select = -protein__name)
 
 
 # PCA Analysis --------------------------------------------------------------
-
 # prcomp() assumes the data rows are samples and columns are proteins.
 # This is not the case with the current data set, so we need to transpose it. 
 # This is done with the t() function.
@@ -46,10 +45,11 @@ pca_plot <- ggplot(data = pca_data, aes(x = X, y = Y)) +
   scale_shape_manual(values = c(1, 5, 0, 2, 11)) +
   xlab(paste("Component 1 (", pca_var_percent[1], "%)", sep = "")) +
   ylab(paste("Component 2 (", pca_var_percent[2], "%)", sep = "")) +
-  theme_cowplot(12) +
-  background_grid() +
+  theme_bw() +
   ggtitle("Replicated PCA Plot")
 
-pca_plot
+# Exporting -----------------------------------------------------------------
+export_path <- "./03__modeling/2022-09-30__PCA/models/"
 
-# TODO - use cowplot to save PCA plot
+save_plot(file.path(export_path, "results/PCA_Plot.png"), pca_plot, 
+          base_height = 8, base_aspect_ratio = 1.4)
