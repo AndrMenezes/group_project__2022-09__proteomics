@@ -1,0 +1,946 @@
+"protein__id","protein__name","gene__name","peptides","sequence_coverage","molecular_weight","score","intensity","count","sequence_length"
+"ACQ41973.1;P62552","Antitoxin CcdA","ccdA",3,65.3,8.3723,32.633,1570800000,27,72
+"ACQ41974.1;P62554","Toxin CcdB","ccdB",4,61.4,11.706,43.494,1999100000,28,101
+"ACQ41977.1","Orf1176 protein",NA,7,20.7,44.094,97.351,1579800000,39,391
+"ACQ42006.1","TraM",NA,5,37,14.446,47.813,4.144e+09,33,127
+"ACQ42024.1","Beta-lactamase (blaTEM)",NA,21,74.4,26.415,249.32,2.8085e+10,241,242
+"ACQ42036.1","pemK",NA,6,65.3,13.316,124.4,2398300000,36,121
+"ACQ42045.1","AAC(6')-Ib-cr",NA,14,48.7,25.602,323.31,2.0513e+11,466,230
+"ACQ42046.1","Beta-lactamase (blaOXA)",NA,23,59.1,32.574,323.31,5.552e+10,357,291
+"ACQ42051.1","Beta-lactamase (blaCTXM15)",NA,17,61.7,33.602,293.94,5.096e+09,105,311
+"ACQ42056.1","dihydrofolate reductase type VII",NA,10,45.1,24.886,94.412,4032500000,51,224
+"ACQ42065.1","macrolide mph@",NA,10,39.9,33.227,75.994,4864100000,58,301
+"ACQ42069.1","34 kDa membrane antigen",NA,9,65.9,19.355,34.747,7.945e+09,131,176
+"ACQ42094.1","yfaX",NA,18,63.1,27.756,144.83,2.4794e+10,134,252
+"ACQ42102.1","hypo xcv",NA,29,56.6,59.479,323.31,1.6338e+10,227,521
+"ACQ42108.1","hypo",NA,10,65.1,19.168,65.623,2670300000,89,166
+"ACQ42109.1","hypo",NA,6,23.3,28.909,28.126,559400000,22,257
+"P00350","6-phosphogluconate dehydrogenase, decarboxylating","gnd",52,90.2,51.481,323.31,1.7163e+11,968,468
+"P00363","Fumarate reductase flavoprotein subunit","frdA",17,35.5,65.971,107.2,3561400000,106,602
+"P00370","NADP-specific glutamate dehydrogenase","gdhA",19,53,48.581,196.32,4841200000,105,447
+"P00448","Superoxide dismutase [Mn]","sodA",23,92.7,23.097,323.31,1.1485e+11,606,206
+"P00452","Ribonucleoside-diphosphate reductase 1 subunit alpha","nrdA",48,58.3,85.774,323.31,4.8826e+10,461,761
+"P00490","Maltodextrin phosphorylase","malP",38,54.2,90.521,323.31,1.7097e+10,265,797
+"P00509","Aspartate aminotransferase","aspC",30,65.9,43.573,323.31,9.6499e+10,554,396
+"P00579","RNA polymerase sigma factor RpoD","rpoD",23,44.4,70.263,323.31,9990900000,222,613
+"P00582","DNA polymerase I","polA",46,59.3,103.12,323.31,2.0834e+10,439,928
+"P00722","Beta-galactosidase","lacZ",28,33.6,116.48,323.31,1.7605e+10,256,1024
+"P00805","L-asparaginase 2","ansB",34,78.2,36.85,323.31,1.4451e+11,644,348
+"P00864","Phosphoenolpyruvate carboxylase","ppc",51,61.4,99.061,323.31,8.2021e+10,680,883
+"P00888","Phospho-2-dehydro-3-deoxyheptonate aldolase, Tyr-sensitive","aroF",8,37.4,38.804,110.63,1238900000,27,356
+"P00909","Tryptophan biosynthesis protein TrpCF;Indole-3-glycerol phosphate synthase;N-(5-phospho-ribosyl)anthranilate isomerase","trpC",6,15.9,49.492,69.078,3043700000,37,453
+"P00926","D-serine dehydratase","dsdA",10,36.4,47.9,52.403,1997400000,43,442
+"P00934","Threonine synthase","thrC",26,70.3,47.113,323.31,2.4227e+10,304,428
+"P00946","Mannose-6-phosphate isomerase","manA",19,62.4,42.849,282.24,2.6522e+10,262,391
+"P00954","Tryptophan--tRNA ligase","trpS",16,41.9,37.437,168.65,1.5419e+10,183,334
+"P00956","Isoleucine--tRNA ligase","ileS",55,69.5,104.3,323.31,6.9123e+10,684,938
+"P00957","Alanine--tRNA ligase","alaS",58,63.4,96.031,323.31,7.3635e+10,694,876
+"P00959","Methionine--tRNA ligase","metG",48,69.6,76.254,323.31,3.7725e+10,475,677
+"P00960","Glycine--tRNA ligase alpha subunit","glyQ",8,38.9,34.774,116.65,1.0071e+10,150,303
+"P00961","Glycine--tRNA ligase beta subunit","glyS",61,79.4,76.812,323.31,1.124e+11,947,689
+"P00962","Glutamine--tRNA ligase","glnS",34,57.4,63.477,323.31,2.9286e+10,323,554
+"P00963","Aspartate--ammonia ligase","asnA",12,51.5,36.65,100.12,5082200000,79,330
+"P00968","Carbamoyl-phosphate synthase large chain","carB",33,41.2,117.84,322.83,9703900000,229,1073
+"P02358","30S ribosomal protein S6;30S ribosomal protein S6, fully modified isoform;30S ribosomal protein S6, non-modified isoform","rpsF",17,91.9,15.703,323.31,1.3126e+11,604,135
+"P02359","30S ribosomal protein S7","rpsG",19,78.8,20.019,323.31,3.4239e+11,780,179
+"P02413","50S ribosomal protein L15","rplO",12,66,14.98,118.11,7.042e+10,295,144
+"P02924","L-arabinose-binding periplasmic protein","araF",19,65.3,35.54,214.45,1.9256e+10,195,329
+"P02925","D-ribose-binding periplasmic protein","rbsB",54,91.2,30.95,323.31,2.4297e+12,2895,296
+"P02930","Outer membrane protein TolC","tolC",7,19.7,53.74,31.601,1010800000,26,493
+"P03817","Protein MioC","mioC",3,39.5,15.807,52.726,2713700000,33,147
+"P03841","Maltose operon periplasmic protein","malM",12,56.9,31.943,85.815,4711900000,89,306
+"P04036","4-hydroxy-tetrahydrodipicolinate reductase","dapB",13,56.4,28.756,120.9,5502500000,96,273
+"P04079","GMP synthase [glutamine-hydrolyzing]","guaA",31,66.9,58.679,323.31,3.3374e+10,358,525
+"P04128","Type-1 fimbrial protein, A chain","fimA",3,47.8,18.111,150.93,5613600000,59,182
+"P04335","Esterase FrsA","frsA",10,30.2,47.008,33.878,766860000,30,414
+"P04425","Glutathione synthetase","gshB",13,47.8,35.56,221.35,1.6027e+10,177,316
+"P04693","Aromatic-amino-acid aminotransferase","tyrB",11,40.1,43.537,60.641,4476200000,72,397
+"P04805","Glutamate--tRNA ligase","gltX",31,57.5,53.815,323.31,5.8352e+10,565,471
+"P04825","Aminopeptidase N","pepN",45,56.1,98.918,323.31,4.611e+10,436,870
+"P04949","Flagellin","fliC",32,86.9,51.294,323.31,2.5017e+10,271,498
+"P04951","3-deoxy-manno-octulosonate cytidylyltransferase","kdsB",7,42.3,27.614,76.432,4.378e+09,49,248
+"P04982","D-ribose pyranase","rbsD",8,46,15.292,150.39,1.4579e+10,106,139
+"P04983","Ribose import ATP-binding protein RbsA","rbsA",25,64.5,55.041,315.17,1.01e+10,215,501
+"P05020","Dihydroorotase","pyrC",17,58,38.827,249.72,1.5395e+10,234,348
+"P05042","Fumarate hydratase class II","fumC",19,60.4,50.488,270.18,1.0577e+10,137,467
+"P05055","Polyribonucleotide nucleotidyltransferase","pnp",44,60.3,77.1,323.31,6.3085e+10,554,711
+"P05458","Protease 3","ptrA",15,28.3,107.71,54.832,1447900000,49,962
+"P05459","Erythronate-4-phosphate dehydrogenase","pdxB",17,48.7,41.367,114.95,8570400000,128,378
+"P05637","Bis(5-nucleosyl)-tetraphosphatase [symmetrical]","apaH",6,25,31.296,69.402,1148900000,40,280
+"P05793","Ketol-acid reductoisomerase","ilvC",16,34.4,54.068,66.364,2667200000,79,491
+"P06149","D-lactate dehydrogenase","dld",20,44.8,64.612,88.84,3891400000,74,571
+"P06610","Vitamin B12 transport periplasmic protein BtuE","btuE",8,48.1,20.469,94.145,4573700000,54,183
+"P06612","DNA topoisomerase 1","topA",35,49.2,97.349,235.3,1.0525e+10,179,865
+"P06715","Glutathione reductase","gor",19,67.3,48.772,196.33,1.4022e+10,109,450
+"P06720","Alpha-galactosidase","melA",12,38.1,50.657,323.31,1.2799e+10,159,451
+"P06959","Dihydrolipoyllysine-residue acetyltransferase component of pyruvate dehydrogenase complex","aceF",53,67,66.095,323.31,2.4628e+11,1369,630
+"P06968","Deoxyuridine 5-triphosphate nucleotidohydrolase","dut",3,21.9,16.155,99.373,6484500000,73,151
+"P06983","Porphobilinogen deaminase","hemC",10,36.1,33.851,97.227,1.331e+09,38,313
+"P06986","Histidinol-phosphate aminotransferase","hisC",11,41.6,39.36,95.101,5235800000,75,356
+"P06987","Histidine biosynthesis bifunctional protein HisB;Histidinol-phosphatase;Imidazoleglycerol-phosphate dehydratase","hisB",12,41.4,40.278,127.28,7303300000,91,355
+"P06988","Histidinol dehydrogenase","hisD",11,26,46.11,76.952,4934900000,125,434
+"P06992","Ribosomal RNA small subunit methyltransferase A","rsmA",7,31.1,30.42,107.39,1044600000,28,273
+"P06996","Outer membrane protein C","ompC",13,51.2,40.368,96.226,2407500000,58,367
+"P06999","ATP-dependent 6-phosphofructokinase isozyme 2","pfkB",10,50.5,32.456,100.28,5205300000,64,309
+"P07003","Pyruvate dehydrogenase [ubiquinone];Alpha-peptide","poxB",25,51.4,62.011,263.76,2.1536e+10,186,572
+"P07004","Gamma-glutamyl phosphate reductase","proA",17,46.8,44.63,85.445,6848800000,154,417
+"P07012","Peptide chain release factor 2","prfB",25,57,41.25,323.31,2.6348e+10,346,365
+"P07014","Succinate dehydrogenase iron-sulfur subunit","sdhB",15,57.1,26.77,184.04,9590600000,176,238
+"P07024","Protein UshA;UDP-sugar hydrolase;5-nucleotidase","ushA",20,59.5,60.823,136.73,1.2272e+10,132,550
+"P07102","Periplasmic AppA protein;Phosphoanhydride phosphohydrolase;4-phytase","appA",9,26.4,47.056,58.962,2589700000,50,432
+"P07118","Valine--tRNA ligase","valS",56,56.8,108.19,323.31,7.847e+10,625,951
+"P07395","Phenylalanine--tRNA ligase beta subunit","pheT",49,55.3,87.377,323.31,8.9332e+10,712,795
+"P07464","Galactoside O-acetyltransferase","lacA",6,29.1,22.799,32.211,1950100000,80,203
+"P07639","3-dehydroquinate synthase","aroB",13,53.6,38.881,123.04,4995700000,95,362
+"P07650","Thymidine phosphorylase","deoA",27,62.7,47.207,323.31,2.2452e+10,281,440
+"P07813","Leucine--tRNA ligase","leuS",43,54.4,97.233,323.31,5.7737e+10,522,860
+"P07862","D-alanine--D-alanine ligase B","ddlB",10,47.7,32.839,85.345,3.66e+09,67,306
+"P07913","L-threonine 3-dehydrogenase","tdh",10,41.1,37.239,162.36,2.6204e+10,195,341
+"P08142","Acetolactate synthase isozyme 1 large subunit","ilvB",14,42.9,60.44,108.22,3602600000,56,562
+"P08178","Phosphoribosylformylglycinamidine cyclo-ligase","purM",13,44.6,36.854,323.31,1.637e+10,141,345
+"P08179","Phosphoribosylglycinamide formyltransferase","purN",6,51.9,23.238,89.129,3.924e+09,59,212
+"P08190","Protein FimG","fimG",3,35.9,17.317,69.308,1289400000,18,167
+"P08191","Protein FimH","fimH",4,29.3,31.473,65.541,2547600000,39,300
+"P08192","Bifunctional protein FolC;Folylpolyglutamate synthase;Dihydrofolate synthase","folC",13,42.9,45.405,87.558,1794500000,53,422
+"P08194","Glycerol-3-phosphate transporter","glpT",6,9.5,50.31,11.879,771170000,41,452
+"P08200","Isocitrate dehydrogenase [NADP]","icd",42,72.6,45.756,323.31,3.3236e+11,1295,416
+"P08202","L-arabinose isomerase","araA",9,26.6,56.073,122.17,1506500000,33,500
+"P08312","Phenylalanine--tRNA ligase alpha subunit","pheS",23,78.6,36.831,323.31,2.9721e+10,321,327
+"P08331","2,3-cyclic-nucleotide 2-phosphodiesterase/3-nucleotidase","cpdB",11,27.2,70.831,48.724,3517800000,38,647
+"P08390","USG-1 protein","usg",10,37.7,36.364,162.78,9461600000,76,337
+"P08622","Chaperone protein DnaJ","dnaJ",9,28.5,41.1,64.73,1941100000,41,376
+"P08839","Phosphoenolpyruvate-protein phosphotransferase","ptsI",39,67,63.561,323.31,5.8841e+10,544,575
+"P08957","Type I restriction enzyme EcoKI M protein","hsdM",17,43.3,59.306,96.358,1258800000,62,529
+"P08997","Malate synthase A","aceB",33,66.4,60.273,323.31,4.6864e+10,431,533
+"P09029","N5-carboxyaminoimidazole ribonucleotide synthase","purK",16,55.5,39.461,117.08,1.1078e+10,175,355
+"P09030","Exodeoxyribonuclease III","xthA",15,67.9,30.969,148.08,9235800000,135,268
+"P09147","UDP-glucose 4-epimerase","galE",19,72.5,37.265,296.13,2.4939e+10,221,338
+"P09148","Galactose-1-phosphate uridylyltransferase","galT",12,37.9,39.645,46.29,1.7333e+10,93,348
+"P09158","Polyamine aminopropyltransferase","speE",8,42.4,32.321,84.983,5684500000,60,288
+"P09372","Protein GrpE","grpE",23,91.4,21.798,304.2,6.2636e+10,491,197
+"P09373","Formate acetyltransferase 1","pflB",78,82.5,85.356,323.31,4.7665e+11,1683,760
+"P09394","Glycerophosphoryl diester phosphodiesterase","glpQ",38,83.8,40.843,323.31,3.2863e+11,1016,358
+"P09424","Mannitol-1-phosphate 5-dehydrogenase","mtlD",17,58.6,41.139,185.12,1.4749e+10,216,382
+"P09546","Bifunctional protein PutA;Proline dehydrogenase;Delta-1-pyrroline-5-carboxylate dehydrogenase","putA",43,41.2,143.81,323.31,2.7367e+10,373,1320
+"P09551","Lysine/arginine/ornithine-binding periplasmic protein","argT",17,50.8,27.991,218.16,6706300000,95,260
+"P09831","Glutamate synthase [NADPH] large chain","gltB",49,45.3,163.3,323.31,9658400000,242,1486
+"P09832","Glutamate synthase [NADPH] small chain","gltD",11,36.7,52.015,58.822,1811300000,66,472
+"P09996","Uncharacterized protein YidB","yidB",3,43.9,13.786,31.445,1865600000,24,132
+"P0A698","UvrABC system protein A","uvrA",22,36.4,103.87,138.54,4685800000,108,940
+"P0A6A3","Acetate kinase","ackA",20,63.2,43.29,323.31,1.0017e+11,486,400
+"P0A6A8","Acyl carrier protein","acpP",4,35.9,8.6394,40.808,1.1121e+11,151,78
+"P0A6B4","Alanine racemase, biosynthetic","alr",8,36.5,39.152,41.044,822460000,23,359
+"P0A6B7","Cysteine desulfurase IscS","iscS",25,61.1,45.089,215.5,2.2212e+10,294,404
+"P0A6C1","Endonuclease 4","nfo",9,49.8,31.479,72.782,1927600000,36,285
+"P0A6D7","Shikimate kinase 1","aroK",13,82.7,19.538,216.34,7139400000,99,173
+"P0A6E4","Argininosuccinate synthase","argG",20,60.4,49.898,120.75,3539500000,80,447
+"P0A6E6","ATP synthase epsilon chain","atpC",5,54.7,15.068,215.62,2.4214e+10,119,139
+"P0A6F1","Carbamoyl-phosphate synthase small chain","carA",14,56,41.431,84.258,3727200000,69,382
+"P0A6F3","Glycerol kinase","glpK",56,76.9,56.23,323.31,8.6409e+11,2507,502
+"P0A6F5","60 kDa chaperonin","groL",69,86.7,57.328,323.31,1.6728e+12,4096,548
+"P0A6F9","10 kDa chaperonin","groS",13,93.8,10.387,155.11,1.7864e+11,411,97
+"P0A6G3","Nicotinamide-nucleotide amidohydrolase PncC","pncC",5,44.2,17.582,84.475,2917900000,40,165
+"P0A6G7","ATP-dependent Clp protease proteolytic subunit","clpP",10,36.7,23.186,323.31,6.2569e+10,208,207
+"P0A6H1","ATP-dependent Clp protease ATP-binding subunit ClpX","clpX",19,64.2,46.355,188.7,7229500000,148,424
+"P0A6H5","ATP-dependent protease ATPase subunit HslU","hslU",37,68.2,49.593,307.5,1.3332e+10,293,443
+"P0A6I0","Cytidylate kinase","cmk",7,52,24.746,21.831,1087100000,40,227
+"P0A6J5","D-amino acid dehydrogenase","dadA",13,43.5,47.607,151.51,3.678e+09,73,432
+"P0A6J8","D-alanine--D-alanine ligase A","ddlA",16,54.7,39.315,115.72,1.0915e+10,141,364
+"P0A6K3","Peptide deformylase","def",6,34.3,19.328,31.691,3069600000,49,169
+"P0A6K6","Phosphopentomutase","deoB",26,57,44.369,323.31,7.3008e+10,539,407
+"P0A6L0","Deoxyribose-phosphate aldolase","deoC",19,77.2,27.733,268.88,5.7637e+10,276,259
+"P0A6L2","4-hydroxy-tetrahydrodipicolinate synthase","dapA",12,40.4,31.27,209.8,2.7179e+10,157,292
+"P0A6L4","N-acetylneuraminate lyase","nanA",12,50.8,32.593,139.02,1.5246e+10,122,297
+"P0A6L7","Altronate oxidoreductase","uxaB",20,45.3,54.808,191.28,1.1005e+10,159,483
+"P0A6L9","Co-chaperone protein HscB","hscB",6,52.6,20.137,69.487,2171300000,34,171
+"P0A6M8","Elongation factor G","fusA",61,76.4,77.58,323.31,5.9746e+11,2140,704
+"P0A6N4","Elongation factor P","efp",10,29.3,20.591,68.142,2.8206e+10,120,188
+"P0A6N8","Elongation factor P-like protein","yeiP",8,40.5,21.532,100.94,1.0027e+10,75,190
+"P0A6P1","Elongation factor Ts","tsf",40,81.6,30.423,323.31,2.2848e+11,1030,283
+"P0A6P5","GTPase Der","der",12,35.1,55.035,62.776,1560300000,53,490
+"P0A6P7","Probable GTP-binding protein EngB","engB",8,44.3,23.561,80.982,5005700000,67,210
+"P0A6P9","Enolase","eno",38,83.1,45.654,323.31,8.8271e+11,1712,432
+"P0A6Q3","3-hydroxydecanoyl-[acyl-carrier-protein] dehydratase","fabA",15,57,18.969,175.86,2.7504e+10,217,172
+"P0A6R0","3-oxoacyl-[acyl-carrier-protein] synthase 3","fabH",11,41.3,33.515,162.49,2.0872e+10,120,317
+"P0A6R3","DNA-binding protein Fis","fis",3,36.7,11.24,161.82,5029300000,45,98
+"P0A6S7","Glycerol-3-phosphate dehydrogenase [NAD(P)+]","gpsA",8,31,36.361,62.439,8573400000,95,339
+"P0A6T1","Glucose-6-phosphate isomerase","pgi",37,62.8,61.529,323.31,8.2478e+10,587,549
+"P0A6T3","Galactokinase","galK",16,43.2,41.442,205.65,1.2945e+10,186,382
+"P0A6T5","GTP cyclohydrolase 1","folE",13,63.5,24.83,142.24,5831600000,112,222
+"P0A6T9","Glycine cleavage system H protein","gcvH",8,63.6,13.811,101.05,5.8623e+10,229,129
+"P0A6U8","Glycogen synthase","glgA",9,21.6,52.822,48.58,1152400000,36,477
+"P0A6V1","Glucose-1-phosphate adenylyltransferase","glgC",21,51.3,48.697,233.09,1.4655e+10,211,431
+"P0A6V8","Glucokinase","glk",11,49.8,34.723,110.16,3878100000,45,321
+"P0A6W5","Transcription elongation factor GreA","greA",16,89.9,17.641,293.4,3.3952e+10,269,158
+"P0A6W9","Glutamate--cysteine ligase","gshA",15,31.3,58.269,277.63,1.2875e+10,158,518
+"P0A6X7","Integration host factor subunit alpha","ihfA",11,61.6,11.354,218.26,4.8551e+10,280,99
+"P0A6Y1","Integration host factor subunit beta","ihfB",9,83,10.651,290.4,1.8637e+10,198,94
+"P0A6Y5","33 kDa chaperonin","hslO",9,49.7,32.534,141.91,9942500000,101,292
+"P0A6Y8","Chaperone protein DnaK","dnaK",76,79.6,69.114,323.31,9.9938e+11,2719,638
+"P0A6Z1","Chaperone protein HscA","hscA",13,37.3,65.652,182,3746500000,77,616
+"P0A6Z3","Chaperone protein HtpG","htpG",57,81.1,71.422,323.31,7.0324e+10,654,624
+"P0A6Z6","Nickel-responsive regulator","nikR",4,42.9,15.094,132.97,2.181e+09,54,133
+"P0A705","Translation initiation factor IF-2","infB",53,64.9,97.349,323.31,4.3162e+10,569,890
+"P0A707","Translation initiation factor IF-3;Translation initiation factor IF-3, N-terminally processed;Translation initiation factor IF-3S","infC",13,62.8,20.564,267.74,7.2835e+10,279,180
+"P0A715","2-dehydro-3-deoxyphosphooctonate aldolase","kdsA",11,46.5,30.832,124.71,8323600000,118,284
+"P0A717","Ribose-phosphate pyrophosphokinase","prs",16,48.9,34.218,323.31,7.0846e+10,423,315
+"P0A729","Maf-like protein YceF","yceF",4,12.4,21.691,27.817,3.107e+09,26,194
+"P0A731","Methylglyoxal synthase","mgsA",5,77.6,16.918,56.631,6078400000,58,152
+"P0A734","Cell division topological specificity factor","minE",7,68.2,10.235,63.432,6294100000,79,88
+"P0A746","Peptide methionine sulfoxide reductase MsrB","msrB",3,32.1,15.451,52.603,2047100000,37,137
+"P0A749","UDP-N-acetylglucosamine 1-carboxyvinyltransferase","murA",11,32.9,44.817,51.034,3887500000,73,419
+"P0A759","Glucosamine-6-phosphate deaminase","nagB",9,37.6,29.774,113.87,4883300000,73,266
+"P0A761","Putative N-acetylmannosamine-6-phosphate 2-epimerase","nanE",7,48.5,24.073,115.77,5802100000,88,229
+"P0A763","Nucleoside diphosphate kinase","ndk",10,81.8,15.463,323.31,1.1326e+11,387,143
+"P0A780","N utilization substance protein B","nusB",8,63.3,15.689,96.923,4085300000,39,139
+"P0A784","Oligoribonuclease","orn",11,57.5,20.815,83.244,6.887e+09,100,181
+"P0A786","Aspartate carbamoyltransferase catalytic chain","pyrB",15,63.7,34.427,99.407,7570900000,122,311
+"P0A794","Pyridoxine 5-phosphate synthase","pdxJ",11,53.9,26.384,158.34,1.5971e+10,130,243
+"P0A796","ATP-dependent 6-phosphofructokinase isozyme 1","pfkA",13,43.8,34.842,139.46,1.4389e+10,229,320
+"P0A799","Phosphoglycerate kinase","pgk",41,79.6,41.118,323.31,7.5179e+11,1647,387
+"P0A7A9","Inorganic pyrophosphatase","ppa",21,68.2,19.703,247.34,1.3126e+11,482,176
+"P0A7B1","Polyphosphate kinase","ppk",19,34.9,80.431,79.909,1947600000,58,688
+"P0A7B5","Glutamate 5-kinase","proB",10,49.6,39.056,92.863,3009100000,59,367
+"P0A7B8","ATP-dependent protease subunit HslV","hslV",7,65.9,19.093,76.736,6129100000,74,176
+"P0A7C6","Peptidase E","pepE",14,70.3,24.57,275.09,2.2737e+10,232,229
+"P0A7D4","Adenylosuccinate synthetase","purA",47,69.9,47.344,323.31,2.665e+11,1126,432
+"P0A7D7","Phosphoribosylaminoimidazole-succinocarboxamide synthase","purC",19,66.2,26.995,172.06,3.0654e+10,283,237
+"P0A7E1","Dihydroorotate dehydrogenase (quinone)","pyrD",5,20.2,36.774,37.559,617420000,30,336
+"P0A7E5","CTP synthase","pyrG",25,50.8,60.373,186.9,2.2366e+10,291,545
+"P0A7E9","Uridylate kinase","pyrH",9,47.7,25.97,189.03,1.1837e+10,155,241
+"P0A7F3","Aspartate carbamoyltransferase regulatory chain","pyrI",9,57.5,17.12,102.14,1.1286e+10,83,153
+"P0A7F6","S-adenosylmethionine decarboxylase proenzyme;S-adenosylmethionine decarboxylase beta chain;S-adenosylmethionine decarboxylase alpha chain","speD",10,40.9,30.384,163.3,8686800000,119,264
+"P0A7G2","Ribosome-binding factor A","rbfA",7,60.2,15.154,58.897,4555900000,94,133
+"P0A7G6","Protein RecA","recA",11,29.5,37.973,100.05,6380800000,115,353
+"P0A7I4","Peptide chain release factor 3","prfC",22,46.5,59.573,258.83,9.744e+09,148,529
+"P0A7J0","3,4-dihydroxy-2-butanone 4-phosphate synthase","ribB",7,43.3,23.353,50.709,1249600000,33,217
+"P0A7J3","50S ribosomal protein L10","rplJ",16,83.6,17.711,308.02,7.3977e+10,222,165
+"P0A7J7","50S ribosomal protein L11","rplK",11,53.5,14.875,144,7.2675e+10,356,142
+"P0A7K2","50S ribosomal protein L7/L12","rplL",18,75.2,12.295,221.08,6.613e+10,470,121
+"P0A7K6","50S ribosomal protein L19","rplS",15,80.9,13.133,161.48,4.5642e+10,275,115
+"P0A7L0","50S ribosomal protein L1","rplA",28,74.4,24.729,323.31,2.1796e+11,765,234
+"P0A7L3","50S ribosomal protein L20","rplT",6,29.7,13.497,17.556,1.987e+10,81,118
+"P0A7L8","50S ribosomal protein L27","rpmA",7,45.9,9.1244,46.337,2.0828e+10,198,85
+"P0A7M2","50S ribosomal protein L28","rpmB",6,42.3,9.0064,39.346,1.1375e+11,141,78
+"P0A7M6","50S ribosomal protein L29","rpmC",6,71.4,7.2734,323.31,2.2392e+11,341,63
+"P0A7M9","50S ribosomal protein L31","rpmE",3,30,7.871,10.347,5706200000,47,70
+"P0A7N4","50S ribosomal protein L32","rpmF",6,59.6,6.4463,323.31,6.9046e+10,275,57
+"P0A7N9","50S ribosomal protein L33","rpmG",5,65.5,6.3715,39.652,2.7763e+10,159,55
+"P0A7P5","50S ribosomal protein L34","rpmH",4,21.7,5.3803,7.6197,5651500000,48,46
+"P0A7R1","50S ribosomal protein L9","rplI",20,87.9,15.769,323.31,2.6472e+11,711,149
+"P0A7R5","30S ribosomal protein S10","rpsJ",15,68,11.735,173.13,9.6205e+10,333,103
+"P0A7R9","30S ribosomal protein S11","rpsK",9,59.7,13.845,232.48,4.1462e+10,256,129
+"P0A7S9","30S ribosomal protein S13","rpsM",19,66.1,13.099,323.31,1.2778e+11,444,118
+"P0A7T3","30S ribosomal protein S16","rpsP",8,65.9,9.1904,138.1,9.8843e+10,261,82
+"P0A7T7","30S ribosomal protein S18","rpsR",10,60,8.9863,161.04,4.9341e+10,189,75
+"P0A7U3","30S ribosomal protein S19","rpsS",12,73.9,10.43,192.57,1.7185e+11,505,92
+"P0A7U7","30S ribosomal protein S20","rpsT",10,50.6,9.6843,89.811,3.6647e+10,249,87
+"P0A7V0","30S ribosomal protein S2","rpsB",24,77.6,26.743,323.31,2.0355e+11,873,241
+"P0A7V3","30S ribosomal protein S3","rpsC",26,83.7,25.983,323.31,3.3503e+11,662,233
+"P0A7V8","30S ribosomal protein S4","rpsD",22,69.4,23.469,323.31,2.0864e+11,985,206
+"P0A7W1","30S ribosomal protein S5","rpsE",19,92.2,17.603,323.31,2.2188e+11,708,167
+"P0A7W7","30S ribosomal protein S8","rpsH",12,67.7,14.126,87.401,4.1028e+10,242,130
+"P0A7X3","30S ribosomal protein S9","rpsI",15,74.6,14.856,82.51,3.9572e+10,316,130
+"P0A7X6","Ribosome maturation factor RimM","rimM",9,53.8,20.605,29.116,2577100000,65,182
+"P0A7Z0","Ribose-5-phosphate isomerase A","rpiA",11,49.8,22.86,199.14,3.7478e+10,233,219
+"P0A7Z4","DNA-directed RNA polymerase subunit alpha","rpoA",29,72,36.511,323.31,1.9639e+11,922,329
+"P0A800","DNA-directed RNA polymerase subunit omega","rpoZ",10,95.6,10.236,323.31,2.3203e+10,138,91
+"P0A805","Ribosome-recycling factor","frr",19,65.9,20.638,323.31,1.2544e+11,373,185
+"P0A817","S-adenosylmethionine synthase","metK",23,66.4,41.951,246.04,2.1428e+10,318,384
+"P0A821","L-seryl-tRNA(Sec) selenium transferase","selA",10,31.3,50.607,107.54,3483400000,50,463
+"P0A825","Serine hydroxymethyltransferase","glyA",38,68.6,45.316,323.31,6.0237e+11,1533,417
+"P0A832","SsrA-binding protein","smpB",5,27.5,18.269,17.254,830060000,39,160
+"P0A836","Succinyl-CoA ligase [ADP-forming] subunit beta","sucC",28,59.8,41.392,323.31,2.9368e+11,765,388
+"P0A847","Queuine tRNA-ribosyltransferase","tgt",9,36,42.593,64.336,1249800000,43,375
+"P0A850","Trigger factor","tig",57,82.2,48.192,323.31,2.4489e+11,1311,432
+"P0A853","Tryptophanase","tnaA",51,66.9,52.773,323.31,2.3707e+12,3220,471
+"P0A855","Protein TolB","tolB",21,63.7,45.955,286.54,1.4625e+10,220,430
+"P0A858","Triosephosphate isomerase","tpiA",21,82,26.972,323.31,4.896e+10,538,255
+"P0A862","Thiol peroxidase","tpx",10,41.7,17.835,308.66,7.5155e+10,261,168
+"P0A867","Transaldolase A","talA",26,62,35.658,246.66,6.3457e+10,372,316
+"P0A870","Transaldolase B","talB",36,78.9,35.219,323.31,2.7479e+11,1019,317
+"P0A877","Tryptophan synthase alpha chain","trpA",9,47.4,28.724,176.38,7605100000,109,268
+"P0A879","Tryptophan synthase beta chain","trpB",13,43.8,42.983,91.3,7126200000,103,397
+"P0A881","Trp operon repressor","trpR",6,60.2,12.355,52.1,439170000,24,108
+"P0A884","Thymidylate synthase","thyA",13,41.7,30.479,108.28,3243200000,74,264
+"P0A887","Ubiquinone/menaquinone biosynthesis C-methyltransferase UbiE","ubiE",8,39.4,28.073,44.893,2127800000,36,251
+"P0A894","RNase adapter protein RapZ","rapZ",12,58.8,32.492,139.06,5.596e+09,79,284
+"P0A8A0","Probable transcriptional regulatory protein YebC","yebC",9,26.8,26.422,129.51,7588400000,102,246
+"P0A8A2","Probable transcriptional regulatory protein YeeN","yeeN",10,49.6,25.867,85.915,2554400000,83,238
+"P0A8B5","Nucleoid-associated protein YbaB","ybaB",5,66.1,12.015,132.78,4782900000,49,109
+"P0A8C4","UPF0149 protein YgfB","ygfB",3,19.3,21.229,30.764,1328500000,26,192
+"P0A8E1","UPF0227 protein YcfP","ycfP",5,32.8,21.226,62.857,4673500000,68,180
+"P0A8E5","UPF0231 protein YacL","yacL",4,37.5,13.941,18.516,1104200000,23,120
+"P0A8E7","UPF0234 protein YajQ","yajQ",16,83.4,18.344,323.31,6.4906e+10,260,163
+"P0A8F0","Uracil phosphoribosyltransferase","upp",16,89.4,22.533,198.5,4.8755e+10,273,208
+"P0A8G3","Uronate isomerase","uxaC",38,73.6,53.987,323.31,7.793e+10,632,470
+"P0A8G6","NAD(P)H dehydrogenase (quinone)","wrbA",16,63.6,20.845,323.31,3.807e+10,353,198
+"P0A8G9","Exodeoxyribonuclease 7 small subunit","xseB",4,76.2,8.9518,62.178,2934600000,38,80
+"P0A8H6","Der GTPase-activating protein YihI","yihI",5,40.8,19.059,133.5,5019200000,51,169
+"P0A8I3","UPF0246 protein YaaA","yaaA",6,29.1,29.585,67.435,3156700000,34,258
+"P0A8I5","tRNA (guanine-N(7)-)-methyltransferase","trmB",5,22.6,27.307,19.779,9.95e+08,38,239
+"P0A8J4","UPF0250 protein YbeD","ybeD",4,57.5,9.8272,89.274,9955900000,128,87
+"P0A8J8","ATP-dependent RNA helicase RhlB","rhlB",13,36.6,47.125,67.294,3.6759e+10,57,421
+"P0A8K5","UPF0253 protein YaeP","yaeP",3,51.5,7.2141,50.991,3612800000,41,66
+"P0A8L1","Serine--tRNA ligase","serS",32,68.6,48.413,323.31,9.1898e+10,505,430
+"P0A8M0","Asparagine--tRNA ligase","asnS",32,57.7,52.57,323.31,3.2437e+10,333,466
+"P0A8M3","Threonine--tRNA ligase","thrS",42,55.6,74.013,323.31,4.2166e+10,583,642
+"P0A8M6","UPF0265 protein YeeX","yeeX",5,53.2,12.778,95.538,1.4115e+10,132,109
+"P0A8N3","Lysine--tRNA ligase","lysS",50,83,57.603,323.31,7.9152e+10,760,505
+"P0A8N5","Lysine--tRNA ligase, heat inducible","lysU",41,75,57.826,323.31,7.4323e+10,481,505
+"P0A8P3","Probable Fe(2+)-trafficking protein","yggX",11,78,10.952,68.366,6675700000,103,91
+"P0A8R0","Regulator of ribonuclease activity A","rraA",8,70.2,17.36,154.91,7485300000,113,161
+"P0A8S1","HTH-type transcriptional regulator ArgP","argP",6,22.9,33.471,20.416,1221500000,34,297
+"P0A8T7","DNA-directed RNA polymerase subunit beta","rpoC",102,72.9,155.16,323.31,2.2059e+11,1807,1407
+"P0A8U6","Met repressor","metJ",5,40,12.141,9.2329,1791900000,42,105
+"P0A8V2","DNA-directed RNA polymerase subunit beta","rpoB",108,73.7,150.63,323.31,2.5257e+11,1907,1342
+"P0A8W2","Transcriptional regulator SlyA","slyA",8,72.9,16.353,79.904,3571200000,59,144
+"P0A8W8","UPF0304 protein YfbU","yfbU",11,73.2,19.536,128.72,6.643e+09,90,164
+"P0A8X0","UPF0307 protein YjgA","yjgA",17,71.6,21.359,221.2,1.4741e+10,205,183
+"P0A8X2","Protein YceI","yceI",8,55.5,20.912,25.293,726610000,29,191
+"P0A8Y3","Alpha-D-glucose-1-phosphate phosphatase YihX","yihX",9,60.3,22.732,74.846,4704200000,120,199
+"P0A8Y5","Sugar phosphatase YidA","yidA",8,41.5,29.721,71.858,3659100000,69,270
+"P0A905","Outer membrane lipoprotein SlyB","slyB",6,38.7,15.601,118.69,2033100000,50,155
+"P0A910","Outer membrane protein A","ompA",16,48,37.2,243.43,9.1305e+10,272,346
+"P0A912","Peptidoglycan-associated lipoprotein","pal",7,54.3,18.824,25.215,698370000,42,173
+"P0A940","Outer membrane protein assembly factor BamA","bamA",14,21.5,90.552,64.887,1323100000,56,810
+"P0A953","3-oxoacyl-[acyl-carrier-protein] synthase 1","fabB",21,56.2,42.613,323.31,9.2436e+10,485,406
+"P0A955","KHG/KDPG aldolase;4-hydroxy-2-oxoglutarate aldolase;2-dehydro-3-deoxy-phosphogluconate aldolase","eda",15,67.1,22.284,267.69,1.7074e+11,459,213
+"P0A959","Glutamate-pyruvate aminotransferase AlaA","alaA",9,26.7,45.517,34.795,1042100000,42,405
+"P0A968","Cold shock-like protein CspD","cspD",2,41.9,7.9689,14.5,1.236e+09,14,74
+"P0A972","Cold shock-like protein CspE","cspE",9,92.8,7.4634,110.67,1.6348e+10,123,69
+"P0A988","DNA polymerase III subunit beta","dnaN",13,43.2,40.586,59.397,1940300000,65,366
+"P0A991","Fructose-bisphosphate aldolase class 1","fbaB",20,57.7,38.109,312.26,6.6455e+10,356,350
+"P0A993","Fructose-1,6-bisphosphatase class 1","fbp",14,48.2,36.833,58.859,5769700000,80,332
+"P0A996","Anaerobic glycerol-3-phosphate dehydrogenase subunit C","glpC",17,40.2,44.108,139.55,1.0383e+10,176,396
+"P0A998","Bacterial non-heme ferritin","ftnA",11,78.8,19.424,323.31,6.6688e+10,213,165
+"P0A9A6","Cell division protein FtsZ","ftsZ",25,90.6,40.323,323.31,3.747e+10,381,383
+"P0A9A9","Ferric uptake regulation protein","fur",8,39.9,16.795,110.36,1.5723e+10,122,148
+"P0A9B2","Glyceraldehyde-3-phosphate dehydrogenase A","gapA",45,75.2,35.532,323.31,7.1427e+11,1695,331
+"P0A9C0","Anaerobic glycerol-3-phosphate dehydrogenase subunit A","glpA",32,63.7,58.958,323.31,5.0411e+10,409,542
+"P0A9C3","Aldose 1-epimerase","galM",16,52,38.19,169.16,1.1467e+10,171,346
+"P0A9C5","Glutamine synthetase","glnA",29,69.9,51.903,323.31,1.0181e+11,636,469
+"P0A9C9","Fructose-1,6-bisphosphatase 1 class 2","glpX",11,35.4,35.852,164.81,3657300000,53,336
+"P0A9D2","Glutathione S-transferase GstA","gstA",11,53.7,22.868,124.86,1.3997e+10,156,201
+"P0A9D4","Serine acetyltransferase","cysE",6,38.8,29.316,24.542,1262700000,23,273
+"P0A9D8","2,3,4,5-tetrahydropyridine-2,6-dicarboxylate N-succinyltransferase","dapD",20,53.3,29.892,323.31,5.2456e+10,407,274
+"P0A9G6","Isocitrate lyase","aceA",25,60.1,47.521,323.31,1.6911e+11,511,434
+"P0A9G8","Transcriptional regulator ModE","modE",7,40.1,28.281,99.027,3263900000,52,262
+"P0A9J6","Ribokinase","rbsK",18,63.1,32.29,323.31,7.906e+10,459,309
+"P0A9J8","P-protein;Chorismate mutase;Prephenate dehydratase","pheA",15,38.9,43.111,193.84,8337500000,131,386
+"P0A9K3","PhoH-like protein","ybeZ",14,47.7,39.038,159.26,9.361e+09,103,346
+"P0A9K9","FKBP-type peptidyl-prolyl cis-trans isomerase SlyD","slyD",6,58.2,20.853,227.67,6.0619e+10,223,196
+"P0A9L3","FKBP-type 22 kDa peptidyl-prolyl cis-trans isomerase","fklB",12,58.7,22.216,155.54,1.0656e+10,128,206
+"P0A9L5","Peptidyl-prolyl cis-trans isomerase C","ppiC",4,38.7,10.232,36.837,3.25e+09,42,93
+"P0A9L8","Pyrroline-5-carboxylate reductase","proC",5,34.2,28.145,65.499,5328100000,75,269
+"P0A9M0","Lon protease","lon",46,53.7,87.437,323.31,3.5185e+10,422,784
+"P0A9M2","Hypoxanthine phosphoribosyltransferase","hpt",13,72.5,20.115,146.54,5472600000,91,178
+"P0A9M5","Xanthine phosphoribosyltransferase","gpt",8,73,16.97,176.47,8108100000,122,152
+"P0A9M8","Phosphate acetyltransferase","pta",42,64,77.171,323.31,5.5091e+10,627,714
+"P0A9N4","Pyruvate formate-lyase 1-activating enzyme","pflA",8,32.5,28.204,58.843,2183500000,51,246
+"P0A9P0","Dihydrolipoyl dehydrogenase","lpdA",44,64.1,50.688,323.31,3.5887e+11,1143,474
+"P0A9P4","Thioredoxin reductase","trxB",16,62.3,34.623,323.31,2.7267e+10,204,321
+"P0A9P6","ATP-dependent RNA helicase DeaD","deaD",20,38.3,70.545,198.97,5784800000,120,629
+"P0A9Q1","Aerobic respiration control protein ArcA","arcA",16,57.6,27.292,323.31,2.4926e+10,240,238
+"P0A9Q5","Acetyl-coenzyme A carboxylase carboxyl transferase subunit beta","accD",14,33.6,33.322,266.12,7974300000,87,304
+"P0A9Q7","Aldehyde-alcohol dehydrogenase;Alcohol dehydrogenase;Acetaldehyde dehydrogenase [acetylating];Pyruvate-formate-lyase deactivase","adhE",51,61.7,96.126,323.31,5.5798e+10,523,891
+"P0A9Q9","Aspartate-semialdehyde dehydrogenase","asd",21,74.1,40.017,323.31,4.7138e+10,328,367
+"P0A9R4","2Fe-2S ferredoxin","fdx",4,36,12.331,54.746,4291500000,43,111
+"P0A9S1","Lactaldehyde reductase","fucO",14,53.1,40.513,184.75,1.5025e+10,168,382
+"P0A9S5","Glycerol dehydrogenase","gldA",8,35.7,38.712,69.77,1.4529e+10,169,367
+"P0A9T0","D-3-phosphoglycerate dehydrogenase","serA",13,39.3,44.175,130.84,1.1099e+10,123,410
+"P0A9T4","Protein tas","tas",9,31.8,38.499,73.237,2018400000,49,346
+"P0A9U3","Uncharacterized ABC transporter ATP-binding protein YbiT","ybiT",7,17.2,59.857,41.82,507040000,23,530
+"P0A9V1","Lipopolysaccharide export system ATP-binding protein LptB","lptB",7,40.7,26.8,37.38,1269900000,32,241
+"P0A9W3","Energy-dependent translational throttle protein EttA","ettA",36,68.8,62.442,323.31,3.5642e+10,447,555
+"P0A9X4","Rod shape-determining protein MreB","mreB",16,47.3,36.952,143.76,7589500000,149,347
+"P0A9X9","Cold shock protein CspA","cspA",9,85.7,7.4032,49.874,2368300000,59,70
+"P0A9Y6","Cold shock-like protein CspC","cspC",7,87,7.4023,209.41,4.2537e+10,222,69
+"P0A9Z1","Nitrogen regulatory protein P-II 1","glnB",10,67.9,12.425,29.639,1643900000,64,112
+"P0AA04","Phosphocarrier protein HPr","ptsH",10,92.9,9.1193,301.23,2.3857e+11,313,85
+"P0AA10","50S ribosomal protein L13","rplM",22,88,16.018,323.31,1.1949e+11,624,142
+"P0AA16","Transcriptional regulatory protein OmpR","ompR",14,67.4,27.353,148.25,4418100000,75,239
+"P0AA25","Thioredoxin-1","trxA",15,82.6,11.806,188.05,8.258e+10,319,109
+"P0AA31","UPF0033 protein YedF","yedF",1,22.1,8.6389,53.904,3421600000,26,77
+"P0AA43","Ribosomal small subunit pseudouridine synthase A","rsuA",8,53.2,25.865,100.54,2702700000,60,231
+"P0AAB4","3-octaprenyl-4-hydroxybenzoate carboxy-lyase","ubiD",16,38.6,55.603,145.87,6.2e+09,117,497
+"P0AAB6","UTP--glucose-1-phosphate uridylyltransferase","galF",9,45.8,32.829,310.82,1.0633e+10,93,297
+"P0AAB8","Universal stress protein D","uspD",5,57.7,16.293,86.4,5884200000,63,142
+"P0AAC0","Universal stress protein E","uspE",12,63.6,35.706,238.67,2.1065e+10,156,316
+"P0AAG8","Galactose/methyl galactoside import ATP-binding protein MglA","mglA",6,19.6,56.415,68.439,746370000,34,506
+"P0AAI3","ATP-dependent zinc metalloprotease FtsH","ftsH",16,36.5,70.707,120.5,2963300000,93,644
+"P0AAI5","3-oxoacyl-[acyl-carrier-protein] synthase 2","fabF",16,60,43.045,323.31,6.5422e+10,378,413
+"P0AAI9","Malonyl CoA-acyl carrier protein transacylase","fabD",11,41.7,32.417,171.24,3.543e+10,242,309
+"P0AAN5","Uncharacterized protein YaiA","yaiA",4,84.1,7.2811,21.477,1531100000,53,63
+"P0AAN9","Anti-adapter protein IraP","iraP",4,48.8,9.9374,105.19,9316600000,66,86
+"P0AAT6","Ribosomal silencing factor RsfS","rsfS",4,44.8,11.582,40.183,5251700000,57,105
+"P0AAT9","Uncharacterized protein YbeL","ybeL",15,55,18.797,281.85,2.4669e+10,150,160
+"P0AAV6","Uncharacterized protein YbgS","ybgS",4,49.2,12.872,26.715,1.169e+09,36,126
+"P0AAX8","Probable L,D-transpeptidase YbiS","ybiS",13,61.1,33.325,144.21,8800700000,81,306
+"P0AB03","Uncharacterized protein YcbJ","ycbJ",5,30,34.487,38.497,640950000,17,297
+"P0AB14","Uncharacterized protein YccJ","yccJ",6,82.7,8.5244,101.86,1.7006e+10,133,75
+"P0AB24","Iron uptake system component EfeO","efeO",7,27.7,41.137,42.075,729290000,32,375
+"P0AB28","Uncharacterized protein YceD","yceD",4,15,19.315,18.585,1396400000,27,173
+"P0AB46","Uncharacterized protein YmgD","ymgD",1,13.8,11.852,14.22,390840000,23,109
+"P0AB52","Protein YchN","ychN",5,62.4,12.693,120.08,1.6841e+10,101,117
+"P0AB55","Protein YciI","yciI",6,36.7,10.602,54.697,4405600000,85,98
+"P0AB61","Protein YciN","yciN",10,100,9.3855,280.44,8.905e+09,151,83
+"P0AB71","Fructose-bisphosphate aldolase class 2","fbaA",26,56,39.147,323.31,2.4094e+11,940,359
+"P0AB77","2-amino-3-ketobutyrate coenzyme A ligase","kbl",21,53,43.117,299.85,5.6871e+10,489,398
+"P0AB80","Branched-chain-amino-acid aminotransferase","ilvE",5,20.7,34.093,30.447,1031700000,40,309
+"P0AB89","Adenylosuccinate lyase","purB",26,53.3,51.542,323.31,3.2438e+10,335,456
+"P0AB91","Phospho-2-dehydro-3-deoxyheptonate aldolase, Phe-sensitive","aroG",10,34.6,38.009,196.16,9.416e+09,89,350
+"P0ABA0","ATP synthase subunit b","atpF",12,53.2,17.264,65.771,5688700000,91,156
+"P0ABA4","ATP synthase subunit delta","atpH",7,49.7,19.332,108.12,9703900000,64,177
+"P0ABA6","ATP synthase gamma chain","atpG",19,65.5,31.577,191.79,7076300000,132,287
+"P0ABB0","ATP synthase subunit alpha","atpA",31,63,55.221,323.31,1.0785e+11,555,513
+"P0ABB4","ATP synthase subunit beta","atpD",38,90.9,50.325,323.31,1.0812e+11,737,460
+"P0ABD3","Bacterioferritin","bfr",22,96.2,18.495,323.31,1.5661e+11,450,158
+"P0ABD5","Acetyl-coenzyme A carboxylase carboxyl transferase subunit alpha","accA",22,65.5,35.241,323.31,1.8345e+10,260,319
+"P0ABD8","Biotin carboxyl carrier protein of acetyl-CoA carboxylase","accB",5,39.1,16.687,125.34,2926900000,67,156
+"P0ABE2","Protein BolA","bolA",5,58.1,11.994,57.912,1667800000,37,105
+"P0ABF6","Cytidine deaminase","cdd",12,57.1,31.54,170.78,8883300000,104,294
+"P0ABH7","Citrate synthase","gltA",28,52,48.014,323.31,2.2013e+11,884,427
+"P0ABJ9","Cytochrome bd-I ubiquinol oxidase subunit 1","cydA",9,13.4,58.204,59.839,5.042e+09,93,522
+"P0ABK5","Cysteine synthase A","cysK",31,90.4,34.489,323.31,2.8252e+11,826,323
+"P0ABP8","Purine nucleoside phosphorylase DeoD-type","deoD",16,57.3,25.95,226.45,1.0859e+11,349,239
+"P0ABQ0","Coenzyme A biosynthesis bifunctional protein CoaBC;Phosphopantothenoylcysteine decarboxylase;Phosphopantothenate--cysteine ligase","coaBC",11,37.7,43.438,186.59,5810100000,123,406
+"P0ABQ2","2-hydroxy-3-oxopropionate reductase","garR",11,69.7,30.427,182.89,9517400000,115,294
+"P0ABQ4","Dihydrofolate reductase","folA",8,52.2,17.999,38.182,1196700000,57,159
+"P0ABS1","RNA polymerase-binding transcription factor DksA","dksA",9,53,17.528,323.31,2.4876e+10,154,151
+"P0ABT2","DNA protection during starvation protein","dps",34,97,18.695,323.31,1.0651e+12,1308,167
+"P0ABU0","1,4-dihydroxy-2-naphthoyl-CoA synthase","menB",11,41.1,31.633,198.42,2.307e+10,220,285
+"P0ABU2","Ribosome-binding ATPase YchF","ychF",9,36.9,39.667,130.93,5237100000,95,363
+"P0ABU5","Enhancing lycopene biosynthesis protein 2","elbB",7,41,22.981,114.88,1.8931e+10,109,217
+"P0ABZ6","Chaperone SurA","surA",18,51.9,47.283,243.9,1.9617e+10,218,428
+"P0AC19","D-erythro-7,8-dihydroneopterin triphosphate epimerase","folX",8,75.8,14.082,77.323,2637700000,64,120
+"P0AC33","Fumarate hydratase class I, aerobic","fumA",43,68.1,60.298,323.31,1.3078e+11,828,548
+"P0AC38","Aspartate ammonia-lyase","aspA",26,41.2,52.356,323.31,2.1125e+11,590,478
+"P0AC41","Succinate dehydrogenase flavoprotein subunit","sdhA",23,41,64.421,323.31,2.9037e+10,315,588
+"P0AC47","Fumarate reductase iron-sulfur subunit","frdB",6,28.3,27.123,52.462,1611200000,53,244
+"P0AC53","Glucose-6-phosphate 1-dehydrogenase;Extracellular death factor","zwf",26,43.4,55.704,323.31,1.7628e+10,260,491
+"P0AC59","Glutaredoxin-2","grxB",23,81.4,24.35,323.31,1.4255e+11,410,215
+"P0AC62","Glutaredoxin-3","grxC",6,47,9.1374,30.61,5862600000,89,83
+"P0AC69","Glutaredoxin-4","grxD",5,37.4,12.879,39.353,2.7764e+10,92,115
+"P0AC84","Hydroxyacylglutathione hydrolase","gloB",13,50.2,28.434,150.03,5146900000,77,251
+"P0AC86","Glycogen phosphorylase","glgP",20,31.8,93.171,263.78,6383300000,86,815
+"P0ACA3","Stringent starvation protein A","sspA",17,71.7,24.305,323.31,2.8486e+10,185,212
+"P0ACA7","Glutathione S-transferase GstB","gstB",12,60.6,23.713,194.09,9007200000,163,208
+"P0ACB0","Replicative DNA helicase","dnaB",9,31,52.389,73.206,1006500000,27,471
+"P0ACB2","Delta-aminolevulinic acid dehydratase","hemB",16,38.9,35.624,115.19,5741100000,96,324
+"P0ACC3","Iron-sulfur cluster insertion protein ErpA","erpA",6,63.2,12.1,129.3,4126200000,70,114
+"P0ACC7","Bifunctional protein GlmU;UDP-N-acetylglucosamine pyrophosphorylase;Glucosamine-1-phosphate N-acetyltransferase","glmU",24,56.4,49.19,184.88,9539300000,140,456
+"P0ACD4","Iron-sulfur cluster assembly scaffold protein IscU","iscU",6,36.7,13.848,56.846,4979500000,70,128
+"P0ACD8","Hydrogenase-1 large chain","hyaB",15,36.3,66.253,93.126,2.779e+09,62,597
+"P0ACE0","Hydrogenase-2 large chain","hybC",11,29.8,62.49,94.318,2460100000,49,567
+"P0ACE7","HIT-like protein HinT","hinT",9,95,13.241,132.41,1.791e+10,90,119
+"P0ACF0","DNA-binding protein HU-alpha","hupA",12,88.9,9.5349,323.31,4.859e+11,531,90
+"P0ACF4","DNA-binding protein HU-beta","hupB",12,80,9.2255,198.37,3.3971e+10,250,90
+"P0ACF8","DNA-binding protein H-NS","hns",18,82.5,15.539,323.31,2.758e+11,467,137
+"P0ACG1","DNA-binding protein StpA","stpA",8,63.4,15.347,138.33,1.1995e+10,132,134
+"P0ACI0","Right origin-binding protein","rob",9,34.6,33.144,78.121,5506400000,89,289
+"P0ACI6","Regulatory protein AsnC","asnC",10,71.1,16.887,256.4,3.4507e+10,218,152
+"P0ACJ0","Leucine-responsive regulatory protein","lrp",14,48.8,18.887,32.706,6606800000,101,164
+"P0ACJ8","cAMP-activated global transcriptional regulator CRP","crp",7,35.7,23.64,64.744,1.0993e+10,81,210
+"P0ACN4","HTH-type transcriptional repressor AllR","allR",5,20.7,29.269,26.825,834260000,24,271
+"P0ACP5","HTH-type transcriptional regulator GntR","gntR",6,28.7,36.422,75.911,9097800000,69,331
+"P0ACQ4","Hydrogen peroxide-inducible genes activator","oxyR",8,24.6,34.276,34.702,1144200000,47,305
+"P0ACU7","HTH-type transcriptional regulator YjdC","yjdC",13,62.3,21.931,86.529,7027700000,92,191
+"P0ACW6","Uncharacterized protein YdcH","ydcH",10,68.9,8.8782,57.496,3314700000,82,74
+"P0ACX3","Putative monooxygenase YdhR","ydhR",6,55.4,11.288,38.201,6427800000,75,101
+"P0ACY1","Putative NAD(P)H nitroreductase YdjA","ydjA",12,59,20.059,218.31,2.0134e+10,183,183
+"P0ACY3","Uncharacterized protein YeaG","yeaG",31,53,74.479,254.28,9945800000,178,644
+"P0AD05","Uncharacterized protein YecA","yecA",9,57.9,25.039,132.56,1.1374e+10,96,221
+"P0AD10","Uncharacterized protein YecJ","yecJ",2,27.7,9.1225,23.429,1307300000,47,83
+"P0AD12","Protein YeeZ","yeeZ",9,47.1,29.68,310.08,8899600000,140,274
+"P0AD33","UPF0381 protein YfcZ","yfcZ",4,21.3,10.318,55.811,1.012e+10,52,94
+"P0AD49","Ribosome-associated inhibitor A","raiA",14,85,12.784,323.31,1.3563e+11,539,113
+"P0AD57","Octaprenyl-diphosphate synthase","ispB",8,36.8,35.217,70.966,1.612e+09,44,323
+"P0AD59","Inhibitor of vertebrate lysozyme","ivy",7,48.4,16.872,132.43,2.5996e+10,158,157
+"P0AD61","Pyruvate kinase I","pykF",36,68.5,50.729,323.31,1.2746e+11,705,470
+"P0ADA1","Acyl-CoA thioesterase I","tesA",9,43.3,23.622,48.053,707070000,31,208
+"P0ADA5","Uncharacterized lipoprotein YajG","yajG",5,47.4,20.95,41.668,2.999e+09,47,192
+"P0ADB1","Osmotically-inducible lipoprotein E","osmE",3,27.7,12.021,50.523,1814600000,42,112
+"P0ADE6","Uncharacterized protein YgaU","ygaU",17,94,16.063,236.64,2.9786e+10,252,149
+"P0ADE8","tRNA-modifying protein YgfZ","ygfZ",21,57.4,36.094,183,2.5401e+10,202,326
+"P0ADG4","Inositol-1-monophosphatase","suhB",19,82,29.172,191.54,9675700000,162,267
+"P0ADG7","Inosine-5-monophosphate dehydrogenase","guaB",21,65,52.022,323.31,2.7777e+10,243,488
+"P0ADI7","Isochorismatase family protein YecD","yecD",6,51.6,20.452,58.907,1908400000,37,188
+"P0ADN2","UPF0438 protein YifE","yifE",14,81.2,13.133,204.8,1.4511e+10,244,112
+"P0ADP0","Flavin mononucleotide phosphatase YigB","yigB",9,58.4,27.122,90.542,2861300000,40,238
+"P0ADP9","Protein YihD","yihD",12,85.4,10.273,243.97,4.2699e+10,227,89
+"P0ADR6","Ribosomal RNA large subunit methyltransferase M","rlmM",3,9,41.905,11.845,339540000,12,366
+"P0ADS6","Uncharacterized protein YggE","yggE",14,41.1,26.635,84.328,1.3538e+10,170,246
+"P0ADT5","Putative acid--amine ligase YgiC","ygiC",15,50,45.025,86.404,2934600000,89,386
+"P0ADU2","Probable quinol monooxygenase YgiN","ygiN",4,32.7,11.532,48.128,3903800000,43,104
+"P0ADU5","Protein YgiW","ygiW",9,53.8,14.011,108.44,2.0194e+10,149,130
+"P0ADV7","Probable phospholipid-binding protein MlaC","mlaC",13,66.4,23.962,65.311,8835300000,119,211
+"P0ADW3","Inner membrane protein YhcB","yhcB",5,50.8,14.961,38.652,1.209e+09,38,132
+"P0ADX7","Uncharacterized protein YhhA","yhhA",9,68.5,16.624,147.09,2042300000,58,146
+"P0ADY3","50S ribosomal protein L14","rplN",12,58.5,13.541,168.31,2.791e+10,242,123
+"P0ADY7","50S ribosomal protein L16","rplP",13,60.3,15.281,194.62,8.7817e+10,336,136
+"P0ADZ0","50S ribosomal protein L23","rplW",6,39,11.199,22.984,3940400000,60,100
+"P0ADZ4","30S ribosomal protein S15","rpsO",12,76.4,10.269,323.31,1.1701e+11,280,89
+"P0AE08","Alkyl hydroperoxide reductase subunit C","ahpC",19,70.1,20.761,323.31,5.4379e+11,865,187
+"P0AE12","AMP nucleosidase","amn",13,42.1,53.994,214.39,6318400000,96,484
+"P0AE18","Methionine aminopeptidase","map",17,62.9,29.33,172.57,1.6018e+10,149,264
+"P0AE22","Class B acid phosphatase","aphA",11,53.2,26.103,87.527,9632400000,110,237
+"P0AE48","Gamma-glutamylcyclotransferase family protein YtfP","ytfP",6,51.3,12.866,27.872,3227700000,31,113
+"P0AE52","Putative peroxiredoxin bcp","bcp",10,60.3,17.634,125.62,1.9416e+10,151,156
+"P0AE78","Magnesium and cobalt efflux protein CorC","corC",12,49.3,33.298,82.846,3.115e+09,64,292
+"P0AE85","Periplasmic protein CpxP","cpxP",4,35.5,18.965,26.776,414910000,23,166
+"P0AE88","Transcriptional regulatory protein CpxR","cpxR",12,53.9,26.312,239.47,1.6276e+10,118,232
+"P0AEB7","RutC family protein YoaB","yoaB",4,66.7,12.493,92.495,7816400000,69,114
+"P0AED0","Universal stress protein A","uspA",11,83.3,16.066,323.31,1.6923e+11,421,144
+"P0AEE1","Protein DcrB","dcrB",5,40.5,19.787,14.599,817410000,32,185
+"P0AEE5","D-galactose-binding periplasmic protein","mglB",57,100,35.712,323.31,5.8721e+11,1459,332
+"P0AEG6","Thiol:disulfide interchange protein DsbC","dsbC",7,36.9,25.621,45.341,7.291e+09,59,236
+"P0AEH5","Protein ElaB","elaB",5,72.3,11.306,58.319,1544700000,27,101
+"P0AEI1","tRNA-2-methylthio-N(6)-dimethylallyladenosine synthase","miaB",19,52.1,53.662,304.64,8030800000,126,474
+"P0AEI4","Ribosomal protein S12 methylthiotransferase RimO","rimO",5,22,49.581,15.247,613130000,13,441
+"P0AEK2","3-oxoacyl-[acyl-carrier-protein] reductase FabG","fabG",13,64.3,25.56,323.31,4.2562e+10,260,244
+"P0AEK4","Enoyl-[acyl-carrier-protein] reductase [NADH] FabI","fabI",18,60.3,27.864,303.02,3.8009e+10,306,262
+"P0AEM9","Cystine-binding periplasmic protein","fliY",25,67.3,29.039,312.78,9749700000,151,266
+"P0AEN1","NAD(P)H-flavin reductase","fre",7,38.2,26.242,90.503,2864500000,31,233
+"P0AEN8","L-fucose mutarotase","fucU",5,42.1,15.473,31.977,4.645e+09,40,140
+"P0AEP3","UTP--glucose-1-phosphate uridylyltransferase","galU",13,40.1,32.942,191.82,1.6563e+10,145,302
+"P0AEQ1","Protein GlcG","glcG",5,73.1,13.737,111.86,3506700000,54,134
+"P0AEQ3","Glutamine-binding periplasmic protein","glnH",24,75.8,27.19,323.31,1.1424e+11,465,248
+"P0AES4","DNA gyrase subunit A","gyrA",42,52.7,96.962,323.31,3.6239e+10,483,875
+"P0AES6","DNA gyrase subunit B","gyrB",36,51.4,89.949,323.31,1.7866e+10,293,804
+"P0AES9","Acid stress chaperone HdeA","hdeA",5,15.5,11.857,6.1898,1253200000,39,110
+"P0AET2","Acid stress chaperone HdeB","hdeB",5,50,12.043,41.007,3.0455e+11,374,108
+"P0AET8","7-alpha-hydroxysteroid dehydrogenase","hdhA",10,43.9,26.778,40.999,5.198e+09,66,255
+"P0AEU0","Histidine-binding periplasmic protein","hisJ",20,70.4,28.483,164.93,9.243e+09,132,260
+"P0AEU7","Chaperone protein Skp","skp",11,57.8,17.688,190.7,3.6532e+10,174,161
+"P0AEX9","Maltose-binding periplasmic protein","malE",56,90.7,43.387,323.31,3.1256e+11,1218,396
+"P0AEY5","Modulator of drug activity B","mdaB",11,62.2,21.891,170.36,1.1307e+10,107,193
+"P0AEZ3","Septum site-determining protein MinD","minD",16,53.3,29.614,159.54,7337200000,165,270
+"P0AEZ9","Molybdenum cofactor biosynthesis protein B","moaB",11,60.6,18.665,94.563,6922500000,125,170
+"P0AF03","Molybdopterin adenylyltransferase","mog",10,47.2,21.222,65.674,4305200000,64,195
+"P0AF08","Protein mrp","mrp",10,29.3,39.938,70.693,3400700000,53,369
+"P0AF12","5-methylthioadenosine/S-adenosylhomocysteine nucleosidase","mtnN",4,26.3,24.354,39.683,6035500000,53,232
+"P0AF18","N-acetylglucosamine-6-phosphate deacetylase","nagA",10,31.9,40.949,52.453,4608400000,62,382
+"P0AF28","Nitrate/nitrite response regulator protein NarL","narL",10,57.4,23.927,187.7,1.0227e+10,118,216
+"P0AF36","Cell division protein ZapB","zapB",11,77.8,9.6347,323.31,1.0277e+11,291,81
+"P0AF50","Uncharacterized protein YjbR","yjbR",6,61,13.519,38.289,5340900000,72,118
+"P0AF67","tRNA threonylcarbamoyladenosine biosynthesis protein TsaE","tsaE",3,28.1,16.853,68.735,1476500000,27,153
+"P0AF90","Regulator of ribonuclease activity B","rraB",5,39.1,15.603,155.63,3.7995e+10,108,138
+"P0AF93","2-iminobutanoate/2-iminopropanoate deaminase","ridA",9,85.9,13.611,200.43,4.2852e+10,235,128
+"P0AF96","Toxin-antitoxin biofilm protein TabA","tabA",9,76,16.865,206.21,5.7563e+10,241,150
+"P0AFD1","NADH-quinone oxidoreductase subunit E","nuoE",5,35.5,18.59,57.98,1390300000,47,166
+"P0AFF6","Transcription termination/antitermination protein NusA","nusA",40,62.4,54.87,323.31,8.3827e+10,673,495
+"P0AFG0","Transcription termination/antitermination protein NusG","nusG",12,87.3,20.531,140.72,8323100000,112,181
+"P0AFG3","2-oxoglutarate dehydrogenase E1 component","sucA",56,61.2,105.06,323.31,1.4418e+11,1116,933
+"P0AFG6","Dihydrolipoyllysine-residue succinyltransferase component of 2-oxoglutarate dehydrogenase complex","sucB",35,69.1,44.011,323.31,1.8205e+11,841,405
+"P0AFG8","Pyruvate dehydrogenase E1 component","aceE",83,71.6,99.667,323.31,3.9848e+11,1832,887
+"P0AFH8","Osmotically-inducible protein Y","osmY",26,68.2,21.073,323.31,7.7259e+10,456,201
+"P0AFI2","DNA topoisomerase 4 subunit A","parC",16,37.2,83.83,72.98,1215500000,50,752
+"P0AFJ1","Protein PhnA","phnA",2,22.5,12.345,17.199,2690300000,31,111
+"P0AFK0","Metalloprotease PmbA","pmbA",20,62.7,48.369,204.99,9338400000,214,450
+"P0AFK9","Spermidine/putrescine-binding periplasmic protein","potD",20,48,38.867,147.53,1.5297e+10,252,348
+"P0AFL3","Peptidyl-prolyl cis-trans isomerase A","ppiA",8,77.9,20.431,246.44,1.4482e+10,113,190
+"P0AFM2","Glycine betaine-binding periplasmic protein","proX",10,48.2,36.022,167.65,4439200000,84,330
+"P0AFM6","Phage shock protein A","pspA",11,59.9,25.493,125.02,1.1026e+10,85,222
+"P0AFP6","Putative GTP cyclohydrolase 1 type 2","ybgI",9,49.8,26.892,170.51,2.2779e+10,210,247
+"P0AFU8","Riboflavin synthase","ribC",5,31.9,23.445,55.635,4754400000,31,213
+"P0AFW4","Regulator of nucleoside diphosphate kinase","rnk",4,69.9,14.927,65.421,1642400000,47,136
+"P0AFX0","Ribosome hibernation promoting factor","hpf",6,84.2,10.75,223.96,8478200000,62,95
+"P0AFY8","Negative modulator of initiation of replication","seqA",8,54.1,20.315,31.571,1677200000,57,181
+"P0AFZ1","Protein SseB","sseB",4,28.7,28.642,20.276,890720000,24,258
+"P0AFZ3","Stringent starvation protein B","sspB",5,48.5,18.262,35.064,1509600000,38,165
+"P0AG07","Ribulose-phosphate 3-epimerase","rpe",9,63.1,24.554,160.33,2.6943e+10,184,225
+"P0AG16","Amidophosphoribosyltransferase","purF",25,54.5,56.487,323.31,4.0775e+10,392,505
+"P0AG18","N5-carboxyaminoimidazole ribonucleotide mutase","purE",9,85.2,17.78,323.31,2.9471e+10,197,169
+"P0AG30","Transcription termination factor Rho","rho",35,66.8,47.004,323.31,4.1745e+10,468,419
+"P0AG40","Riboflavin biosynthesis protein RibF;Riboflavin kinase;FMN adenylyltransferase","ribF",6,34.8,34.734,51.096,776650000,26,313
+"P0AG44","50S ribosomal protein L17","rplQ",9,55.1,14.364,83.954,1.1362e+11,325,127
+"P0AG48","50S ribosomal protein L21","rplU",7,52.4,11.564,38.382,2.4026e+10,159,103
+"P0AG51","50S ribosomal protein L30","rpmD",10,81.4,6.5417,151.09,4.5935e+10,207,59
+"P0AG55","50S ribosomal protein L6","rplF",20,67.2,18.904,323.31,1.414e+11,439,177
+"P0AG59","30S ribosomal protein S14","rpsN",11,54.5,11.58,187.81,4.966e+10,217,101
+"P0AG63","30S ribosomal protein S17","rpsQ",3,29.8,9.7043,19.365,1.1248e+10,65,84
+"P0AG67","30S ribosomal protein S1","rpsA",64,70.9,61.157,323.31,5.9582e+11,2242,557
+"P0AG80","sn-glycerol-3-phosphate-binding periplasmic protein UgpB","ugpB",12,39,48.448,96.177,4995800000,110,438
+"P0AG82","Phosphate-binding protein PstS","pstS",15,57.5,37.023,67.475,4258300000,106,346
+"P0AG84","Uncharacterized oxidoreductase YghA","yghA",11,56.5,31.488,84.77,4149200000,69,294
+"P0AG86","Protein-export protein SecB","secB",7,38.7,17.277,309.49,8.1236e+10,199,155
+"P0AGD1","Superoxide dismutase [Cu-Zn]","sodC",11,76.3,17.681,202.44,3.2326e+10,159,173
+"P0AGD3","Superoxide dismutase [Fe]","sodB",12,77.2,21.265,203.02,1.7197e+11,439,193
+"P0AGD7","Signal recognition particle protein","ffh",14,46.1,49.787,111.84,2977200000,68,453
+"P0AGE0","Single-stranded DNA-binding protein","ssb",9,42.1,18.975,210.1,1.9532e+10,149,178
+"P0AGE6","Chromate reductase","chrR",9,57.4,20.375,153.19,1.5383e+10,118,188
+"P0AGE9","Succinyl-CoA ligase [ADP-forming] subunit alpha","sucD",20,63,29.777,294.43,1.9296e+11,780,289
+"P0AGF2","Sulfur acceptor protein CsdE","csdE",4,46.9,15.94,91.058,2300500000,61,147
+"P0AGF6","L-threonine dehydratase catabolic TdcB","tdcB",7,28.6,35.232,112.81,3236500000,59,329
+"P0AGG0","Thiamine-monophosphate kinase","thiL",8,43.4,35.07,135.82,4789700000,73,325
+"P0AGG2","Acyl-CoA thioesterase 2","tesB",7,36,31.966,67.329,2495500000,47,286
+"P0AGG4","Thioredoxin-2","trxC",7,44.6,15.555,24.702,1168600000,34,139
+"P0AGG8","Metalloprotease TldD","tldD",15,56.3,51.363,68.687,2712300000,66,481
+"P0AGJ5","Uncharacterized tRNA/rRNA methyltransferase YfiF","yfiF",13,43.2,37.784,171.42,1.2958e+10,156,345
+"P0AGJ9","Tyrosine--tRNA ligase","tyrS",22,42.9,47.526,323.31,3.6994e+10,281,424
+"P0AGL2","Putative reactive intermediate deaminase TdcF","tdcF",5,36.4,14.007,47.727,1.4304e+10,88,129
+"P0C018","50S ribosomal protein L18","rplR",12,74.4,12.769,127.21,2.7099e+10,250,117
+"P0C037","UPF0345 protein YaiE","yaiE",2,23.4,10.234,9.1499,1244700000,28,94
+"P0C0L2","Peroxiredoxin OsmC","osmC",13,56.6,15.088,164.67,1.7715e+10,169,143
+"P0C0V0","Periplasmic serine endoprotease DegP","degP",25,64.3,49.354,323.31,5.9545e+10,403,474
+"P0C8J6","D-tagatose-1,6-bisphosphate aldolase subunit GatY","gatY",22,66.9,30.812,323.31,1.4305e+11,501,284
+"P0C8J8","D-tagatose-1,6-bisphosphate aldolase subunit GatZ","gatZ",18,61.9,47.108,323.31,3.4002e+10,197,420
+"P0CE48","Elongation factor Tu 2","tufB",50,87.1,43.313,323.31,2.9166e+12,4007,394
+"P0CG19","Inactive ribonuclease PH","rph",4,29.8,24.425,56.437,773730000,26,228
+"P0DMC7","Transcriptional regulatory protein RcsB","rcsB",6,46.3,23.67,122.39,5342100000,66,216
+"P10121","Signal recognition particle receptor FtsY","ftsY",19,52.9,54.513,92.317,3268900000,104,497
+"P10371","1-(5-phosphoribosyl)-5-[(5-phosphoribosylamino)methylideneamino] imidazole-4-carboxamide isomerase","hisA",5,35.1,26.032,55.784,2467300000,49,245
+"P10408","Protein translocase subunit SecA","secA",47,61.9,102.02,323.31,2.3528e+10,297,901
+"P11875","Arginine--tRNA ligase","argS",32,56.2,64.682,216.08,1.6833e+10,212,577
+"P12008","Chorismate synthase","aroC",5,29.4,39.137,73.07,1.991e+09,25,361
+"P12281","Molybdopterin molybdenumtransferase","moeA",12,42.8,44.067,222.85,1.2558e+10,192,411
+"P12758","Uridine phosphorylase","udp",17,57.7,27.159,323.31,8.8909e+10,490,253
+"P12994","UPF0098 protein YbhB","ybhB",4,24.1,17.085,20.514,2057900000,24,158
+"P13024","Protein FdhE","fdhE",12,46.6,34.746,117.65,7.469e+09,107,309
+"P13029","Catalase-peroxidase","katG",68,73.6,80.023,323.31,2.0225e+11,1226,726
+"P13033","Anaerobic glycerol-3-phosphate dehydrogenase subunit B","glpB",13,42,45.357,323.31,3.56e+10,193,419
+"P13035","Aerobic glycerol-3-phosphate dehydrogenase","glpD",45,77.4,56.75,323.31,6.9909e+10,550,501
+"P13445","RNA polymerase sigma factor RpoS","rpoS",22,70,37.971,323.31,1.2832e+10,158,330
+"P13482","Periplasmic trehalase","treA",15,38.6,63.636,80.625,2120700000,70,565
+"P14407","Fumarate hydratase class I, anaerobic","fumB",30,62.8,60.105,284.31,5027700000,105,548
+"P14900","UDP-N-acetylmuramoylalanine--D-glutamate ligase","murD",7,29.7,46.973,97.333,3406200000,46,438
+"P15034","Xaa-Pro aminopeptidase","pepP",24,61.2,49.815,283.47,1.3972e+10,234,441
+"P15254","Phosphoribosylformylglycinamidine synthase","purL",70,65,141.4,323.31,1.2064e+11,1095,1295
+"P15288","Cytosol non-specific dipeptidase","pepD",30,52.6,52.915,323.31,1.2665e+11,543,485
+"P15639","Bifunctional purine biosynthesis protein PurH;Phosphoribosylaminoimidazolecarboxamide formyltransferase;IMP cyclohydrolase","purH",45,67.5,57.329,323.31,1.4901e+11,947,529
+"P15640","Phosphoribosylamine--glycine ligase","purD",26,62,45.94,323.31,9.2698e+10,600,429
+"P15770","Shikimate dehydrogenase (NADP(+))","aroE",6,30.9,29.413,49.358,1925200000,38,272
+"P16095","L-serine dehydratase 1","sdaA",13,34.6,48.906,61.064,2504800000,74,454
+"P16456","Selenide, water dikinase","selD",12,45.8,36.687,106.23,6994300000,93,347
+"P16659","Proline--tRNA ligase","proS",44,76.6,63.692,323.31,8.6659e+10,673,572
+"P16700","Thiosulfate-binding protein","cysP",22,68.6,37.614,207.34,7462600000,139,338
+"P17115","Arabinose 5-phosphate isomerase GutQ","gutQ",8,43.6,34.031,88.71,2056200000,43,321
+"P17117","Oxygen-insensitive NADPH nitroreductase","nfsA",10,35.4,26.8,144.7,5510600000,67,240
+"P17169","Glutamine--fructose-6-phosphate aminotransferase [isomerizing]","glmS",43,67.5,66.894,323.31,9.6017e+10,880,609
+"P17846","Sulfite reductase [NADPH] hemoprotein beta-component","cysI",29,55.3,63.997,323.31,1.4953e+10,250,570
+"P17854","Phosphoadenosine phosphosulfate reductase","cysH",12,54.1,27.975,90.773,3.242e+09,44,244
+"P18335","Acetylornithine/succinyldiaminopimelate aminotransferase","argD",8,30.5,43.766,104.89,1297100000,20,406
+"P18843","NH(3)-dependent NAD(+) synthetase","nadE",17,69.8,30.636,251.76,1.6711e+10,172,275
+"P19926","Glucose-1-phosphatase","agp",20,59.3,45.682,323.31,9.0744e+10,401,413
+"P21151","3-ketoacyl-CoA thiolase","fadA",11,31.3,40.876,76.517,4334900000,75,387
+"P21165","Xaa-Pro dipeptidase","pepQ",16,51.9,50.176,286.92,3.4185e+10,287,443
+"P21170","Biosynthetic arginine decarboxylase","speA",26,43,73.898,284.25,1.3377e+10,227,658
+"P21177","Fatty acid oxidation complex subunit alpha;Enoyl-CoA hydratase/Delta(3)-cis-Delta(2)-trans-enoyl-CoA isomerase/3-hydroxybutyryl-CoA epimerase;3-hydroxyacyl-CoA dehydrogenase","fadB",21,34.3,79.593,158.94,5304500000,111,729
+"P21179","Catalase HPII","katE",45,49.7,84.162,323.31,4.0946e+10,518,753
+"P21362","Protein YciF","yciF",13,65.1,18.597,136.01,4292100000,88,166
+"P21363","Protein YciE","yciE",9,51.2,18.961,62.033,2810600000,42,168
+"P21367","Uncharacterized protein YcaC","ycaC",12,59.1,23.1,313.24,8.4212e+10,254,208
+"P21499","Ribonuclease R","rnr",34,43.3,92.108,323.31,2.2208e+10,292,813
+"P21507","ATP-dependent RNA helicase SrmB","srmB",14,41.9,49.914,163.64,6775200000,132,444
+"P21513","Ribonuclease E","rne",33,44.4,118.2,323.31,8538700000,213,1061
+"P21599","Pyruvate kinase II","pykA",30,69,51.357,323.31,6.66e+10,483,480
+"P21888","Cysteine--tRNA ligase","cysS",22,59.7,52.202,289.43,9046600000,197,461
+"P21889","Aspartate--tRNA ligase","aspS",51,75.9,65.913,323.31,7.4774e+10,746,590
+"P22106","Asparagine synthetase B [glutamine-hydrolyzing]","asnB",18,42.6,62.658,323.31,1.2759e+10,229,554
+"P22188","UDP-N-acetylmuramoyl-L-alanyl-D-glutamate--2,6-diaminopimelate ligase","murE",6,21.4,53.343,67.655,4.344e+09,52,495
+"P22255","3(2),5-bisphosphate nucleotidase CysQ","cysQ",10,65.9,27.176,158.93,1.1005e+10,116,246
+"P22256","4-aminobutyrate aminotransferase GabT","gabT",22,52.3,45.774,256.79,3.2383e+10,280,426
+"P22259","Phosphoenolpyruvate carboxykinase [ATP]","pckA",41,67.6,59.643,323.31,2.4157e+11,937,540
+"P22333","Adenosine deaminase","add",13,59.5,36.397,286.7,2.3356e+10,187,333
+"P22523","Chromosome partition protein MukB","mukB",39,38.1,170.23,323.31,8754300000,174,1486
+"P22524","Chromosome partition protein MukE","mukE",7,42.3,26.974,118.97,4369300000,75,234
+"P22564","Non-specific ribonucleoside hydrolase RihC","rihC",7,26,32.56,194.48,1.9175e+10,161,304
+"P23003","tRNA/tmRNA (uracil-C(5))-methyltransferase","trmA",8,36.6,41.966,59.908,1221100000,38,366
+"P23538","Phosphoenolpyruvate synthase","ppsA",18,28.8,87.434,145.62,5609900000,80,792
+"P23721","Phosphoserine aminotransferase","serC",22,60.5,39.783,271.17,2.135e+10,232,362
+"P23827","Ecotin","eco",8,50,18.192,72.085,2123300000,43,162
+"P23830","CDP-diacylglycerol--serine O-phosphatidyltransferase","pssA",21,56.1,52.801,129.83,1.1067e+10,87,451
+"P23836","Transcriptional regulatory protein PhoP","phoP",11,71.3,25.535,79.228,2481400000,39,223
+"P23839","UPF0701 protein YicC","yicC",14,53.3,33.175,215.25,5733300000,77,287
+"P23843","Periplasmic oligopeptide-binding protein","oppA",32,69.1,60.898,323.31,6.508e+10,433,543
+"P23847","Periplasmic dipeptide transport protein","dppA",29,55.5,60.293,323.31,3.479e+10,294,535
+"P23857","Thiosulfate sulfurtransferase PspE","pspE",7,58.7,11.475,133.95,9.1987e+10,249,104
+"P23869","Peptidyl-prolyl cis-trans isomerase B","ppiB",10,60.4,18.153,123.06,5.8284e+10,315,164
+"P23882","Methionyl-tRNA formyltransferase","fmt",15,48.6,34.168,132.8,6535900000,108,315
+"P23893","Glutamate-1-semialdehyde 2,1-aminomutase","hemL",11,34.7,45.366,117.98,1.0058e+10,165,426
+"P23908","Acetylornithine deacetylase","argE",5,19.8,42.347,51.833,901210000,30,383
+"P23917","Fructokinase","mak",10,46.4,32.499,89.28,3314400000,50,302
+"P24171","Peptidyl-dipeptidase dcp","dcp",25,47.4,77.515,323.31,1.0221e+10,162,681
+"P24178","Protein YffB","yffB",4,33.1,13.6,29.56,1599300000,33,118
+"P24182","Biotin carboxylase","accC",20,48.8,49.32,158.05,1.0915e+10,152,449
+"P24186","Bifunctional protein FolD;Methylenetetrahydrofolate dehydrogenase;Methenyltetrahydrofolate cyclohydrolase","folD",9,28.8,31.043,83.417,4698200000,83,288
+"P24202","Mrr restriction system protein","mrr",4,22.7,33.52,41.329,825410000,26,304
+"P24203","Uncharacterized GTP-binding protein YjiA","yjiA",6,26.4,35.659,32.292,1167300000,42,318
+"P24215","Mannonate dehydratase","uxuA",23,66.2,44.838,258,3.0282e+10,234,394
+"P24232","Flavohemoprotein","hmp",15,55.1,43.867,147.43,6474200000,109,396
+"P25437","S-(hydroxymethyl)glutathione dehydrogenase","frmA",9,37.7,39.359,124.62,1.7314e+10,129,369
+"P25516","Aconitate hydratase A","acnA",50,58.6,97.676,323.31,8.8695e+10,691,891
+"P25522","tRNA modification GTPase MnmE","mnmE",17,52.4,49.23,223.64,7102200000,138,454
+"P25526","Succinate-semialdehyde dehydrogenase [NADP(+)] GabD","gabD",25,67.2,51.719,323.31,4.3576e+10,352,482
+"P25539","Riboflavin biosynthesis protein RibD;Diaminohydroxyphosphoribosylaminopyrimidine deaminase;5-amino-6-(5-phosphoribosylamino)uracil reductase","ribD",11,42.8,40.338,62.26,1548300000,59,367
+"P25553","Lactaldehyde dehydrogenase","aldA",37,66.8,52.272,323.31,1.4788e+11,692,479
+"P25714","Membrane protein insertase YidC","yidC",4,15.7,61.525,51.845,1.174e+09,35,548
+"P25738","Acidic protein MsyB","msyB",5,61.3,14.259,176.65,3.232e+10,184,124
+"P25745","tRNA-specific 2-thiouridylase MnmA","mnmA",8,41.6,40.959,131.05,9503100000,59,368
+"P25889","NAD-dependent dihydropyrimidine dehydrogenase subunit PreA","preA",15,44.5,45.068,161.62,8132900000,106,411
+"P25906","Putative oxidoreductase YdbC","ydbC",9,43.4,30.706,164.35,9614300000,97,286
+"P26612","Cytoplasmic alpha-amylase","amyA",5,9.7,56.639,47.31,1170600000,33,495
+"P26616","NAD-dependent malic enzyme","maeA",25,57.3,63.197,323.31,1.4385e+10,232,565
+"P26646","Probable acrylyl-CoA reductase AcuI","acuI",14,54.3,34.723,221.9,1.2655e+10,154,324
+"P27248","Aminomethyltransferase","gcvT",16,61.3,40.146,270.38,3.8534e+10,253,364
+"P27250","Aldehyde reductase Ahr","ahr",10,29.2,36.501,90.979,4.62e+09,85,339
+"P27298","Oligopeptidase A","prlC",43,59.3,77.166,323.31,6.0783e+10,661,680
+"P27302","Transketolase 1","tktA",39,58.5,72.211,323.31,1.1832e+11,865,663
+"P27306","Soluble pyridine nucleotide transhydrogenase","sthA",18,52.1,51.56,323.31,4.2023e+10,266,466
+"P27431","50S ribosomal protein L16 arginine hydroxylase","roxA",7,32.2,42.578,81.88,3759300000,72,373
+"P27550","Acetyl-coenzyme A synthetase","acs",39,59,72.093,323.31,1.0365e+11,636,652
+"P27828","UDP-N-acetylglucosamine 2-epimerase","wecB",7,23.9,42.244,16.091,2566900000,34,376
+"P27848","Pyridoxal phosphate phosphatase YigL","yigL",8,50.8,29.707,43.791,1.468e+09,47,266
+"P28248","Deoxycytidine triphosphate deaminase","dcd",4,23.8,21.249,86.218,4.791e+09,38,193
+"P28304","Quinone oxidoreductase 1","qorA",16,64.2,35.172,203.95,1.1469e+10,135,327
+"P28635","D-methionine-binding lipoprotein MetQ","metQ",5,33.2,29.431,27.602,1158300000,20,271
+"P28861","Ferredoxin--NADP reductase","fpr",6,33.1,27.751,72.222,2374500000,47,248
+"P28903","Anaerobic ribonucleoside-triphosphate reductase","nrdD",35,48.2,80.022,323.31,3.4141e+10,332,712
+"P28904","Trehalose-6-phosphate hydrolase","treC",30,55.2,63.837,263.9,2.1906e+10,252,551
+"P29012","Alanine racemase, catabolic","dadX",12,44.9,38.844,199.71,8790900000,76,356
+"P29217","UPF0502 protein YceH","yceH",11,60,24.177,323.31,1.5708e+10,169,215
+"P29680","Uroporphyrinogen decarboxylase","hemE",10,33.9,39.248,99.646,4.936e+09,70,354
+"P29745","Peptidase T","pepT",16,44.6,44.923,225.76,1.0484e+10,153,408
+"P30011","Nicotinate-nucleotide pyrophosphorylase [carboxylating]","nadC",8,40.4,32.762,67.196,3923900000,53,297
+"P30177","Uncharacterized protein YbiB","ybiB",15,61.2,35.048,193.43,1.0495e+10,131,320
+"P30850","Exoribonuclease 2","rnb",24,47.5,72.49,112.81,3539800000,109,644
+"P30859","Putative ABC transporter arginine-binding protein 2","artI",20,61.7,26.929,323.31,3.1525e+10,311,243
+"P30863","2,5-diketo-D-gluconic acid reductase B","dkgB",3,16.5,29.436,30.623,714820000,31,267
+"P30871","Inorganic triphosphatase","ygiF",10,39.5,48.388,91.106,1548200000,43,433
+"P31057","3-methyl-2-oxobutanoate hydroxymethyltransferase","panB",8,53.4,28.237,127.92,1.5822e+10,157,264
+"P31120","Phosphoglucosamine mutase","glmM",27,56.6,47.543,323.31,3.2226e+10,387,445
+"P31130","Uncharacterized protein YdeI","ydeI",6,46.9,14.121,46.982,925690000,21,130
+"P31142","3-mercaptopyruvate sulfurtransferase","sseA",17,66.5,30.811,323.31,3.5641e+10,296,281
+"P31455","Uncharacterized protein YidR","yidR",10,39.8,46.186,48.423,1196500000,43,415
+"P31658","Molecular chaperone Hsp31 and glyoxalase 3","hchA",13,56.5,31.19,230.45,6.2763e+10,294,283
+"P31663","Pantothenate synthetase","panC",17,61.5,31.597,193.44,2.0682e+10,220,283
+"P31697","Chaperone protein FimC","fimC",11,62.7,26.689,31.264,977630000,33,241
+"P31806","Bifunctional NAD(P)H-hydrate repair enzyme Nnr;ADP-dependent (S)-NAD(P)H-hydrate dehydratase;NAD(P)H-hydrate epimerase","nnr",8,23.1,54.65,149.16,3024900000,63,515
+"P31979","NADH-quinone oxidoreductase subunit F","nuoF",14,38.7,49.292,148.27,8801700000,117,445
+"P32132","GTP-binding protein TypA/BipA","typA",22,42.3,67.355,247.74,6702400000,153,607
+"P32157","Protein YiiM","yiiM",10,53.6,25.342,90.738,4490700000,78,224
+"P32662","Phosphoglycolate phosphatase","gph",8,48.4,27.389,61.178,3370300000,50,252
+"P33136","Glucans biosynthesis protein G","mdoG",31,69.7,57.912,323.31,2.1166e+10,329,511
+"P33195","Glycine dehydrogenase (decarboxylating)","gcvP",42,54.8,104.38,323.31,1.3488e+11,792,957
+"P33219","Protein YebF","yebF",4,25.4,12.962,118.58,1.1383e+10,36,118
+"P33221","Phosphoribosylglycinamide formyltransferase 2","purT",21,56.4,42.433,323.31,5.954e+10,470,392
+"P33224","Putative acyl-CoA dehydrogenase AidB","aidB",11,24.4,60.589,132.94,6003500000,79,541
+"P33362","Putative osmoprotectant uptake system substrate-binding protein OsmF","osmF",16,73.1,32.609,163.03,1.2998e+10,153,305
+"P33363","Periplasmic beta-glucosidase","bglX",29,52.5,83.459,120.18,6143700000,116,765
+"P33570","Transketolase 2","tktB",41,68.8,73.042,323.31,3.8936e+10,405,667
+"P33590","Nickel-binding periplasmic protein","nikA",18,53.1,58.718,173.87,9930500000,110,524
+"P33599","NADH-quinone oxidoreductase subunit C/D","nuoC",20,41.3,68.235,100.32,3854600000,119,596
+"P33602","NADH-quinone oxidoreductase subunit G","nuoG",31,44.6,100.3,323.31,2.2897e+10,274,908
+"P33643","Ribosomal large subunit pseudouridine synthase D","rluD",9,41.4,37.121,64.737,3270800000,55,326
+"P33920","Nucleoid-associated protein YejK","yejK",14,54.3,37.822,99.346,3593600000,46,335
+"P35340","Alkyl hydroperoxide reductase subunit F","ahpF",30,59.7,56.176,323.31,4.9946e+10,436,521
+"P36649","Blue copper oxidase CueO","cueO",9,30.8,56.556,65.391,3698600000,58,516
+"P36659","Curved DNA-binding protein","cbpA",17,63.4,34.455,51.949,1784300000,82,306
+"P36683","Aconitate hydratase B","acnB",65,70.8,93.497,323.31,3.223e+11,1489,865
+"P36767","Recombination-associated protein RdgC","rdgC",10,41.6,33.993,109.68,2503600000,53,303
+"P36929","Ribosomal RNA small subunit methyltransferase B","rsmB",8,31.7,48.347,64.136,1930700000,62,429
+"P36938","Phosphoglucomutase","pgm",33,65.9,58.36,323.31,3.9876e+10,304,546
+"P37051","Formyltetrahydrofolate deformylase","purU",10,60,31.934,180.57,5454700000,81,280
+"P37095","Peptidase B","pepB",28,67.7,46.18,323.31,8.4121e+10,545,427
+"P37194","Outer membrane protein slp","slp",6,44.7,20.964,142.62,5771200000,36,188
+"P37329","Molybdate-binding periplasmic protein","modA",30,83.7,27.364,323.31,6.2711e+10,433,257
+"P37330","Malate synthase G","glcB",34,49.4,80.488,323.31,3.0668e+10,463,723
+"P37387","D-xylose-binding periplasmic protein","xylF",17,69.7,35.734,234.27,1.2284e+10,185,330
+"P37440","Oxidoreductase UcpA","ucpA",8,35.7,27.85,118.39,1.3227e+10,86,263
+"P37634","Ribosomal RNA large subunit methyltransferase J","rlmJ",9,47.1,31.941,37.462,1838600000,37,280
+"P37647","2-dehydro-3-deoxygluconokinase","kdgK",16,50.5,33.962,323.31,1.3866e+11,466,309
+"P37648","Protein YhjJ","yhjJ",10,30.9,55.527,105.3,2240300000,46,498
+"P37666","Glyoxylate/hydroxypyruvate reductase B","ghrB",12,48.5,35.395,172.8,1.6834e+10,124,324
+"P37685","Aldehyde dehydrogenase B","aldB",30,59.6,56.306,323.31,8.0899e+10,479,512
+"P37689","2,3-bisphosphoglycerate-independent phosphoglycerate mutase","gpmI",23,57.2,56.193,323.31,2.249e+10,205,514
+"P37744","Glucose-1-phosphate thymidylyltransferase 1","rmlA1",21,73,32.693,144.97,1.0971e+10,175,293
+"P37745","dTDP-4-dehydrorhamnose 3,5-epimerase","rfbC",5,37.3,21.27,73.385,6077700000,37,185
+"P37747","UDP-galactopyranose mutase","glf",30,74.1,42.965,239.23,1.2089e+10,233,367
+"P37759","dTDP-glucose 4,6-dehydratase 1","rfbB",20,56.8,40.558,140.31,9766600000,188,361
+"P37765","Ribosomal large subunit pseudouridine synthase B","rluB",6,20.3,32.711,71.459,1.38e+09,26,291
+"P37769","2-dehydro-3-deoxy-D-gluconate 5-dehydrogenase","kduD",27,67.6,27.07,323.31,2.1281e+11,817,253
+"P37773","UDP-N-acetylmuramate--L-alanyl-gamma-D-glutamyl-meso-2,6-diaminoheptandioate ligase","mpl",14,47.9,49.874,176.04,5157400000,72,457
+"P37902","Glutamate/aspartate periplasmic-binding protein","gltI",24,62.9,33.42,311.47,3.1905e+10,292,302
+"P37903","Universal stress protein F","uspF",12,86.8,16.016,190.49,3.9363e+10,234,144
+"P38038","Sulfite reductase [NADPH] flavoprotein alpha-component","cysJ",24,45.2,66.269,323.31,8969900000,133,599
+"P38489","Oxygen-insensitive NAD(P)H nitroreductase","nfsB",17,66.8,23.905,149.69,1.769e+10,200,217
+"P39099","Periplasmic pH-dependent serine endoprotease DegQ","degQ",15,51,47.204,200.78,5504800000,106,455
+"P39160","D-mannonate oxidoreductase","uxuB",14,35.4,53.58,113.33,7505600000,97,486
+"P39173","Putative glucose-6-phosphate 1-epimerase","yeaD",14,51.4,32.666,181.15,2.3552e+10,200,294
+"P39177","Universal stress protein G","uspG",11,89.4,15.935,314.62,4.7267e+10,315,142
+"P39180","Antigen 43;Antigen 43 alpha chain;Antigen 43 beta chain","flu",16,27.5,106.82,323.31,9168900000,145,1039
+"P39187","Uncharacterized protein YtfJ","ytfJ",7,47.8,20.42,23.15,3374400000,59,184
+"P39199","50S ribosomal protein L3 glutamine methyltransferase","prmB",8,31,35.001,215.23,7.34e+09,113,310
+"P39265","D-allose-binding periplasmic protein","alsB",21,55.3,32.91,304.64,4.1103e+10,269,311
+"P39286","Putative ribosome biogenesis GTPase RsgA","rsgA",8,34,39.193,74.534,1919400000,43,350
+"P39325","ABC transporter periplasmic-binding protein YtfQ","ytfQ",16,50.6,34.344,207.33,3.9163e+10,240,318
+"P39353","Uncharacterized oxidoreductase YjhC","yjhC",7,17.5,41.384,13.219,661850000,35,372
+"P39377","Isoaspartyl dipeptidase","iadA",18,54.1,41.083,323.31,4.9978e+10,297,390
+"P39384","Uncharacterized protein YjiM","yjiM",8,25.1,42.742,159.03,2980500000,66,383
+"P39406","Ribosomal RNA small subunit methyltransferase C","rsmC",9,37.9,37.624,97.219,2801300000,36,343
+"P39831","NADP-dependent 3-hydroxy acid dehydrogenase YdfG","ydfG",9,39.5,27.249,165.62,1.6267e+10,97,248
+"P40120","Glucans biosynthesis protein D","mdoD",15,34.3,62.757,115.02,2406800000,71,551
+"P40191","Pyridoxine kinase","pdxK",8,40.3,30.847,35.007,633880000,24,283
+"P40874","N-methyl-L-tryptophan oxidase","solA",14,46.8,40.902,63.793,1480400000,56,372
+"P41407","FMN-dependent NADH-azoreductase","azoR",7,51.7,21.657,92.42,5134200000,44,201
+"P41409","Pyrimidine-specific ribonucleoside hydrolase RihA","rihA",12,41.5,33.823,221.65,1.4682e+10,123,311
+"P42620","Glutathionyl-hydroquinone reductase YqjG","yqjG",16,62.2,37.386,126.49,2304100000,65,328
+"P42632","PFL-like enzyme TdcE","tdcE",52,71.5,85.935,323.31,5.3399e+10,486,764
+"P42641","GTPase ObgE/CgtA","obgE",11,39.7,43.285,126.65,3634700000,85,390
+"P45425","N-acetylmannosamine kinase","nanK",8,42.3,29.644,67.681,3067200000,52,291
+"P45470","Protein YhbO","yhbO",7,59.9,18.858,70.889,3491400000,43,172
+"P45523","FKBP-type peptidyl-prolyl cis-trans isomerase FkpA","fkpA",26,65.9,28.882,323.31,9.3376e+10,451,270
+"P45577","RNA chaperone ProQ","proQ",7,33.2,25.892,78.933,4924600000,65,232
+"P45748","Threonylcarbamoyl-AMP synthase","tsaC",5,38.4,20.767,66.842,1414700000,35,190
+"P45799","ADP compounds hydrolase NudE","nudE",8,64,21.153,61.59,1258100000,32,186
+"P45955","Uncharacterized protein YbgF","ybgF",10,72.6,28.231,130.38,3997800000,81,263
+"P46837","Protein YhgF","yhgF",14,29.9,85.119,73.977,1334700000,57,773
+"P46853","Uncharacterized oxidoreductase YhhX","yhhX",13,43.5,38.765,111.3,5582900000,88,345
+"P52007","Protein YecM","yecM",6,39.9,21.205,75.79,2641200000,47,188
+"P52061","dITP/XTP pyrophosphatase","rdgB",5,40.1,21.039,52.338,4152200000,58,197
+"P52643","D-lactate dehydrogenase","ldhA",13,32.2,36.534,138.09,1.4128e+10,148,329
+"P52647","Probable pyruvate-flavodoxin oxidoreductase","ydbK",18,22.7,128.82,57.591,2689600000,60,1174
+"P52697","6-phosphogluconolactonase","pgl",12,35.3,36.307,92.901,1.898e+10,203,331
+"P56262","Putative carboxymethylenebutenolidase","ysgA",7,55.7,29.425,70.817,5710700000,54,271
+"P60240","RNA polymerase-associated protein RapA","rapA",21,33.3,109.77,226.37,6594600000,110,968
+"P60340","tRNA pseudouridine synthase B","truB",4,13.1,35.087,15.793,307230000,20,314
+"P60390","Ribosomal RNA small subunit methyltransferase H","rsmH",10,39.3,34.877,55.226,1.497e+09,43,313
+"P60422","50S ribosomal protein L2","rplB",30,75.8,29.86,323.31,2.4297e+11,957,273
+"P60438","50S ribosomal protein L3","rplC",21,60.8,22.243,307.23,1.325e+11,413,209
+"P60546","Guanylate kinase","gmk",6,39.1,23.592,24.737,3417200000,61,207
+"P60595","Imidazole glycerol phosphate synthase subunit HisH","hisH",7,42.9,21.653,102.76,1847800000,39,196
+"P60624","50S ribosomal protein L24","rplX",18,91.3,11.316,310.22,1.3315e+11,483,104
+"P60651","Agmatinase","speB",9,39.5,33.557,200.22,3.2574e+10,178,306
+"P60664","Imidazole glycerol phosphate synthase subunit HisF","hisF",4,18.6,28.454,71.757,2069800000,40,258
+"P60716","Lipoyl synthase","lipA",8,31.2,36.071,69.492,2961200000,38,321
+"P60723","50S ribosomal protein L4","rplD",21,80.6,22.086,323.31,8.6886e+10,427,201
+"P60757","ATP phosphoribosyltransferase","hisG",11,42.5,33.366,160.2,6644600000,76,299
+"P60785","Elongation factor 4","lepA",17,35.9,66.57,179.86,2592300000,64,599
+"P60906","Histidine--tRNA ligase","hisS",29,60.4,47.029,267.76,1.4075e+10,218,424
+"P61175","50S ribosomal protein L22","rplV",14,65.5,12.226,323.31,2.3291e+11,717,110
+"P61316","Outer-membrane lipoprotein carrier protein","lolA",9,65,22.497,84.152,2397300000,69,203
+"P61517","Carbonic anhydrase 2","can",9,49.5,25.096,77.495,1.1032e+10,104,220
+"P61714","6,7-dimethyl-8-ribityllumazine synthase","ribE",12,97.4,16.156,323.31,8.8171e+10,411,156
+"P61889","Malate dehydrogenase","mdh",30,82.4,32.337,323.31,1.2333e+12,1822,312
+"P61949","Flavodoxin-1","fldA",8,53.4,19.737,238.04,3.2748e+10,174,176
+"P62399","50S ribosomal protein L5","rplE",26,84.4,20.301,323.31,4.8188e+11,1018,179
+"P62617","2-C-methyl-D-erythritol 2,4-cyclodiphosphate synthase","ispF",5,52.8,16.897,166.47,1542300000,36,159
+"P62620","4-hydroxy-3-methylbut-2-en-1-yl diphosphate synthase (flavodoxin)","ispG",19,64.8,40.683,142.17,3233800000,90,372
+"P62707","2,3-bisphosphoglycerate-dependent phosphoglycerate mutase","gpmA",30,88.4,28.556,323.31,1.9445e+11,834,250
+"P62768","UPF0325 protein YaeH","yaeH",13,73.4,15.096,89.191,3956600000,90,128
+"P63020","Fe/S biogenesis protein NfuA","nfuA",7,34.6,20.997,64.797,5187600000,81,191
+"P63224","Phosphoheptose isomerase","gmhA",13,51,20.815,323.31,8.3992e+10,307,192
+"P63228","D-glycero-beta-D-manno-heptose-1,7-bisphosphate 7-phosphatase","gmhB",5,40.3,21.294,122.65,6602900000,73,191
+"P63235","Probable glutamate/gamma-aminobutyrate antiporter","gadC",5,9,55.076,30.6,1053700000,29,511
+"P63284","Chaperone protein ClpB","clpB",76,79.8,95.584,323.31,1.45e+11,1200,857
+"P63417","Uncharacterized N-acetyltransferase YhbS","yhbS",7,54.5,18.534,120.19,1.8048e+10,105,167
+"P64455","Uncharacterized protein YdcY","ydcY",3,59.7,8.7998,267.29,3689700000,49,77
+"P64503","Uncharacterized protein YebV","yebV",2,41,8.7527,83.729,3344800000,37,78
+"P64506","Uncharacterized protein YebY","yebY",2,25.7,12.378,47.281,1860100000,37,113
+"P64519","Uncharacterized protein YodD","yodD",5,76,8.5791,178.03,9552400000,81,75
+"P64554","7-carboxy-7-deazaguanine synthase","queE",2,9,25.029,74.154,1650200000,38,223
+"P64559","Antitoxin CptB","cptB",1,26.1,10.547,67.981,6745600000,49,88
+"P64581","Uncharacterized protein YqjD","yqjD",6,48.5,11.051,160.23,2.0245e+10,102,101
+"P64588","Transcriptional regulator YqjI","yqjI",5,37.2,23.401,29.277,1063300000,43,207
+"P64596","Uncharacterized protein YraP","yraP",2,15.2,20.028,22.242,331860000,19,191
+"P65367","Uncharacterized protein YqcA","yqcA",4,45,16.274,36.397,628090000,20,149
+"P65556","Uncharacterized Nudix hydrolase YfcD","yfcD",10,54.4,20.376,135.4,3363200000,68,180
+"P65870","6-carboxy-5,6,7,8-tetrahydropterin synthase","queD",5,66.1,13.773,19.474,1229500000,23,121
+"P67080","UPF0001 protein YggS","yggS",8,58.1,25.787,118.58,4.13e+09,93,234
+"P67087","Ribosomal RNA small subunit methyltransferase I","rsmI",7,39.2,31.348,89.432,1378800000,53,286
+"P67095","Phosphodiesterase YfcE","yfcE",4,42.4,20.122,90.063,6480500000,46,184
+"P67826","Copper homeostasis protein CutC","cutC",6,36.7,26.761,43.377,1154100000,46,248
+"P67910","ADP-L-glycero-D-manno-heptose-6-epimerase","hldD",27,71.6,34.893,323.31,8.6918e+10,556,310
+"P68066","Autonomous glycyl radical cofactor","grcA",20,87.4,14.284,323.31,4.079e+11,684,127
+"P68191","Stationary-phase-induced ribosome-associated protein","sra",4,60,5.0958,101.15,8288400000,139,45
+"P68206","UPF0337 protein YjbJ","yjbJ",18,98.6,8.3252,309.76,5.4141e+10,379,69
+"P68679","30S ribosomal protein S21","rpsU",9,52.1,8.4999,164.18,2.6387e+10,240,71
+"P68767","Cytosol aminopeptidase","pepA",19,40.6,54.879,323.31,3.6651e+10,261,503
+"P68919","50S ribosomal protein L25","rplY",14,92.6,10.693,113.92,8.7638e+10,424,94
+"P69222","Translation initiation factor IF-1","infA",4,77.8,8.2495,117.01,1.2339e+10,65,72
+"P69441","Adenylate kinase","adk",21,73.8,23.586,323.31,8.8464e+10,532,214
+"P69503","Adenine phosphoribosyltransferase","apt",15,88,19.859,323.31,1.6222e+10,215,183
+"P69776","Major outer membrane lipoprotein Lpp","lpp",5,62.8,8.3234,71.692,1798800000,54,78
+"P69783","Glucose-specific phosphotransferase enzyme IIA component","crr",16,72.2,18.251,323.31,2.3192e+11,457,169
+"P69797","PTS system mannose-specific EIIAB component;Mannose-specific phosphotransferase enzyme IIA component;Mannose-specific phosphotransferase enzyme IIB component","manX",15,52,35.047,152.61,8251300000,118,323
+"P69811","Multiphosphoryl transfer protein;Phosphocarrier protein HPr;Fructose-specific phosphotransferase enzyme IIA component","fruB",15,62,39.647,94.425,3138700000,77,376
+"P69828","Galactitol-specific phosphotransferase enzyme IIA component","gatA",9,72.7,16.907,117.15,2.748e+10,195,150
+"P69829","Nitrogen regulatory protein","ptsN",8,53.4,17.959,34.71,3051900000,42,163
+"P69908","Glutamate decarboxylase alpha","gadA",33,45.7,52.685,29.157,7232100000,51,466
+"P69910","Glutamate decarboxylase beta","gadB",35,46.6,52.668,323.31,5.0504e+11,1219,466
+"P69913","Carbon storage regulator","csrA",3,42.6,6.8558,10.825,1591200000,44,61
+"P69922","L-fucose isomerase","fucI",17,36.5,64.976,168.86,5312200000,105,591
+"P69924","Ribonucleoside-diphosphate reductase 1 subunit beta","nrdB",22,49.7,43.517,323.31,2.1298e+10,223,376
+"P75736","Esterase YbfF","ybfF",11,76.4,28.437,141.57,3975600000,53,254
+"P75797","Glutathione-binding protein GsiB","gsiB",5,17.2,56.47,23.541,752670000,19,512
+"P75823","Low specificity L-threonine aldolase","ltaE",14,62.8,36.494,68.709,3193700000,96,333
+"P75838","Ribosomal protein S12 methylthiotransferase accessory factor YcaO","ycaO",7,23.7,65.651,100.7,1559400000,45,586
+"P75849","Uncharacterized protein YcbL","ycbL",6,40.5,23.784,43.614,3080900000,62,215
+"P75863","Uncharacterized protein YcbX","ycbX",11,44.2,40.644,44.706,2294400000,42,369
+"P75874","Uncharacterized protein YccU","yccU",5,66.4,14.701,120.22,8150900000,82,137
+"P75876","Ribosomal RNA large subunit methyltransferase I","rlmI",11,39.1,44.356,37.517,2.228e+09,48,396
+"P75913","Glyoxylate/hydroxypyruvate reductase A","ghrA",14,75.3,35.343,155.05,1.0048e+10,126,312
+"P75914","Probable phosphatase YcdX","ycdX",7,34.3,26.89,27.364,2402800000,44,245
+"P75915","Chaperone protein YcdY","ycdY",6,37.5,20.724,43.982,3293100000,47,184
+"P75949","Beta-hexosaminidase","nagZ",12,29,37.594,77.986,972510000,43,341
+"P75959","N-acetyl-D-glucosamine kinase","nagK",4,21.8,33.042,53.084,1148600000,35,303
+"P75960","NAD-dependent protein deacylase","cobB",10,59.9,26.716,177.08,6508100000,94,242
+"P76002","Inhibitor of g-type lysozyme","pliG",6,48.9,14.906,109.27,2269800000,50,133
+"P76004","Uncharacterized protein YcgM","ycgM",3,28.3,23.711,46.824,1274100000,22,219
+"P76014","PTS-dependent dihydroxyacetone kinase, ADP-binding subunit DhaL","dhaL",8,64.3,22.632,95.45,3865500000,76,210
+"P76015","PTS-dependent dihydroxyacetone kinase, dihydroxyacetone-binding subunit DhaK","dhaK",13,53.7,38.215,270.04,2.5304e+10,184,356
+"P76108","Putative ABC transporter periplasmic-binding protein YdcS","ydcS",17,62.5,42.295,95.168,6872800000,146,381
+"P76113","NADPH-dependent curcumin reductase","curA",15,62.3,37.609,141.33,7201300000,112,345
+"P76116","Uncharacterized protein YncE","yncE",12,37.7,38.612,81.823,2809500000,85,353
+"P76143","Uncharacterized aldolase LsrF","lsrF",4,20.6,31.892,27.029,293950000,22,291
+"P76145","Trans-aconitate 2-methyltransferase","tam",4,23.4,29.006,54.626,827040000,25,252
+"P76177","Protein YdgH","ydgH",18,58.3,33.903,135.57,5936200000,141,314
+"P76187","Oxidoreductase YdhF","ydhF",6,43,33.675,238.34,1.1894e+10,81,298
+"P76243","Uncharacterized protein YeaO","yeaO",7,66.1,13.386,40.887,1799100000,34,115
+"P76251","D-malate dehydrogenase [decarboxylating]","dmlA",15,51,40.314,137.16,1.04e+10,126,361
+"P76270","Free methionine-R-sulfoxide reductase","msrC",5,26.1,18.121,32.752,1410300000,32,165
+"P76291","tRNA (mo5U34)-methyltransferase","cmoB",5,18,37.006,16.406,523370000,16,323
+"P76316","D-cysteine desulfhydrase","dcyD",6,27.1,35.153,18.627,978490000,32,328
+"P76329","Putative mannosyl-3-phosphoglycerate phosphatase","yedP",6,40.6,30.439,38.126,839160000,27,271
+"P76346","Protein MtfA","mtfA",3,14.7,30.279,16.925,725960000,29,265
+"P76402","UPF0339 protein YegP","yegP",3,39.1,12.024,164.17,1.0798e+10,94,110
+"P76440","NAD-dependent dihydropyrimidine dehydrogenase subunit PreT","preT",16,48.8,44.329,154.37,7383700000,123,412
+"P76535","N-acetylmuramic acid 6-phosphate etherase","murQ",7,34.6,31.22,75.94,1634700000,44,298
+"P76536","Probable deferrochelatase/peroxidase YfeX","yfeX",16,62.9,33.052,307.21,1.3512e+10,211,299
+"P76558","NADP-dependent malic enzyme","maeB",42,59.9,82.416,323.31,1.2849e+11,751,759
+"P76569","Uncharacterized protein YfgD","yfgD",11,82.4,13.398,194.79,1.0745e+10,137,119
+"P76621","Protein CsiD","csiD",11,53.2,37.36,90.704,2739700000,58,325
+"P76658","Bifunctional protein HldE;D-beta-D-heptose 7-phosphate kinase;D-beta-D-heptose 1-phosphate adenylyltransferase","hldE",16,46.1,51.05,156.5,5883400000,104,477
+"P77247","2-deoxyglucose-6-phosphate phosphatase","yniC",9,43.2,24.33,90.034,4362300000,55,222
+"P77258","N-ethylmaleimide reductase","nemA",11,45.2,39.516,74.545,1777200000,57,365
+"P77318","Uncharacterized sulfatase YdeN","ydeN",27,74.6,62.801,323.31,2.1706e+10,299,560
+"P77348","Periplasmic murein peptide-binding protein","mppA",20,53.6,59.899,109.63,5142500000,86,537
+"P77376","Uncharacterized oxidoreductase YdgJ","ydgJ",5,20.2,38.257,42.496,805750000,27,346
+"P77395","Uncharacterized protein YbbN","ybbN",13,57.7,31.791,102.54,1.1195e+10,103,284
+"P77455","Bifunctional protein PaaZ;2-oxepin-2(3H)-ylideneacetyl-CoA hydrolase;3-oxo-5,6-dehydrosuberyl-CoA semialdehyde dehydrogenase","paaZ",10,21.1,73.002,74.173,1436600000,37,681
+"P77488","1-deoxy-D-xylulose-5-phosphate synthase","dxs",6,16.9,67.616,54.134,1202400000,29,620
+"P77552","Uncharacterized protein YdhQ","ydhQ",8,29.9,42.876,58.227,969310000,31,418
+"P77570","Anhydro-N-acetylmuramic acid kinase","anmK",6,35.2,39.496,32.382,1085200000,32,369
+"P77581","Succinylornithine transaminase","astC",16,54.2,43.665,227.47,3670300000,59,406
+"P77674","Gamma-aminobutyraldehyde dehydrogenase","prr",16,57.4,50.829,148.19,4782100000,84,474
+"P77695","Protein GnsB","gnsB",10,82.5,6.5476,45.792,8419300000,169,57
+"P77718","tRNA sulfurtransferase","thiI",12,37.8,54.972,86.398,6853900000,76,482
+"P77735","Uncharacterized oxidoreductase YajO","yajO",15,75.9,36.42,112.94,8703600000,81,324
+"P77739","Uncharacterized protein YniA","yniA",11,55.2,32.458,175.98,1.5217e+10,129,286
+"P77791","Maltose O-acetyltransferase","maa",6,54.1,20.096,86.24,1870300000,60,183
+"P77808","NMN amidohydrolase-like protein YfaY","yfaY",7,24.2,44.225,99.979,2.734e+09,45,400
+"P78067","Thiosulfate sulfurtransferase YnjE","ynjE",20,63.4,48.228,245.35,1.5223e+10,174,435
+"Q2M7R5","Uncharacterized protein YibT","yibT",4,62.3,7.9952,56.92,2764100000,40,69
+"Q46829","6-phospho-beta-glucosidase BglA","bglA",14,33.8,55.36,65.364,2453800000,59,479
+"Q46845","Disulfide-bond oxidoreductase YghU","yghU",16,50,32.391,134.41,5557600000,133,288
+"Q46851","L-glyceraldehyde 3-phosphate reductase","gpr",31,81.5,38.832,323.31,1.2456e+11,560,346
+"Q46856","Alcohol dehydrogenase YqhD","yqhD",24,66.1,42.097,323.31,4.0029e+10,340,387
+"Q46857","2,5-diketo-D-gluconic acid reductase A","dkgA",18,74.9,31.109,159.96,2.7687e+10,228,275
+"Q46863","Probable deoxycholate-binding periplasmic protein YgiS","ygiS",11,34.4,60.693,132.5,1196500000,26,535
+"Q46868","Uncharacterized protein YqiC","yqiC",7,45.8,11.276,21.127,311860000,25,96
+"Q46920","NADPH-dependent 7-cyano-7-deazaguanine reductase","queF",7,29.1,32.587,32.899,2426400000,67,282
+"Q46938","4-deoxy-L-threo-5-hexosulose-uronate ketol-isomerase","kduI",19,56.1,31.076,323.31,2.048e+11,614,278
+"Q46948","Probable protein deglycase","yajL",4,30.1,20.777,18.423,1265900000,33,196
+"Q57261","tRNA pseudouridine synthase D","truD",6,26.6,39.091,37.63,2398100000,44,349
+"Q59385","Copper-exporting P-type ATPase A","copA",3,6.2,87.872,124.61,2.2129e+10,53,834
