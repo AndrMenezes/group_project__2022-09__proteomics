@@ -48,6 +48,7 @@ data_raw <- data_raw |>
 data_filter <- data_raw |>
   select(
     protein__name,
+    gene__name,
     lqf_Ampicillin_1,
     lqf_Ampicillin_2,
     lqf_Ampicillin_3,
