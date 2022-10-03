@@ -50,68 +50,106 @@ compute_corr <- function(v_y) {
 
 ###############################################################################
 # Perform the simulation study
-set.seed(6669)
-counter <- 1L
-list_results <- list()
-for (rho in list_correlations) {
-  
-  cat(rho, "\n")
-  
-  # Define the new correlation matrix
-  R[lower.tri(R)] <- rho
-  R[upper.tri(R)] <- rho
-  # Compute covariance matrix from correlation matrix
-  V <- (D %*% R) %*% D
-  # Get Cholesky decomposition to generate MVN distribution
-  P <- t(chol(V))
-  
-  # Compute correlation and p-value for different sample size
-  ini <- proc.time()
-  out <- replicate(n = M, expr = {
-    z <- matrix(rnorm(n_max * p), nrow = p)
-    y <- P %*% z + v_mu
-    do.call(rbind, lapply(n_samples, function(j) {
-      cbind(compute_corr(v_y = y[, seq_len(j)]), n_sample = j)
+if (!file.exists(file.path(res_path, "simulated_results.rds"))) {
+  set.seed(6669)
+  counter <- 1L
+  list_results <- list()
+  for (rho in list_correlations) {
+    
+    cat(rho, "\n")
+    
+    # Define the new correlation matrix
+    R[lower.tri(R)] <- rho
+    R[upper.tri(R)] <- rho
+    # Compute covariance matrix from correlation matrix
+    V <- (D %*% R) %*% D
+    # Get Cholesky decomposition to generate MVN distribution
+    P <- t(chol(V))
+    
+    # Compute correlation and p-value for different sample size
+    ini <- proc.time()
+    out <- replicate(n = M, expr = {
+      z <- matrix(rnorm(n_max * p), nrow = p)
+      y <- P %*% z + v_mu
+      do.call(rbind, lapply(n_samples, function(j) {
+        cbind(compute_corr(v_y = y[, seq_len(j)]), n_sample = j)
       }))
-  }, simplify = FALSE)
-  end <- proc.time()
-
-  cat("\n Finished in", (end[3L] - ini[3L]) / 60, "minutes\n")  
-  list_results[[counter]] <- do.call(rbind, out)
-  counter <- counter + 1L
+    }, simplify = FALSE)
+    end <- proc.time()
+    
+    cat("\n Finished in", (end[3L] - ini[3L]) / 60, "minutes\n")  
+    list_results[[counter]] <- do.call(rbind, out)
+    counter <- counter + 1L
+  }
+  names(list_results) <- names(list_correlations)
+  data_results <- bind_rows(list_results, .id = "scenario") |> 
+    as_tibble()
+  saveRDS(data_results, file = file.path(res_path, "simulated_results.rds"))
 }
-names(list_results) <- names(list_correlations)
-data_results <- bind_rows(list_results, .id = "scenario") |> 
-  as_tibble()
-saveRDS(data_results, file = file.path(res_path, "simulated_results.rds"))
+data_results <- readRDS(file = file.path(res_path, "simulated_results.rds"))
 
+# Creating data.frame with the true values
 data_true_values <- bind_rows(list_correlations) |> 
   mutate(comb = c("1 vs 2", "1 vs 3", "2 vs 3")) |> 
   tidyr::pivot_longer(cols = -comb, names_to = "scenario",
                       values_to = "true_rho")
 
+# Merging to get the true values for each scenario
 data_results <- data_results |> 
-  left_join(data_true_values, by = c("scenario", "comb"))
+  left_join(data_true_values, by = c("scenario", "comb")) |> 
+  mutate(n_sample = forcats::fct_relevel(
+    factor(n_sample), "3", "5", "10", "15"))
 
+###############################################################################
+# Plotting the distribution of estimates
+counter <- 1L
+list_plots <- list()
+for (chosen in unique(data_results$scenario)) {
+  data_curr <- data_results |> 
+    filter(scenario == chosen)
+  
+  aux <- list("scenario_1" = "Low (0.25)",
+              "scenario_2" = "Moderate (0.50)",
+              "scenario_3" = "High (0.85)")[[chosen]]
+  
+  list_plots[[counter]] <- ggplot(data_curr, aes(x = n_sample, y = rho,
+                                                 group = n_sample)) +
+    facet_wrap(~ comb) +
+    geom_boxplot() +
+    geom_hline(data = filter(data_true_values, scenario == chosen),
+               aes(yintercept = true_rho), col = "red") +
+    labs(x = "Sample size", y = expression(rho)) +
+    ggtitle(expression("MC distribution of"~rho),
+            paste0("Scenario: ", aux, " correlation")) +
+    scale_y_continuous(breaks = scales::pretty_breaks(6))
+  
+  counter <- counter + 1L
+}
+p_grid <- plot_grid(plotlist = list_plots)
+save_plot(filename = file.path(res_path, "boxplot_estimates.png"),
+          plot = p_grid, bg = "white", base_height = 8)
 
 ###############################################################################
 # Summarizing the data
 data_summarized <- data_results |> 
   group_by(scenario, n_sample, comb) |> 
   summarise(mean_rho = mean(rho),
+            sd_rho = sd(rho),
+            relative_bias_rho = mean((rho - true_rho) / true_rho),
             true_rho = mean(true_rho),
             test_size = mean(pvalue <= 0.05),
+            coverage = mean(true_rho >= ci_lower & true_rho <= ci_upper),
             .groups = "drop") |> 
-  mutate(relative_bias_rho = (mean_rho - true_rho) / true_rho,
-         n_sample = forcats::fct_relevel(
-           factor(n_sample), "3", "5", "10", "15"))
+  mutate(n_sample = forcats::fct_relevel(
+           factor(n_sample), "3", "5", "10", "15"),
+         comb_rho = paste0(comb, "  ", expression(rho), "=", true_rho))
 
 for (chosen in unique(data_summarized$scenario)) {
   data_curr <- data_summarized |> 
     filter(scenario == chosen)
   
   p_mean <- ggplot(data_curr, aes(x = n_sample, y = mean_rho)) +
-    facet_wrap(. ~ comb, scales = "free_y") +
+    facet_wrap(. ~ comb_rho, scales = "free_y") +
     geom_point(size = 3) +
     geom_hline(data = filter(data_true_values, scenario == chosen),
                aes(yintercept = true_rho), col = "red") +
@@ -127,12 +165,11 @@ for (chosen in unique(data_summarized$scenario)) {
     ggtitle("Relative bias of the estimates correlation coeficient across the Monte Carlo replicates") +
     scale_y_continuous(breaks = scales::pretty_breaks(6))
 
-  p_size <- ggplot(data_curr, aes(x = n_sample, y = test_size)) +
+  p_sd <- ggplot(data_curr, aes(x = n_sample, y = sd_rho)) +
     facet_wrap(. ~ comb, scales = "free_y") +
     geom_point(size = 4) +
-    geom_hline(yintercept = 0.05, col = "red") +
-    labs(x = "Sample size", y = "Tes bias") +
-    ggtitle("Estimated test size computed across the Monte Carlo replicates") +
+    labs(x = "Sample size", y = "Standard Deviation") +
+    ggtitle("Standard deviation of the estimates correlation coeficient across the Monte Carlo replicates") +
     scale_y_continuous(breaks = scales::pretty_breaks(6))
 
   save_plot(
@@ -146,8 +183,8 @@ for (chosen in unique(data_summarized$scenario)) {
     base_width = 12,
     bg = "white")
   save_plot(
-    filename = file.path(res_path, paste0("test_size__", chosen, ".png")),
-    plot = p_size,
+    filename = file.path(res_path, paste0("std_estimate__", chosen, ".png")),
+    plot = p_sd,
     base_width = 12,
     bg = "white")
   
