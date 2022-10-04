@@ -1,22 +1,19 @@
 # 2022-09-30 Replicating T-Tests and Volcano Plots
-# TODO - Label proteins
 
-suppressPackageStartupMessages(library(tidyverse))
+library(tidyverse)
 library(readxl)
 library(ggplot2)
 library(ggrepel)
 library(cowplot)
 
-# Reading in data set --------------------------------------------------------
+# --------------------------Reading in data set -------------------------------
 path_data <- "./01__database/"
 
 project_data <- read_xlsx(
   file.path(path_data, "processed_data/data_filter.xlsx"))
 
-# view(project_data)
 
-
-# Creating data frames --------------------------------------------------------
+# -------------------------Creating data frames -------------------------------
 ampicillin_values <- data.frame(Protein_name = character(0),
                                 Gene_name = character(0),
                                 P_value = numeric(0),
@@ -38,7 +35,7 @@ ciprofloxacin_values <- data.frame(Protein_name = character(0),
                                    LFQ= numeric(0))
 
 
-# Assigning p values and mean LFQ differences to dataframe --------------------
+# -----------Assigning p values and mean LFQ differences to dataframe ---------
 for(i in 1:nrow(project_data)){
   
   # Ampicillin
@@ -83,34 +80,36 @@ for(i in 1:nrow(project_data)){
 }
 
 
-# Marking up & down regulation ------------------------------------------------
+# --------------------Marking up & down regulation -----------------------------
+# The mutate function adds new variables (Expression) whilst preserving old 
+# ones
 ampicillin_values <- ampicillin_values %>%
   mutate(
-    Expression = case_when(LFQ >= 0.05 & P_value >= -log10(.05) ~ "Up Regulated",
-                           LFQ <= .05 & P_value >= -log10(.05) ~ "Down Regulated",
+    Expression = case_when(LFQ >= 0.5 & P_value >= -log10(.05) ~ "Up Regulated",
+                           LFQ <= -0.5 & P_value >= -log10(.05) ~ "Down Regulated",
                            TRUE ~ "Unchanged")
   )
 cefotaxime_values <- cefotaxime_values %>%
   mutate(
-    Expression = case_when(LFQ >= 0.05 & P_value >= -log10(.05) ~ "Up Regulated",
-                           LFQ <= .05 & P_value >= -log10(.05) ~ "Down Regulated",
+    Expression = case_when(LFQ >= 0.5 & P_value >= -log10(.05) ~ "Up Regulated",
+                           LFQ <= -0.5 & P_value >= -log10(.05) ~ "Down Regulated",
                            TRUE ~ "Unchanged")
   )
 imipenem_values <- imipenem_values %>%
   mutate(
-    Expression = case_when(LFQ >= 0.05 & P_value >= -log10(.05) ~ "Up Regulated",
-                           LFQ <= .05 & P_value >= -log10(.05) ~ "Down Regulated",
+    Expression = case_when(LFQ >= 0.5 & P_value >= -log10(.05) ~ "Up Regulated",
+                           LFQ <= -0.5 & P_value >= -log10(.05) ~ "Down Regulated",
                            TRUE ~ "Unchanged")
   )
 ciprofloxacin_values <- ciprofloxacin_values %>%
   mutate(
-    Expression = case_when(LFQ >= 0.05 & P_value >= -log10(.05) ~ "Up Regulated",
-                           LFQ <= .05 & P_value >= -log10(.05) ~ "Down Regulated",
+    Expression = case_when(LFQ >= 0.5 & P_value >= -log10(.05) ~ "Up Regulated",
+                           LFQ <= -0.5 & P_value >= -log10(.05) ~ "Down Regulated",
                            TRUE ~ "Unchanged")
   )
 
 
-# Labelling differentially abundant proteins ----------------------------------
+# ---------------------Labelling differentially abundant proteins -------------
 top_ampicillin <- bind_rows(
   ampicillin_values %>%
     filter(Expression == "Up Regulated") %>%
@@ -153,16 +152,17 @@ top_ciprofloxacin <- bind_rows(
 )
 
 
-# Generating volcano plots ----------------------------------------------------
+# ----------------------Generating volcano plots -------------------------------
 # Ampicillin plot
 ampicillin_plot <- ggplot(data = ampicillin_values, 
                           aes(x = LFQ, 
                               y = P_value,
                               col = Expression)) +
   geom_point(size = 2/5) +
-  ggtitle("Control & Ampicillin") +
+  ggtitle("Control Vs. Ampicillin") +
   xlab(expression("log"[2]*" Difference")) + 
   ylab(expression("-log"[10]* "p")) +
+  scale_colour_manual(values = c("dodgerblue3", "gray50", "firebrick3")) +
   geom_vline(xintercept=c(-0.5, 0.5), col="red") +
   geom_hline(yintercept=-log10(0.05), col="red") +
   theme_bw()
@@ -173,9 +173,10 @@ cefotaxime_plot <- ggplot(data = cefotaxime_values,
                               y = P_value,
                               col = Expression)) +
   geom_point(size = 2/5) +
-  ggtitle("Control & Cefotaxime") +
+  ggtitle("Control Vs.Cefotaxime") +
   xlab(expression("log"[2]*" Difference")) + 
   ylab(expression("-log"[10]* "p")) +
+  scale_colour_manual(values = c("dodgerblue3", "gray50", "firebrick3")) +
   geom_vline(xintercept=c(-0.5, 0.5), col="red") +
   geom_hline(yintercept=-log10(0.05), col="red") +
   theme_bw()
@@ -186,9 +187,10 @@ imipenem_plot <- ggplot(data = imipenem_values,
                             y = P_value,
                             col = Expression)) +
   geom_point(size = 2/5) +
-  ggtitle("Control & Imipenem") +
+  ggtitle("Control Vs.Imipenem") +
   xlab(expression("log"[2]*" Difference")) + 
   ylab(expression("-log"[10]* "p")) +
+  scale_colour_manual(values = c("dodgerblue3", "gray50", "firebrick3")) +
   geom_vline(xintercept=c(-0.5, 0.5), col="red") +
   geom_hline(yintercept=-log10(0.05), col="red") +
   theme_bw()
@@ -199,31 +201,35 @@ ciprofloxacin_plot <- ggplot(data = ciprofloxacin_values,
                                  y = P_value,
                                  col = Expression)) +
   geom_point(size = 2/5) +
-  ggtitle("Control & Ciprofloxacin") +
+  ggtitle("Control Vs. Ciprofloxacin") +
   xlab(expression("log"[2]*" Difference")) + 
   ylab(expression("-log"[10]* "p")) +
+  scale_colour_manual(values = c("dodgerblue3", "gray50", "firebrick3")) +
   geom_vline(xintercept=c(-0.5, 0.5), col="red") +
   geom_hline(yintercept=-log10(0.05), col="red") +
   theme_bw()
 
-# Adding labels to plots -------------------------------------------
+
+# ----------------------Adding labels to plots --------------------------------
 ampicillin_plot <- ampicillin_plot +
   geom_label_repel(data = top_ampicillin,
                    mapping = aes(x = LFQ, y = P_value, label = Gene_name),
-                   size = 5)
+                   size = 4)
 cefotaxime_plot <- cefotaxime_plot +
   geom_label_repel(data = top_cefotaxime,
                    mapping = aes(x = LFQ, y = P_value, label = Gene_name),
-                   size = 5)
+                   size = 4)
 imipenem_plot <- imipenem_plot +
   geom_label_repel(data = top_imipenem,
                    mapping = aes(x = LFQ, y = P_value, label = Gene_name),
-                   size = 5)
+                   size = 4)
 ciprofloxacin_plot <- ciprofloxacin_plot +
   geom_label_repel(data = top_ciprofloxacin,
                    mapping = aes(x = LFQ, y = P_value, label = Gene_name),
-                   size = 5)
-# Exporting ------------------------------------------------------------------
+                   size = 4)
+
+
+# -------------------------Exporting ------------------------------------------
 export_path <- "./03__modeling/2022-09-30__Multiple_Comparisons/models"
 
 save_plot(file.path(export_path, "results/Control & Ampicillin.png"),
@@ -234,5 +240,3 @@ save_plot(file.path(export_path, "results/Control & Imipenem.png"),
           imipenem_plot, base_height = 8, base_aspect_ratio = 1.4)
 save_plot(file.path(export_path, "results/Control & Ciprofloxacin.png"),
           ciprofloxacin_plot, base_height = 8, base_aspect_ratio = 1.4)
-
-
