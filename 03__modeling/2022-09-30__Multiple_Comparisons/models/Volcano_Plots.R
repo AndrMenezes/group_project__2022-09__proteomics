@@ -229,7 +229,7 @@ ciprofloxacin_plot <- ciprofloxacin_plot +
                    size = 4)
 
 
-# -------------------------Exporting ------------------------------------------
+# ----------------------------Exporting ----------------------------------------
 export_path <- "./03__modeling/2022-09-30__Multiple_Comparisons/models"
 
 save_plot(file.path(export_path, "results/Control & Ampicillin.png"),
