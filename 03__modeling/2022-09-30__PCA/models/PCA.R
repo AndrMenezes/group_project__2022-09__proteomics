@@ -1,6 +1,6 @@
 # 2022-09-30 Replicating PCA Analysis
 
-suppressPackageStartupMessages(library(tidyverse))
+library(tidyverse)
 library(readxl)
 library(ggplot2)
 library(cowplot)
@@ -12,7 +12,7 @@ project_data <- read_xlsx(
   file.path(path_data, "processed_data/data_filter.xlsx"))
 
 # Removing protein names
-project_data <- subset(project_data, select = -protein__name)
+project_data <- subset(project_data, select = -c(protein__name, gene__name))
 
 
 # PCA Analysis --------------------------------------------------------------
@@ -51,5 +51,4 @@ pca_plot <- ggplot(data = pca_data, aes(x = X, y = Y)) +
 # Exporting -----------------------------------------------------------------
 export_path <- "./03__modeling/2022-09-30__PCA/models/"
 
-save_plot(file.path(export_path, "results/PCA_Plot.png"), pca_plot, 
-          base_height = 8, base_aspect_ratio = 1.4)
+save_plot(file.path(export_path, "results/PCA_Plot.png"), pca_plot)
