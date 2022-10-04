@@ -3,6 +3,7 @@ library(readxl)
 library(ggrepel)
 library(cowplot)
 
+# Reading Data ------------------------------------------------------------
 path_data <- "./"
 
 data_raw <- read_xlsx(
@@ -52,18 +53,7 @@ data_pivotted <- data_raw |>
                   sep = "__") |> 
   select(protein__id, gene__name, group, replicate, variable, value)
 
-# Dictionary --------------------------------------------------------------
-data_dict <- data_raw |> 
-  select(protein__id, protein__name, gene__name,
-         peptides, sequence_coverage, molecular_weight, score, intensity,
-         count, sequence_length)
-
-
 # Exporting ---------------------------------------------------------------
-write.csv(
-  x = data_dict, file = file.path(path_data, "dictionary.csv"),
-  row.names = FALSE)
-
 write.csv(
   x = data_pivotted,
   file = file.path(path_data, "all_protein__pivotted.csv"),
@@ -71,24 +61,31 @@ write.csv(
 
 data <- read.csv("all_protein__pivotted.csv")
 
+
+# Volcano Plot -------------------------------------------------------------
 VolcanoPlot <- function(Treatment) {
 data_summarized <- data |>
   filter(group %in% c("Control",Treatment)) |>
   select(protein__id, gene__name, replicate, group, value)
 
-### Control vs Ampicillin
+## Control vs Ampicillin --------------------------------------------------
+### logFC and pvalue 
 if (Treatment == "Ampicillin") { check <- data_summarized |>
   tidyr::pivot_wider(names_from = group,
                      values_from = value) |>
   group_by(gene__name) |>
   summarise(
     logFC = mean(Ampicillin - Control),
-    pvalue = t.test(Ampicillin, Control)$p.value,
+    pvalue = t.test(Ampicillin, Control, var.equal = TRUE)$p.value,
     .groups = "drop"
  )
+### highlight significantly regulated genes 
 df <-  check %>%
-  filter((abs(logFC) >= (1) & abs(pvalue) <= (0.05)))
-p1 <- ggplot(check, aes((logFC), -log(pvalue,10))) + # -log10 conversion
+  filter(abs(logFC) >= (1) & (pvalue) <= (0.05)) %>%
+  head(20)
+
+### Plotting 
+p1 <- ggplot(check, aes((logFC), -log(pvalue,10)), options(ggrepel.max.overlaps = Inf)) + # -log10 conversion
   geom_point(size = 0.005, col="gray") +
   xlab(expression("log"[2]*"FC")) + 
   ylab(expression("-log"[10]*"pvalue")) +
@@ -107,22 +104,29 @@ p1 <- ggplot(check, aes((logFC), -log(pvalue,10))) + # -log10 conversion
                   size=1.5,
                   color="black") +
   theme_bw()
-save_plot(file.path("./", "VolcanoPlotAMP.png"), p1)
+
+### Exporting
+save_plot(file.path("./", "VolcanoPlot_Ampicillin.png"), p1)
 return(p1)}
 
-### Control vs Imipenem
+## Control vs Imipenem -------------------------------------------------------
+### LogFC and pvalue
 if (Treatment == "Impipenem") { check <- data_summarized |>
   tidyr::pivot_wider(names_from = group,
                      values_from = value) |>
   group_by(gene__name) |>
   summarise(
     logFC = mean(Impipenem - Control),
-    pvalue = t.test(Impipenem, Control)$p.value,
+    pvalue = t.test(Impipenem, Control, var.equal = TRUE)$p.value,
     .groups = "drop"
   )
+### highlight significantly regulated genes 
 df <-  check %>%
-  filter((abs(logFC) >= (1) & abs(pvalue) <= (0.05)))
-p1 <- ggplot(check, aes((logFC), -log(pvalue,10))) + # -log10 conversion
+  filter((abs(logFC) >= (1) & (pvalue) <= (0.05))) %>%
+  head(20)
+
+### plotting
+p1 <- ggplot(check, aes((logFC), -log(pvalue,10)), options(ggrepel.max.overlaps = Inf)) + # -log10 conversion
   geom_point(size = 0.005, col="gray") +
   xlab(expression("log"[2]*"FC")) + 
   ylab(expression("-log"[10]*"pvalue")) +
@@ -141,23 +145,30 @@ p1 <- ggplot(check, aes((logFC), -log(pvalue,10))) + # -log10 conversion
                   size=1.5,
                   color="black") +
   theme_bw()
-save_plot(file.path("./", "VolcanoPlotImi.png"), p1)
+
+### Exporting
+save_plot(file.path("./", "VolcanoPlot_Imipenem.png"), p1)
 return(p1)
 }
 
-### Control vs Cefotaxime
+## Control vs Cefotaxime -----------------------------------------------------
+### LogFC and pvalue
 if (Treatment == "Cefotaxime") { check <- data_summarized |>
   tidyr::pivot_wider(names_from = group,
                      values_from = value) |>
   group_by(gene__name) |>
   summarise(
     logFC = mean(Cefotaxime - Control),
-    pvalue = t.test(Cefotaxime, Control)$p.value,
+    pvalue = t.test(Cefotaxime, Control, var.equal = TRUE)$p.value,
     .groups = "drop"
   )
+### highlight significantly regulated genes 
 df <-  check %>%
-  filter((abs(logFC) >= (1) & abs(pvalue) <= (0.05)))
-p1 <- ggplot(check, aes((logFC), -log(pvalue,10))) + # -log10 conversion
+  filter((abs(logFC) >= (1) & (pvalue) <= (0.05))) %>%
+  head(20)
+
+### Plotting
+p1 <- ggplot(check, aes((logFC), -log(pvalue,10)), options(ggrepel.max.overlaps = Inf)) + # -log10 conversion
   geom_point(size = 0.005, col="gray") +
   xlab(expression("log"[2]*"FC")) + 
   ylab(expression("-log"[10]*"pvalue")) +
@@ -176,22 +187,28 @@ p1 <- ggplot(check, aes((logFC), -log(pvalue,10))) + # -log10 conversion
                   size=1.5,
                   color="black") +
   theme_bw()
-save_plot(file.path("./", "VolcanoPlotCefo.png"), p1)
+### Exporting
+save_plot(file.path("./", "VolcanoPlot_Cefotaxime.png"), p1)
 return(p1)}
 
-### Control vs Ciprofloxacin
+## Control vs Ciprofloxacin --------------------------------------------------
+### LogFC and pvalue
 if (Treatment == "Ciprofloxacin") { check <- data_summarized |>
   tidyr::pivot_wider(names_from = group,
                      values_from = value) |>
   group_by(gene__name) |>
   summarise(
     logFC = mean(Ciprofloxacin - Control),
-    pvalue = t.test(Ciprofloxacin, Control)$p.value,
+    pvalue = t.test(Ciprofloxacin, Control, var.equal = TRUE)$p.value,
     .groups = "drop"
   )
+### highlight significantly regulated genes 
 df <-  check %>%
-  filter((abs(logFC) >= (1) & abs(pvalue) <= (0.05)))
-p1 <- ggplot(check, aes((logFC), -log(pvalue,10))) + # -log10 conversion
+  filter((abs(logFC) >= (1) & (pvalue) <= (0.05))) %>%
+  head(20)
+
+### Plotting
+p1 <- ggplot(check, aes((logFC), -log(pvalue,10)), options(ggrepel.max.overlaps = Inf)) + # -log10 conversion
   geom_point(size = 0.005, col="gray") +
   xlab(expression("log"[2]*"FC")) + 
   ylab(expression("-log"[10]*"pvalue")) +
@@ -210,11 +227,14 @@ p1 <- ggplot(check, aes((logFC), -log(pvalue,10))) + # -log10 conversion
                   size=1.5,
                   color="black") +
   theme_bw()
-save_plot(file.path("./", "VolcanoPlotCipro.png"), p1)
+
+### Exporting
+save_plot(file.path("./", "VolcanoPlot_Ciprofloxacin.png"), p1)
 return(p1)}}
 
-## obtaining VolcanoPlots
+# Generate and save Volcano Plots -------------------------------------------
 VolcanoPlot("Ampicillin")
 VolcanoPlot("Impipenem")
-VolcanoPlot("Ciprofloxacin")
 VolcanoPlot("Cefotaxime")
+VolcanoPlot("Ciprofloxacin")
+
