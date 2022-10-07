@@ -80,10 +80,17 @@ if (Treatment == "Ampicillin") { check <- data_summarized |>
     .groups = "drop"
  )
 ### highlight significantly regulated genes 
-df <-  check %>%
-  filter(abs(logFC) >= (1) & (pvalue) <= (0.05)) %>%
-  head(20)
+df1 <-  check %>%
+  filter(((logFC) >= (0.05) | (logFC) <= (0.05)) & (pvalue) <= (0.05)) %>%
+  arrange(desc(logFC)) %>%
+  head(10)
 
+df2 <-  check %>%
+  filter(((logFC) <= (0.05)) & (pvalue) <= (0.05)) %>%
+  arrange(logFC) %>%
+  head(10)
+
+df <- rbind(df1, df2[ ,])
 ### Plotting 
 p1 <- ggplot(check, aes((logFC), -log(pvalue,10)), options(ggrepel.max.overlaps = Inf)) + # -log10 conversion
   geom_point(size = 0.005, col="gray") +
@@ -106,7 +113,7 @@ p1 <- ggplot(check, aes((logFC), -log(pvalue,10)), options(ggrepel.max.overlaps 
   theme_bw()
 
 ### Exporting
-save_plot(file.path("./", "VolcanoPlot_Ampicillin.png"), p1)
+save_plot(file.path("./", "VolcanoPlot_Ampicillin_prova.png"), p1)
 return(p1)}
 
 ## Control vs Imipenem -------------------------------------------------------
@@ -121,9 +128,17 @@ if (Treatment == "Impipenem") { check <- data_summarized |>
     .groups = "drop"
   )
 ### highlight significantly regulated genes 
-df <-  check %>%
-  filter((abs(logFC) >= (1) & (pvalue) <= (0.05))) %>%
-  head(20)
+df1 <-  check %>%
+  filter(((logFC) >= (0.05) | (logFC) <= (0.05)) & (pvalue) <= (0.05)) %>%
+  arrange(desc(logFC)) %>%
+  head(10)
+
+df2 <-  check %>%
+  filter(((logFC) <= (0.05)) & (pvalue) <= (0.05)) %>%
+  arrange(logFC) %>%
+  head(10)
+
+df <- rbind(df1, df2[ ,])
 
 ### plotting
 p1 <- ggplot(check, aes((logFC), -log(pvalue,10)), options(ggrepel.max.overlaps = Inf)) + # -log10 conversion
@@ -147,7 +162,7 @@ p1 <- ggplot(check, aes((logFC), -log(pvalue,10)), options(ggrepel.max.overlaps 
   theme_bw()
 
 ### Exporting
-save_plot(file.path("./", "VolcanoPlot_Imipenem.png"), p1)
+save_plot(file.path("./", "VolcanoPlot_Imipenem_prova.png"), p1)
 return(p1)
 }
 
@@ -163,9 +178,17 @@ if (Treatment == "Cefotaxime") { check <- data_summarized |>
     .groups = "drop"
   )
 ### highlight significantly regulated genes 
-df <-  check %>%
-  filter((abs(logFC) >= (1) & (pvalue) <= (0.05))) %>%
-  head(20)
+df1 <-  check %>%
+  filter(((logFC) >= (0.05) | (logFC) <= (0.05)) & (pvalue) <= (0.05)) %>%
+  arrange(desc(logFC)) %>%
+  head(10)
+
+df2 <-  check %>%
+  filter(((logFC) <= (0.05)) & (pvalue) <= (0.05)) %>%
+  arrange(logFC) %>%
+  head(10)
+
+df <- rbind(df1, df2[ ,])
 
 ### Plotting
 p1 <- ggplot(check, aes((logFC), -log(pvalue,10)), options(ggrepel.max.overlaps = Inf)) + # -log10 conversion
@@ -180,7 +203,18 @@ p1 <- ggplot(check, aes((logFC), -log(pvalue,10)), options(ggrepel.max.overlaps 
              size = 0.5,
              fill = "red",
              colour = "red") +
-  geom_text_repel(data=df,
+  geom_text_repel(data=df1,
+                  aes(x=logFC,
+                      y=-log(pvalue,10),
+                      label=gene__name),
+                  size=1.5,
+                  color="black") +
+  geom_point(data = df2,
+             shape = 21,
+             size = 0.5,
+             fill = "red",
+             colour = "red") +
+  geom_text_repel(data=df2,
                   aes(x=logFC,
                       y=-log(pvalue,10),
                       label=gene__name),
@@ -188,7 +222,7 @@ p1 <- ggplot(check, aes((logFC), -log(pvalue,10)), options(ggrepel.max.overlaps 
                   color="black") +
   theme_bw()
 ### Exporting
-save_plot(file.path("./", "VolcanoPlot_Cefotaxime.png"), p1)
+save_plot(file.path("./", "VolcanoPlot_Cefotaxime_prova.png"), p1)
 return(p1)}
 
 ## Control vs Ciprofloxacin --------------------------------------------------
@@ -203,9 +237,17 @@ if (Treatment == "Ciprofloxacin") { check <- data_summarized |>
     .groups = "drop"
   )
 ### highlight significantly regulated genes 
-df <-  check %>%
-  filter((abs(logFC) >= (1) & (pvalue) <= (0.05))) %>%
-  head(20)
+df1 <-  check %>%
+  filter(((logFC) >= (0.05) | (logFC) <= (0.05)) & (pvalue) <= (0.05)) %>%
+  arrange(desc(logFC)) %>%
+  head(10)
+
+df2 <-  check %>%
+  filter(((logFC) <= (0.05)) & (pvalue) <= (0.05)) %>%
+  arrange(logFC) %>%
+  head(10)
+
+df <- rbind(df1, df2[ ,])
 
 ### Plotting
 p1 <- ggplot(check, aes((logFC), -log(pvalue,10)), options(ggrepel.max.overlaps = Inf)) + # -log10 conversion
@@ -229,7 +271,7 @@ p1 <- ggplot(check, aes((logFC), -log(pvalue,10)), options(ggrepel.max.overlaps 
   theme_bw()
 
 ### Exporting
-save_plot(file.path("./", "VolcanoPlot_Ciprofloxacin.png"), p1)
+save_plot(file.path("./", "VolcanoPlot_Ciprofloxacin_prova.png"), p1)
 return(p1)}}
 
 # Generate and save Volcano Plots -------------------------------------------
