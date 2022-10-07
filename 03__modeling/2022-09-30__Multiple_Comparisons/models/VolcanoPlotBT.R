@@ -81,7 +81,7 @@ if (Treatment == "Ampicillin") { check <- data_summarized |>
  )
 ### highlight significantly regulated genes 
 df1 <-  check %>%
-  filter(((logFC) >= (0.05) | (logFC) <= (0.05)) & (pvalue) <= (0.05)) %>%
+  filter(((logFC) >= (0.05)) & (pvalue) <= (0.05)) %>%
   arrange(desc(logFC)) %>%
   head(10)
 
@@ -129,7 +129,7 @@ if (Treatment == "Impipenem") { check <- data_summarized |>
   )
 ### highlight significantly regulated genes 
 df1 <-  check %>%
-  filter(((logFC) >= (0.05) | (logFC) <= (0.05)) & (pvalue) <= (0.05)) %>%
+  filter(((logFC) >= (0.05)) & (pvalue) <= (0.05)) %>%
   arrange(desc(logFC)) %>%
   head(10)
 
@@ -179,7 +179,7 @@ if (Treatment == "Cefotaxime") { check <- data_summarized |>
   )
 ### highlight significantly regulated genes 
 df1 <-  check %>%
-  filter(((logFC) >= (0.05) | (logFC) <= (0.05)) & (pvalue) <= (0.05)) %>%
+  filter(((logFC) >= (0.05)) & (pvalue) <= (0.05)) %>%
   arrange(desc(logFC)) %>%
   head(10)
 
@@ -238,7 +238,7 @@ if (Treatment == "Ciprofloxacin") { check <- data_summarized |>
   )
 ### highlight significantly regulated genes 
 df1 <-  check %>%
-  filter(((logFC) >= (0.05) | (logFC) <= (0.05)) & (pvalue) <= (0.05)) %>%
+  filter(((logFC) >= (0.05)) & (pvalue) <= (0.05)) %>%
   arrange(desc(logFC)) %>%
   head(10)
 
