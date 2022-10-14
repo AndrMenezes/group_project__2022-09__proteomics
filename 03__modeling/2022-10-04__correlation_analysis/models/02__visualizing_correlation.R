@@ -50,3 +50,20 @@ save_plot(filename = file.path(path_res, "half_normal_plot__all.png"),
           plot = p, base_width = 8, bg = "white")
 
 
+
+# Bi-plot -----------------------------------------------------------------
+
+cor_all <- cor(as.matrix(data_wide_protein[, (3:23)]), method = "pearson")
+dim(cor_all)
+mu_row <- rowMeans(cor_all)
+mu_col <- colMeans(cor_all)
+mu <- mean(cor_all)
+E <- sweep(cor_all, 1, mu_row)
+E <- sweep(E, 2, mu_col)
+E <- E + mu
+
+dec <- eigen(E, symmetric = TRUE)
+max(abs(dec$values)) / min(abs(dec$values))
+
+plot(dec$vectors[, 1], dec$vectors[, 2])
+
