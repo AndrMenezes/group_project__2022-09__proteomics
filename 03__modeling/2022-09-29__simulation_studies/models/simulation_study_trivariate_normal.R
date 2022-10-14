@@ -34,7 +34,6 @@ compute_corr <- function(v_y) {
   comb2v2 <- combn(p, 2)
   lt <- list()
   for (i in seq_len(ncol(comb2v2))) {
-    
     tmp <- cor.test(v_y[comb2v2[, i][1L], ],
                     v_y[comb2v2[, i][2L], ],
                     method = "pearson",
@@ -59,7 +58,7 @@ compute_corr <- function(v_y) {
 if (!file.exists(file.path(res_path, "simulated_results.rds"))) {
   set.seed(6669)
   list_results <- mclapply(X = list_correlations, FUN = function(rho) {
-    
+
     # Define the new correlation matrix
     R[lower.tri(R)] <- rho
     R[upper.tri(R)] <- rho
@@ -67,7 +66,7 @@ if (!file.exists(file.path(res_path, "simulated_results.rds"))) {
     V <- (D %*% R) %*% D
     # Get Cholesky decomposition to generate MVN distribution
     P <- t(chol(V))
-    
+
     # Compute correlation and p-value for different sample size
     ini <- proc.time()
     out <- replicate(n = M, expr = {
@@ -78,33 +77,33 @@ if (!file.exists(file.path(res_path, "simulated_results.rds"))) {
       }))
     }, simplify = FALSE)
     end <- proc.time()
-    # Tracking the scenarios 
+    # Tracking the scenarios
     write.table(
       x = data.frame(paste0(rho, collapse = ", "), (end[3L] - ini[3L]) / 60),
-      file = file.path(res_path, "tracking.txt"), 
+      file = file.path(res_path, "tracking.txt"),
       sep = "\t",
       append = TRUE,
-      col.names = FALSE, 
+      col.names = FALSE,
       row.names = FALSE,
       quote = FALSE)
     return(do.call(rbind, out))
   }, mc.cores = 3L)
   names(list_results) <- names(list_correlations)
-  data_results <- bind_rows(list_results, .id = "scenario") |> 
+  data_results <- bind_rows(list_results, .id = "scenario") |>
     as_tibble()
   saveRDS(data_results, file = file.path(res_path, "simulated_results.rds"))
 }
 data_results <- readRDS(file = file.path(res_path, "simulated_results.rds"))
 
 # Creating data.frame with the true values
-data_true_values <- bind_rows(list_correlations) |> 
-  mutate(comb = c("1 vs 2", "1 vs 3", "2 vs 3")) |> 
+data_true_values <- bind_rows(list_correlations) |>
+  mutate(comb = c("1 vs 2", "1 vs 3", "2 vs 3")) |>
   tidyr::pivot_longer(cols = -comb, names_to = "scenario",
                       values_to = "true_rho")
 
 # Merging to get the true values for each scenario
-data_results <- data_results |> 
-  left_join(data_true_values, by = c("scenario", "comb")) |> 
+data_results <- data_results |>
+  left_join(data_true_values, by = c("scenario", "comb")) |>
   mutate(n_sample = forcats::fct_relevel(
     factor(n_sample), "3", "5", "10", "15"))
 
@@ -113,15 +112,15 @@ data_results <- data_results |>
 counter <- 1L
 list_plots <- list()
 for (chosen in unique(data_results$scenario)) {
-  data_curr <- data_results |> 
-    filter(scenario == chosen) |> 
-    select(comb, n_sample, rho, rho_adj) |> 
+  data_curr <- data_results |>
+    filter(scenario == chosen) |>
+    select(comb, n_sample, rho, rho_adj) |>
     tidyr::pivot_longer(cols = -c(comb, n_sample))
 
   aux <- list("scenario_1" = "Low (0.25)",
               "scenario_2" = "Moderate (0.50)",
               "scenario_3" = "High (0.85)")[[chosen]]
-  
+
   list_plots[[counter]] <- ggplot(data_curr, aes(x = n_sample, y = value,
                                                  fill = name)) +
     facet_wrap(~ comb) +
@@ -129,7 +128,7 @@ for (chosen in unique(data_results$scenario)) {
     geom_hline(data = filter(data_true_values, scenario == chosen),
                aes(yintercept = true_rho), col = "red", size = 1) +
     labs(x = "Sample size", y = "Estimate", fill = "") +
-    ggtitle(expression("MC distribution of"~rho),
+    ggtitle(expression("MC distribution of" ~ rho),
             paste0("Scenario: ", aux, " correlation")) +
     scale_y_continuous(breaks = scales::pretty_breaks(6)) +
     colorspace::scale_fill_discrete_qualitative(
@@ -145,17 +144,17 @@ save_plot(filename = file.path(res_path, "boxplot_estimates.png"),
 
 ###############################################################################
 # Summarizing the data
-data_summarized <- data_results |> 
-  select(scenario, comb, n_sample, true_rho, rho, rho_adj) |> 
+data_summarized <- data_results |>
+  select(scenario, comb, n_sample, true_rho, rho, rho_adj) |>
   tidyr::pivot_longer(cols = -c(scenario, comb, n_sample, true_rho),
                       names_to = "estimator",
-                      values_to = "value") |> 
-  group_by(scenario, n_sample, comb, estimator) |> 
+                      values_to = "value") |>
+  group_by(scenario, n_sample, comb, estimator) |>
   summarise(mean = mean(value),
             sd = sd(value),
             true_rho = mean(true_rho),
             relative_bias = mean((value - true_rho) / true_rho),
-            .groups = "drop") |> 
+            .groups = "drop") |>
   mutate(n_sample = forcats::fct_relevel(
            factor(n_sample), "3", "5", "10", "15"),
          comb_rho = paste0(comb, "  ", expression(rho), "=", true_rho))
@@ -167,7 +166,7 @@ for (chosen in unique(data_summarized$scenario)) {
               "scenario_3" = "High (0.85)")[[chosen]]
 
   cat(chosen, "\n")
-  data_curr <- data_summarized |> 
+  data_curr <- data_summarized |>
     filter(scenario == chosen)
 
   p_mean <- ggplot(data_curr, aes(x = n_sample, y = mean, col = estimator,
@@ -196,7 +195,7 @@ for (chosen in unique(data_summarized$scenario)) {
     scale_y_continuous(breaks = scales::pretty_breaks(6)) +
     colorspace::scale_color_discrete_qualitative(
       labels = c("rho" = expression(rho), "rho_adj" = expression(rho[adj])))
-  
+
   p_sd <- ggplot(data_curr, aes(x = n_sample, y = sd,
                                 col = estimator, group = estimator)) +
     facet_wrap(. ~ comb) +
@@ -224,5 +223,5 @@ for (chosen in unique(data_summarized$scenario)) {
     plot = p_sd,
     base_width = 12,
     bg = "white")
-  
+
 }

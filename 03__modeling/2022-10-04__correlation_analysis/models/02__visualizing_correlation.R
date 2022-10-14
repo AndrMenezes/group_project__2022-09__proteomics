@@ -25,18 +25,18 @@ rc_index <- which(L, arr.ind = TRUE)
 data_cor <- tibble(
   protein__A = dimnames(cor_all)[[1L]][rc_index[, 1L]],
   protein__B = dimnames(cor_all)[[2L]][rc_index[, 2L]],
-  correlation = cor_all[L] 
+  correlation = cor_all[L]
 )
 choose(p, 2) == dim(data_cor)[1L]
 
 # Half-normal plot --------------------------------------------------------
 n <- nrow(data_wide_protein)
 k <- choose(p, 2)
-data_cur <- data_cor |> 
-  as_tibble() |> 
-  mutate(z_obs = abs(atanh(correlation))) |> 
-  arrange(z_obs) |> 
-  mutate(z_teo = qnorm((1:k + k - 1/8) / (2 * k + 0.5)),
+data_cur <- data_cor |>
+  as_tibble() |>
+  mutate(z_obs = abs(atanh(correlation))) |>
+  arrange(z_obs) |>
+  mutate(z_teo = qnorm((1:k + k - 1 / 8) / (2 * k + 0.5)),
          z_teo_s = z_teo * 1 / sqrt(n - 3))
 p <- ggplot(data_cur, aes(x = z_teo, y = z_obs)) +
   geom_point(size = 1.3, alpha = 0.6) +
@@ -66,4 +66,3 @@ dec <- eigen(E, symmetric = TRUE)
 max(abs(dec$values)) / min(abs(dec$values))
 
 plot(dec$vectors[, 1], dec$vectors[, 2])
-

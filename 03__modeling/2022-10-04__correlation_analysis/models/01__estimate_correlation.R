@@ -18,16 +18,17 @@ rc_index <- which(L, arr.ind = TRUE)
 data_cor <- tibble(
   protein__A = dimnames(cor_all)[[1L]][rc_index[, 1L]],
   protein__B = dimnames(cor_all)[[2L]][rc_index[, 2L]],
-  correlation = cor_all[L] 
+  correlation = cor_all[L]
 )
 choose(p, 2) == dim(data_cor)[1L]
 
 # Computing the unbiased estimate and then filtering
-data_cor <- data_cor |> 
-  mutate(correlation_unbiased = correlation * (1 + (1 - correlation^2) / 2 / n)) |> 
-  filter(abs(correlation_unbiased) >= 0.80) |> 
-  arrange(-abs(correlation_unbiased)) |> 
-  mutate(group = "All") |> 
+data_cor <- data_cor |>
+  mutate(
+    correlation_unbiased = correlation * (1 + (1 - correlation^2) / 2 / n)) |>
+  filter(abs(correlation_unbiased) >= 0.80) |>
+  arrange(-abs(correlation_unbiased)) |>
+  mutate(group = "All") |>
   select(group, everything())
 
 # Correlation for each group ----------------------------------------------
@@ -44,9 +45,10 @@ list_cor <- lapply(splited_df, function(x) {
   data_cor
 })
 names(list_cor) <- names(splited_df)
-data_cor_grouped <- bind_rows(list_cor, .id = "group") |> 
-  mutate(correlation_unbiased = correlation * (1 + (1 - correlation^2) / 2 / n)) |> 
-  filter(abs(correlation_unbiased) >= 0.80) |> 
+data_cor_grouped <- bind_rows(list_cor, .id = "group") |>
+  mutate(
+    correlation_unbiased = correlation * (1 + (1 - correlation^2) / 2 / n)) |>
+  filter(abs(correlation_unbiased) >= 0.80) |>
   arrange(-abs(correlation_unbiased))
 
 
