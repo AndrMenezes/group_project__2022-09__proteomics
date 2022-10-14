@@ -3,6 +3,7 @@ library(tidyr)
 library(openxlsx)
 library(limma)
 library(ggplot2)
+library(ggrepel)
 library(cowplot)
 
 path_data <- "./01__database/"
@@ -147,6 +148,34 @@ ciprofloxacin_plot <- ggplot(ciprofloxacin_results,
   geom_vline(xintercept = c(-0.5, 0.5), linetype = "dashed", col = "black") +
   geom_hline(yintercept = -log10(0.05),linetype = "dashed", col = "black") +
   theme_bw()
+
+# Adding labels ---------------------------------------------------------------
+# Getting data for labels (top 20)
+top_ampicillin <- topTable(ampicillin_fit, coef = 2, number = 20, confint = TRUE)
+top_cefotaxime <- topTable(cefotaxime_fit, coef = 2, number = 20, confint = TRUE)
+top_impipenem <- topTable(impipenem_fit, coef = 2, number = 20, confint = TRUE)
+top_ciprofloxacin <- topTable(ciprofloxacin_fit, coef = 2, number = 20, confint = TRUE)
+
+# Adding labels to plots
+ampicillin_plot <- ampicillin_plot +
+  geom_text_repel(data = top_ampicillin,
+                  mapping = aes(x = logFC, y = -log10(P.Value), label = rownames(top_ampicillin)),
+                  size = 2.5)
+
+cefotaxime_plot <- cefotaxime_plot +
+  geom_text_repel(data = top_cefotaxime,
+                  mapping = aes(x = logFC, y = -log10(P.Value), label = rownames(top_cefotaxime)),
+                  size = 2.5)
+
+impipenem_plot <- impipenem_plot +
+  geom_text_repel(data = top_impipenem,
+                  mapping = aes(x = logFC, y = -log10(P.Value), label = rownames(top_impipenem)),
+                  size = 2.5)
+
+ciprofloxacin_plot <- ciprofloxacin_plot +
+  geom_text_repel(data = top_ciprofloxacin,
+                  mapping = aes(x = logFC, y = -log10(P.Value), label = rownames(top_ciprofloxacin)),
+                  size = 2.5)
 
 # Exporting --------------------------------------------------------------------
 export_path <- "./03__modeling/2022-10-14__multiple_comparisons/models"
