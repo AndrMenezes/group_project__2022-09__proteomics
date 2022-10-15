@@ -33,8 +33,7 @@ project_data <- as.matrix(project_data)
 rownames(project_data) <- id
 colnames(project_data) <- NULL
 
-# Creating design and contrast matrix -----------------------------------------
-# Design matrix
+# Creating design matrix ------------------------------------------------------
 x <- factor(rep(c("Control", "Ampicillin", "Cefotaxime", "Impipenem",
                   "Ciprofloxacin"), each = 3),
             levels = c("Control", "Ampicillin",  "Cefotaxime", "Impipenem",
@@ -43,8 +42,7 @@ x <- factor(rep(c("Control", "Ampicillin", "Cefotaxime", "Impipenem",
 design_matrix <- model.matrix(~ x)
 colnames(design_matrix) <- levels(x)
 
-# Fitting linear model -------------------------------------------------------
-# Design
+# Fitting linear model --------------------------------------------------------
 fit <- lmFit(project_data, design_matrix)
 fit <- eBayes(fit)
 
@@ -59,7 +57,6 @@ ciprofloxacin_control <- topTable(fit, coef = "Ciprofloxacin", number = Inf,
                                   sort.by = "none", confint = TRUE)
 
 # Plotting --------------------------------------------------------------------
-# Ampicillin
 ampicillin_plot <- ggplot(ampicillin_control,
                           aes(x = logFC, y = -log10(P.Value))) +
   geom_point(size = .005) +
@@ -70,7 +67,6 @@ ampicillin_plot <- ggplot(ampicillin_control,
   geom_hline(yintercept = -log10(0.05),linetype = "dashed", col = "black") +
   theme_bw()
 
-# Cefotaxime
 cefotaxime_plot <- ggplot(cefotaxime_control,
                           aes(x = logFC, y = -log10(P.Value))) +
   geom_point(size = .005) +
@@ -81,7 +77,6 @@ cefotaxime_plot <- ggplot(cefotaxime_control,
   geom_hline(yintercept = -log10(0.05),linetype = "dashed", col = "black") +
   theme_bw()
 
-# Impipenem
 impipenem_plot <- ggplot(impipenem_control,
                          aes(x = logFC, y = -log10(P.Value))) +
   geom_point(size = .005) +
@@ -92,7 +87,6 @@ impipenem_plot <- ggplot(impipenem_control,
   geom_hline(yintercept = -log10(0.05),linetype = "dashed", col = "black") +
   theme_bw()
 
-# Ciprofloxacin
 ciprofloxacin_plot <- ggplot(ciprofloxacin_control,
                              aes(x = logFC, y = -log10(P.Value))) +
   geom_point(size = .005) +
@@ -103,14 +97,14 @@ ciprofloxacin_plot <- ggplot(ciprofloxacin_control,
   geom_hline(yintercept = -log10(0.05),linetype = "dashed", col = "black") +
   theme_bw()
 
-# Adding labels ---------------------------------------------------------------
-# Getting data for labels (top 20)
+# Labelling -------------------------------------------------------------------
+# Selcting top 20 proteins for each treatment
 top_ampicillin <- topTable(fit, coef = "Ampicillin", number = 20)
 top_cefotaxime <- topTable(fit, coef = "Cefotaxime", number = 20)
 top_impipenem <- topTable(fit, coef = "Impipenem", number = 20)
 top_ciprofloxacin <- topTable(fit, coef = "Ciprofloxacin", number = 20)
 
-# Adding labels to plots
+# Adding labels
 ampicillin_plot <- ampicillin_plot +
   geom_text_repel(data = top_ampicillin,
                   mapping = aes(x = logFC, 
