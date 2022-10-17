@@ -3,6 +3,23 @@
 > Performed analysis for the Group Project concerning the first year of PhD in Data Science funded by 
 [SFI Centre for Research Training in Foundations of Data Science](https://www.data-science.ie/).
 
+This project we are analyzing label-free quantitative mass spectrometry (MS) data from
+an experiment conducted with the culture of bacterias *Escherichia coli*.
+
+The data was first analyzed by [Margalit, Carolan and Walsh](https://www.sciencedirect.com/science/article/pii/S2213716521002770?via%3Dihub).
+
+
+# References
+
+A few list of reference concerning the worflow analysis of proteomics data:
+
+- [Mass spectrometry](https://uclouvain-cbio.github.io/WSBIM2122/sec-ms.html)
+- [Mass spectrometry-based proteomics](https://uclouvain-cbio.github.io/LSTAT2340/)
+- [Proteomics Data Analysis in R/Bioconductor](https://pnnl-comp-mass-spec.github.io/proteomics-data-analysis-tutorial/)
+- [Introduction to proteomics data analysis](https://bioconductor.org/packages/release/bioc/vignettes/msqrob2/inst/doc/cptac.html#1_Introduction): [`msqrob2`](https://www.bioconductor.org/packages/release/bioc/html/msqrob2.html) R package.
+- [Quantitative features for mass spectrometry data](https://rformassspectrometry.github.io/QFeatures/index.html#quantitative-features-for-mass-spectrometry-data): [`QFeatures`](https://bioconductor.org/packages/release/bioc/html/QFeatures.html) R package
+- [`proteus`](https://github.com/bartongroup/Proteus): R package
+
 # Authors
 
 - [Andrê F. B. Menezes](https://andrmenezes.github.io/about/)
