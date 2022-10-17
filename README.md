@@ -1,3 +1,15 @@
+# Overview
+
+> Performed analysis for the Group Project concerning the first year of PhD in Data Science funded by 
+[SFI Centre for Research Training in Foundations of Data Science](https://www.data-science.ie/).
+
+# Authors
+
+- [Andrê F. B. Menezes](https://andrmenezes.github.io/about/)
+- [Beatrice Tropea](https://www.data-science.ie/user/beatrice+tropea/)
+- [Cormac Monaghan](https://www.data-science.ie/user/cormac+monaghan/)
+
+
 # **Goals for the Project**
 (Group Meeting - 23/09/2022)
 
