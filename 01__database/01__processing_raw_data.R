@@ -1,4 +1,4 @@
-#' 2022-09-21: Creating data set in long format and a dictionary.
+#' 2022-09-21: Creating data set in both long and filtered format and a dictionary.
 library(dplyr)
 library(readxl)
 
@@ -13,7 +13,7 @@ data_raw <- read_xlsx(
 # glimpse(data_raw)
 
 
-# Renaming ----------------------------------------------------------------
+# Renaming --------------------------------------------------------------------
 
 data_raw <- data_raw |> 
   rename(
@@ -45,7 +45,7 @@ data_raw <- data_raw |>
   )
 
 
-# Pivotting ---------------------------------------------------------------
+# Pivoting --------------------------------------------------------------------
 data_pivotted <- data_raw |> 
   select(-c(peptides, protein__name, gene__name, sequence_coverage,
             molecular_weight, score, intensity, count, sequence_length)) |> 
@@ -54,14 +54,36 @@ data_pivotted <- data_raw |>
                   sep = "__") |> 
   select(protein__id, group, replicate, variable, value)
 
-# Dictionary --------------------------------------------------------------
+# Filtering -------------------------------------------------------------------
+data_filter <- data_raw |>
+  select(
+    protein__name,
+    gene__name,
+    lqf__Ampicillin__1,
+    lqf__Ampicillin__2,
+    lqf__Ampicillin__3,
+    lqf__Cefotaxime__1,
+    lqf__Cefotaxime__2,
+    lqf__Cefotaxime__3,
+    lqf__Impipenem__1,
+    lqf__Impipenem__2,
+    lqf__Impipenem__3,
+    lqf__Ciprofloxacin__1,
+    lqf__Ciprofloxacin__2,
+    lqf__Ciprofloxacin__3,
+    lqf__Control__1,
+    lqf__Control__2,
+    lqf__Control__3
+  )
+
+# Dictionary ------------------------------------------------------------------
 data_dict <- data_raw |> 
   select(protein__id, protein__name, gene__name,
          peptides, sequence_coverage, molecular_weight, score, intensity,
          count, sequence_length)
 
 
-# Exporting ---------------------------------------------------------------
+# Exporting -------------------------------------------------------------------
 write.csv(
   x = data_dict, file = file.path(path_data, "processed_data/dictionary.csv"),
   row.names = FALSE)
@@ -70,3 +92,9 @@ write.csv(
   x = data_pivotted,
   file = file.path(path_data, "processed_data/all_protein__pivotted.csv"),
   row.names = FALSE)
+
+write.csv(
+  x = data_filter,
+  file = file.path(path_data, "processed_data/data_filter.csv"),
+  row.names = FALSE
+)
