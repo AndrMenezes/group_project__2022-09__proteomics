@@ -6,7 +6,7 @@
 This project we are analyzing label-free quantitative mass spectrometry (MS) data from
 an experiment conducted with the culture of bacterias *Escherichia coli*.
 
-The data was first analyzed by [Margalit, Carolan and Walsh](https://www.sciencedirect.com/science/article/pii/S2213716521002770?via%3Dihub).
+The data was first analyzed by [Margalit, Carolan and Walsh (2022)](https://www.sciencedirect.com/science/article/pii/S2213716521002770?via%3Dihub).
 
 
 # References
