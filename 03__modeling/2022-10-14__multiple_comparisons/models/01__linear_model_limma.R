@@ -8,21 +8,22 @@ library(cowplot)
 
 path_data <- "./01__database/"
 project_data <- read.csv(
-  file.path(path_data, "processed_data/data_pivot.csv"))
+  file.path(path_data, "processed_data/all_protein__pivotted.csv"))
 
 # Data manipulation -----------------------------------------------------------
 # Pivoting data: rows = proteins // columns = samples
 project_data <- project_data |>
   arrange(group) |>
-  select(-c("variable")) |>
+  select(-variable) |>
   pivot_wider(names_from = c(group, replicate),
               values_from = value)
 
-# Saving protein ID (use for row names later)
+# Saving protein ID and gene name (use later)
 id <- project_data$protein__id
+gene <- project_data$gene__name
 
 # Removing protein ID column
-project_data <- select(project_data, -c("protein__id"))
+project_data <- select(project_data, -c("protein__id", "gene__name"))
 
 # Reordering columns
 project_data <- project_data[, c(10, 11, 12, 1, 2, 3, 4, 5, 6, 
@@ -30,7 +31,7 @@ project_data <- project_data[, c(10, 11, 12, 1, 2, 3, 4, 5, 6,
 
 # Converting to matrix
 project_data <- as.matrix(project_data)
-rownames(project_data) <- id
+rownames(project_data) <- gene
 colnames(project_data) <- NULL
 
 # Creating design matrix ------------------------------------------------------
@@ -43,17 +44,17 @@ design_matrix <- model.matrix(~ x)
 colnames(design_matrix) <- levels(x)
 
 # Fitting linear model --------------------------------------------------------
-fit <- lmFit(project_data, design_matrix)
-fit <- eBayes(fit)
+fit1 <- lmFit(project_data, design_matrix)
+fit1 <- eBayes(fit1)
 
 # Storing limma results -------------------------------------------------------
-ampicillin_control <- topTable(fit, coef = "Ampicillin", number = Inf,
+ampicillin_control <- topTable(fit1, coef = "Ampicillin", number = Inf,
                                sort.by = "none", confint = TRUE)
-cefotaxime_control <- topTable(fit, coef = "Cefotaxime", number = Inf,
+cefotaxime_control <- topTable(fit1, coef = "Cefotaxime", number = Inf,
                                sort.by = "none", confint = TRUE)
-impipenem_control <- topTable(fit, coef = "Impipenem", number = Inf,
+impipenem_control <- topTable(fit1, coef = "Impipenem", number = Inf,
                               sort.by = "none", confint = TRUE)
-ciprofloxacin_control <- topTable(fit, coef = "Ciprofloxacin", number = Inf,
+ciprofloxacin_control <- topTable(fit1, coef = "Ciprofloxacin", number = Inf,
                                   sort.by = "none", confint = TRUE)
 
 # Plotting --------------------------------------------------------------------
@@ -64,7 +65,7 @@ ampicillin_plot <- ggplot(ampicillin_control,
   xlab(expression("log"[2]*" Fold Change")) + 
   ylab(expression("-log"[10]* "p")) +
   geom_vline(xintercept = c(-0.5, 0.5), linetype = "dashed", col = "black") +
-  geom_hline(yintercept = -log10(0.05),linetype = "dashed", col = "black") +
+  geom_hline(yintercept = -log10(0.05), linetype = "dashed", col = "black") +
   theme_bw()
 
 cefotaxime_plot <- ggplot(cefotaxime_control,
@@ -74,7 +75,7 @@ cefotaxime_plot <- ggplot(cefotaxime_control,
   xlab(expression("log"[2]*" Fold Change")) + 
   ylab(expression("-log"[10]* "p")) +
   geom_vline(xintercept = c(-0.5, 0.5), linetype = "dashed", col = "black") +
-  geom_hline(yintercept = -log10(0.05),linetype = "dashed", col = "black") +
+  geom_hline(yintercept = -log10(0.05), linetype = "dashed", col = "black") +
   theme_bw()
 
 impipenem_plot <- ggplot(impipenem_control,
@@ -84,7 +85,7 @@ impipenem_plot <- ggplot(impipenem_control,
   xlab(expression("log"[2]*" Fold Change")) + 
   ylab(expression("-log"[10]* "p")) +
   geom_vline(xintercept = c(-0.5, 0.5), linetype = "dashed", col = "black") +
-  geom_hline(yintercept = -log10(0.05),linetype = "dashed", col = "black") +
+  geom_hline(yintercept = -log10(0.05), linetype = "dashed", col = "black") +
   theme_bw()
 
 ciprofloxacin_plot <- ggplot(ciprofloxacin_control,
@@ -94,64 +95,75 @@ ciprofloxacin_plot <- ggplot(ciprofloxacin_control,
   xlab(expression("log"[2]*" Fold Change")) + 
   ylab(expression("-log"[10]* "p")) +
   geom_vline(xintercept = c(-0.5, 0.5), linetype = "dashed", col = "black") +
-  geom_hline(yintercept = -log10(0.05),linetype = "dashed", col = "black") +
+  geom_hline(yintercept = -log10(0.05), linetype = "dashed", col = "black") +
   theme_bw()
 
-# Labelling -------------------------------------------------------------------
-# Selcting top 20 proteins for each treatment
-top_ampicillin <- topTable(fit, coef = "Ampicillin", number = 20)
-top_cefotaxime <- topTable(fit, coef = "Cefotaxime", number = 20)
-top_impipenem <- topTable(fit, coef = "Impipenem", number = 20)
-top_ciprofloxacin <- topTable(fit, coef = "Ciprofloxacin", number = 20)
+# Adding labels ---------------------------------------------------------------
+# Locating top 20 proteins
+top_ampicillin <- topTable(fit1, coef = "Ampicillin", number = 20, confint = TRUE)
+top_cefotaxime <- topTable(fit1, coef = "Cefotaxime", number = 20, confint = TRUE)
+top_impipenem <- topTable(fit1, coef = "Impipenem", number = 20, confint = TRUE)
+top_ciprofloxacin <- topTable(fit1, coef = "Ciprofloxacin", number = 20, confint = TRUE)
 
-# Adding labels
+# Adding labels to plots
 ampicillin_plot <- ampicillin_plot +
   geom_text_repel(data = top_ampicillin,
-                  mapping = aes(x = logFC, 
-                                y = -log10(P.Value), 
-                                label = rownames(top_ampicillin)),
-                  size = 2,
-                  force = 2)
+                  mapping = aes(x = logFC, y = -log10(P.Value), label = ID),
+                  size = 3, force = 5)
 
 cefotaxime_plot <- cefotaxime_plot +
   geom_text_repel(data = top_cefotaxime,
-                  mapping = aes(x = logFC, 
-                                y = -log10(P.Value), 
-                                label = rownames(top_cefotaxime)),
-                  size = 2,
-                  force = 3)
+                  mapping = aes(x = logFC, y = -log10(P.Value), label = ID),
+                  size = 3, force = 5)
 
 impipenem_plot <- impipenem_plot +
   geom_text_repel(data = top_impipenem,
-                  mapping = aes(x = logFC, 
-                                y = -log10(P.Value), 
-                                label = rownames(top_impipenem)),
-                  size = 2,
-                  force = 2)
+                  mapping = aes(x = logFC, y = -log10(P.Value), label = ID),
+                  size = 3, force = 5)
 
 ciprofloxacin_plot <- ciprofloxacin_plot +
   geom_text_repel(data = top_ciprofloxacin,
-                  mapping = aes(x = logFC, 
-                                y = -log10(P.Value), 
-                                label = rownames(top_ciprofloxacin)),
-                  size = 2,
-                  force = 2)
+                  mapping = aes(x = logFC, y = -log10(P.Value), label = ID),
+                  size = 3, force = 5)
+
+# Data manipulation -----------------------------------------------------------
+# Adding back in ID column and setting it as first column
+ampicillin_control <- ampicillin_control |>
+  mutate(protein__name = id, Control = "Control", Treatment = "Ampicillin") |>
+  select(Control, Treatment, protein__name, everything())
+
+cefotaxime_control <- cefotaxime_control |>
+  mutate(protein__name = id, Control = "Control", Treatment = "Cefotaxime") |>
+  select(Control, Treatment, protein__name, everything())
+
+impipenem_control <- impipenem_control |>
+  mutate(protein__name = id, Control = "Control", Treatment = "Impipenem") |>
+  select(Control, Treatment, protein__name, everything())
+
+ciprofloxacin_control <- ciprofloxacin_control |>
+  mutate(protein__name = id, Control = "Control", Treatment = "Ciprofloxacin") |>
+  select(Control, Treatment, protein__name, everything())
+
+# Creating an all protein dataset ---------------------------------------------
+all_proteins <- rbind(ampicillin_control, cefotaxime_control, 
+                      impipenem_control, ciprofloxacin_control)
 
 # Exporting -------------------------------------------------------------------
 export_path <- "./03__modeling/2022-10-14__multiple_comparisons/models"
 
 # Exporting data
-sheets <- list("Ampicillin" = ampicillin_control,
-               "Cefotaxime" = cefotaxime_control,
-               "Impipenem" = impipenem_control,
-               "Ciprofloxacin" = ciprofloxacin_control)
+all_proteins <- list("All proteins" = all_proteins,
+                     "Ampicillin" = ampicillin_control,
+                     "Cefotaxime" = cefotaxime_control,
+                     "Impipenem" = impipenem_control,
+                     "Ciprofloxacin" = ciprofloxacin_control)
 
 top_proteins <- list("Ampicillin" = top_ampicillin,
                      "Cefotaxime" = top_cefotaxime,
                      "Impipenem" = top_impipenem,
                      "Ciprofloxacin" = top_ciprofloxacin)
 
-write.xlsx(sheets, file.path(export_path, "results/limma_results.xlsx"),
+write.xlsx(all_proteins, file.path(export_path, "results/limma_results.xlsx"),
            rowNames = TRUE, colNames = TRUE)
 write.xlsx(top_proteins, file.path(export_path, "results/top_proteins.xlsx"),
            rowNames = TRUE, colNames = TRUE)
