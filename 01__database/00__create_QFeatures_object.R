@@ -30,6 +30,11 @@ head(data_raw)
 data_raw <- data_raw[
   which(data_raw$contaminant != '+' & data_raw$reverse != '+'),]
 
+# Removing Tetracycline group ---------------------------------------------
+unique(data_raw$experiment)
+data_raw <- data_raw[!(data_raw$experiment %in% c("Tet2", "Tet3", "Tet4")), ]
+dim(data_raw)
+
 # Creating a unique id, since there are multiple peptides corresponding to the
 # same sequence
 chosen_cols <- c("modified_sequence", "protein", "experiment", "intensity")
@@ -56,13 +61,14 @@ map_names <- list(
   "cef" = "Cefotaxime",
   "imp" = "Impipenem",
   "cip" = "Ciprofloxacin",
-  "cont" = "Control",
-  "tet" = "tet"
+  "cont" = "Control"
+  # "tet" = "Tetracycline"
 )
 group_names <- as.character(map_names[
   tolower(gsub("[0-9]+", "", samples_names))])
 col_data <- DataFrame(group = group_names,
                       replicate = rep(1L:3L, length(map_names)),
+                      sample_names = samples_names,
                       row.names = paste0("Sample_",
                                          seq_len(length(group_names))))
 # Creating a SummarizedExperiment for PSMs level --------------------------
@@ -74,8 +80,8 @@ se_psms <- SummarizedExperiment(assays = list(intensity = m_psms),
 
 # Creating the QFeature object --------------------------------------------
 # fts <- QFeatures(list(psms = se_psms), colData = col_data)
-colnames(pivotted_psms)[5:22] <- rownames(col_data)
-fts <- readQFeatures(table = pivotted_psms, ecol = 5:22, name = "psms")
+colnames(pivotted_psms)[5:19] <- rownames(col_data)
+fts <- readQFeatures(table = pivotted_psms, ecol = 5:19, name = "psms")
 colData(fts) <- col_data
 
 # Aggregate data at peptide level -----------------------------------------
@@ -94,5 +100,6 @@ rowData(fts[[2L]])
 #   values_fn = sum)
 
 # Save the data -----------------------------------------------------------
-saveRDS(object = fts, file = file.path(path_data, "QFeature_obj.rds"))
+saveRDS(object = fts,
+        file = file.path(path_data, "processed_data", "QFeature_obj.rds"))
 
