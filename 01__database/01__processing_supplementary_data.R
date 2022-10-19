@@ -14,7 +14,6 @@ data_raw <- read_xlsx(
 
 
 # Renaming --------------------------------------------------------------------
-
 data_raw <- data_raw |> 
   rename(
     protein__name = `Protein names`,
@@ -47,17 +46,23 @@ data_raw <- data_raw |>
 
 # Pivoting --------------------------------------------------------------------
 data_pivotted <- data_raw |> 
-  select(-c(peptides, protein__name, gene__name, sequence_coverage,
+  select(-c(peptides, protein__name, sequence_coverage,
             molecular_weight, score, intensity, count, sequence_length)) |> 
-  tidyr::pivot_longer(cols = -protein__id) |> 
+  tidyr::pivot_longer(-c(protein__id, gene__name)) |> 
   tidyr::separate(col = name, into = c("variable", "group", "replicate"),
                   sep = "__") |> 
-  select(protein__id, group, replicate, variable, value)
+  select(protein__id, gene__name, group, replicate, variable, value)
+
+# Adding values to new columns
+data_pivotted$group <- rep(c("Ampicillin", "Cefotaxime", "Impipenem", 
+                          "Ciprofloxacin", "Control"), each = 3, times = 945)
+data_pivotted$replicate <- rep(c(1, 2, 3), times = 4725)
+data_pivotted$variable <- rep("lfq", times = 14175)
 
 # Filtering -------------------------------------------------------------------
 data_filter <- data_raw |>
   select(
-    protein__name,
+    protein__id,
     gene__name,
     lqf__Ampicillin__1,
     lqf__Ampicillin__2,
