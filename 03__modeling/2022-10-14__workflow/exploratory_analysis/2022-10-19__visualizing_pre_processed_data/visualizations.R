@@ -37,34 +37,39 @@ data_pivotted <- dplyr::bind_rows(
   pivotting_data(se = se, i = "log_intensity_imputed"),
   pivotting_data(se = se, i = "log_intensity_normalized"),
   pivotting_data(se = se_fiona, i = "log_intensity")) |> 
-  dplyr::mutate(variable = ifelse(variable == "log_intensity", "Fiona",
-                                  variable))
+  dplyr::mutate(variable = dplyr::case_when(
+    variable == "log_intensity" ~ "Margalit et. al (2022)",
+    variable == "intensity" ~ "Unprocessed intensity",
+    variable == "log_intensity_imputed" ~ "Log2 intensity imputed",
+    variable == "log_intensity_normalized" ~ "Log2 intensity normalized"),
+    variable = forcats::fct_relevel(
+      factor(variable), "Margalit et. al (2022)", "Unprocessed intensity",
+      "Log2 intensity imputed"))
 
 p_densities <- ggplot(data_pivotted, aes(x = value, fill = group,
                                          col = group)) +
   facet_wrap(~variable, scales = "free") +
-  geom_density(alpha = 0.4) +
+  geom_density(alpha = 0.3) +
   geom_rug(show.legend = FALSE) +
   ggtitle("Densities of proteins abundance by variable and group") +
   labs(x = "Abundance", y = "Density", fill = "", col = "")
 save_plot(filename = file.path(path_res, "results", "densities_comparison.png"),
           plot = p_densities, base_height = 7, bg = "white")
 
-proteins_chosen_fiona <- data_pivotted |> 
-  filter(variable == "Fiona") |>
-  pull()
-
 p_densities_appr <- data_pivotted |> 
-  filter(variable %in% c("Fiona", "log_intensity_normalized"),
-         proteins %in% rownames(se_fiona)) |> 
+  dplyr::filter(variable %in% c("Margalit et. al (2022)",
+                         "Log2 intensity normalized"),
+                proteins %in% rownames(se_fiona)) |> 
   ggplot(aes(x = value, fill = variable, col = variable)) +
   facet_wrap(~group) +
   geom_density(alpha = 0.4) +
   geom_rug(show.legend = FALSE) +
-  ggtitle("Comparison of densities abundance between preprocessing approaches") +
-  labs(x = "Abundance", y = "Density", fill = "", col = "")
+  ggtitle("Comparison of densities abundance between processing approaches") +
+  labs(x = "Abundance", y = "Density", fill = "", col = "") +
+  scale_x_continuous(breaks = scales::pretty_breaks(6)) +
+  scale_y_continuous(breaks = scales::pretty_breaks(6))
 save_plot(filename = file.path(path_res, "results",
-                               "densities_comparison_preprocessing.png"),
+                               "densities_comparison_processing.png"),
           plot = p_densities_appr, base_height = 7, bg = "white")
 
 
@@ -85,15 +90,15 @@ attr(pca_fiona, "percentVar")
 tb <- dplyr::as_tibble(pca_non_normalized) |>
   dplyr::mutate(sample = rownames(pca_non_normalized),
                 group = colData(se)$group,
-                measure = "Unnormalized") |>
+                measure = "Log2 intensity imputed") |>
   dplyr::bind_rows(
     dplyr::as_tibble(pca_normalized) |>
       dplyr::mutate(group = colData(se)$group,
-                    measure = "Normalized")) |>
+                    measure = "Log2 intensity normalized")) |>
   dplyr::bind_rows(
     dplyr::as_tibble(pca_fiona) |>
       dplyr::mutate(group = colData(se_fiona)$group,
-                    measure = "Fiona"))
+                    measure = "Margalit et. al (2022)"))
 
 p_pca <- ggplot(tb, aes(x = PC1, y = PC2, col = group)) +
   facet_wrap(~measure, ncol = 1) +
@@ -120,15 +125,15 @@ colnames(umap_non_normalized) <- colnames(umap_normalized) <- colnames(
 
 tb_umap <- dplyr::as_tibble(umap_non_normalized) |>
   dplyr::mutate(group = colData(se)$group,
-                measure = "Unnormalized") |>
+                measure = "Log2 intensity imputed") |>
   dplyr::bind_rows(
     dplyr::as_tibble(umap_normalized) |>
       dplyr::mutate(group = colData(se)$group,
-                    measure = "Normalized")) |>
+                    measure = "Log2 intensity normalized")) |>
   dplyr::bind_rows(
     dplyr::as_tibble(umap_fiona) |>
       dplyr::mutate(group = colData(se_fiona)$group,
-                    measure = "Fiona"))
+                    measure = "Margalit et. al (2022)"))
 
 p_umap <- ggplot(tb_umap, aes(x = UMAP_1, y = UMAP_2, col = group)) +
   facet_wrap(~measure, ncol = 1) +
