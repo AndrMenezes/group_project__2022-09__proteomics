@@ -47,8 +47,9 @@ col_data <- DataFrame(group = group_names,
 row_data <- data_raw[, c(1:3)]
 mat <- as.matrix(data_raw[, -c(1:3)])
 colnames(mat) <- NULL
+rownames(mat) <- data_raw$protein__id
 se <- SummarizedExperiment(assays = list(log_intensity = mat),
                            rowData = row_data, colData = col_data)
 
 saveRDS(object = se,
-        file = file.path(path_data, "processed_data", "se_processed.rds"))
+        file = file.path(path_data, "processed_data", "se_margalit.rds"))
