@@ -1,7 +1,7 @@
 suppressMessages(library(QFeatures))
 library(dplyr)
 library(tidyr)
-library(effsize) # For calculating Hedges G
+library(effectsize)
 
 path_data <- "./03__modeling/2022-10-14__workflow/processing/processed_data"
 
@@ -17,22 +17,35 @@ colData(se_protein) <- colData(fts)
 normalised_proteins <- assay(x = se_protein, i = "log_intensity_normalized")
 colnames(normalised_proteins) <- se_protein@colData@listData[["group"]]
 
-# Calculation of effect sizes -------------------------------------------------
-ampicillin <- apply(normalised_proteins, 1, function(x)
-  cohen.d(x[1:3], x[10:12], hedges = TRUE)$estimate
-)
+# Calculating Hedges G --------------------------------------------------------
+ampicillin <- apply(normalised_proteins, 1, function(x) 
+  hedges_g(x[1:3], x[10:12])$Hedges_g)
+
 cefotaxime <- apply(normalised_proteins, 1, function(x)
-  cohen.d(x[4:6], x[10:12], hedges = TRUE)$estimate
-)
+  hedges_g(x[4:6], x[10:12])$Hedges_g)
 
 ciprofloxacin <- apply(normalised_proteins, 1, function(x)
-  cohen.d(x[7:9], x[10:12], hedges = TRUE)$estimate
-)
+  hedges_g(x[7:9], x[10:12])$Hedges_g)
 
 impipenem <- apply(normalised_proteins, 1, function(x)
-  cohen.d(x[13:15], x[10:12], hedges = TRUE)$estimate
-)
+  hedges_g(x[13:15], x[10:12])$Hedges_g)
 
 # Creating matrix with all values
 effect_sizes <- data.frame(ampicillin, cefotaxime, ciprofloxacin, impipenem)
 effect_sizes <- as.matrix(effect_sizes)
+
+######################################
+#       Hedges G Formula
+######################################
+
+# G = (M1 - M2) / SD_pooled
+
+# M1          = Group 1 Mean
+# M2          = Group 2 Mean
+# SD_pooled   = Pooled and Weighted Standard Deviation 
+
+# Pooled Standard Deviation formula -------------------------------------------
+# SD_pooled = sqrt((sd1)^2 + (sd2)^2) / 2)
+
+# sd1   = Group 1 Standard Deviation
+# sd2   = Group 2 Standard Deviation
