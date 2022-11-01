@@ -38,14 +38,20 @@ effect_sizes <- as.matrix(effect_sizes)
 #       Hedges G Formula
 ######################################
 
-# G = (M1 - M2) / SD_pooled
+# Hedges G = Cohen's D * (1 - (3 / 4 * (n1 + n1) - 9))
 
+# Cohen's D   = (M1 - M2) / SD_pooled
+# n1          = Group 1 Sample Size
+# n2          = Group 2 Sample Size
+# -----------------------------------------------------------------------------
+
+# Cohen's D   = (M1 - M2) / SD Pooled
 # M1          = Group 1 Mean
 # M2          = Group 2 Mean
-# SD_pooled   = Pooled and Weighted Standard Deviation 
+# SD Pooled   = Pooled and Weighted Standard Deviation 
 
-# Pooled Standard Deviation formula -------------------------------------------
-# SD_pooled = sqrt((sd1)^2 + (sd2)^2) / 2)
+# Pooled Standard Deviation formula
+# SD Pooled = sqrt((sd1)^2 + (sd2)^2) / 2)
 
 # sd1   = Group 1 Standard Deviation
 # sd2   = Group 2 Standard Deviation
