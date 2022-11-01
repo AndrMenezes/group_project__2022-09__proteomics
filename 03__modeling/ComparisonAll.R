@@ -156,7 +156,7 @@ FDR_drug<- FDR("Impipenem")
 FDR_based_drug <- FDRbased("Impipenem")
 # export xlsx
 list_imi <- list("P" = Pdrug, "Pbased" = P_based_drug, "new_P" = newP_drug, "newP_based" = new_Pbased_drug, "FDR" = FDR_drug, "FDR_based" = FDR_based_drug)
-write.xlsx(list_amp, file = "Approaches_Imipenem.xlsx")
+write.xlsx(list_imi, file = "Approaches_Imipenem.xlsx")
 
 # plotting
 
@@ -188,7 +188,7 @@ FDR_drug<- FDR("Cefotaxime")
 FDR_based_drug <- FDRbased("Cefotaxime")
 # export xlsx
 list_cef <- list("P" = Pdrug, "Pbased" = P_based_drug, "new_P" = newP_drug, "newP_based" = new_Pbased_drug, "FDR" = FDR_drug, "FDR_based" = FDR_based_drug)
-write.xlsx(list_amp, file = "Approaches_Cefotaxime.xlsx")
+write.xlsx(list_cef, file = "Approaches_Cefotaxime.xlsx")
 
 # plotting 
 
@@ -220,7 +220,7 @@ FDR_drug<- FDR("Ciprofloxacin")
 FDR_based_drug <- FDRbased("Ciprofloxacin")
 # export xlsx
 list_cip <- list("P" = Pdrug, "Pbased" = P_based_drug, "new_P" = newP_drug, "newP_based" = new_Pbased_drug, "FDR" = FDR_drug, "FDR_based" = FDR_based_drug)
-write.xlsx(list_amp, file = "Approaches_Ciprofloxacin.xlsx")
+write.xlsx(list_cip, file = "Approaches_Ciprofloxacin.xlsx")
 
 # plotting
 
@@ -255,11 +255,11 @@ tot
 save_plot(file.path("./", "ProteinDE_BarChart.png"), tot)
 
 # see topGene | choose approaches and treatment
-P("Ciprofloxacin", "yes")$Gene
+FDR("Ciprofloxacin", "yes")$Gene
 P("Ampicillin", "yes")$Gene
 
 # see topGene | choose approaches and treatment
 P("Ampicillin", "yes")$Protein
 
 # Comparison between two selected approaches -- Common Genes
-intersect((P("Ciprofloxacin", "yes"))$Gene, (P("Ampicillin", "yes")$Gene))
+intersect((P("Ciprofloxacin", "yes"))$Gene, (FDR("Ciprofloxacin", "yes")$Gene))
