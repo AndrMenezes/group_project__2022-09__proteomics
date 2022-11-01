@@ -2,7 +2,7 @@
 #' function.
 suppressMessages(library(QFeatures))
 
-path_data <- "./01__database/"
+path_data <- "./01__database/processed_data"
 path_res <- "03__modeling/2022-10-14__workflow/processing/processed_data"
 
 # Import data -------------------------------------------------------------

@@ -1,5 +1,5 @@
 #' 2022-10-14: Perform proteins selection based on var-mean relationship.
-#' We use the `ModelGeneVar` function from {scran} package.
+#' We use the `modelGeneVar` function from {scran} package.
 library(ggplot2)
 library(cowplot)
 theme_set(
@@ -28,40 +28,41 @@ dec_margalit <- scran::modelGeneVar(x = se_margalit,
 dec_ours[order(dec_ours$bio, decreasing = TRUE), ]
 dec_margalit[order(dec_margalit$bio, decreasing = TRUE), ]
 
+# Visualizing the model ---------------------------------------------------
+plot_mean_variance <- function(dec) {
+  ggplot(dplyr::as_tibble(dec), aes(x = mean, y = total)) +
+    geom_point(size = 2, alpha = 0.5) +
+    geom_line(aes(y = tech), size = 1.5, col = "blue") +
+    scale_x_continuous(breaks = scales::pretty_breaks(8)) +
+    scale_y_continuous(breaks = scales::pretty_breaks(8)) +
+    labs(x = "Mean of the log(intensity) normalized",
+         y = "Variance of the log(intensity) normalized")
+}
+plot_mean_variance(dec = dec_ours)
+plot_mean_variance(dec = dec_margalit)
+
+chosen <- ((dec_ours$mean < 22) | (dec_ours$mean > 29))
+to_remove <- rownames(dec_ours)[chosen]
+print(to_remove)
+table(chosen)
+rowData(fts[["proteins"]][to_remove, ])
+assay(fts[["proteins"]][to_remove, ], "intensity")
+assay(fts[["proteins"]][to_remove, ], "log_intensity_normalized")
+
+# Removing the two proteins with lower (greater) mean (m < 22 and m > 29) 
+chosen <- !(rownames(fts[["proteins"]]) %in% to_remove)
+fts[["proteins"]] <- fts[["proteins"]][chosen, ]
+
+dec_ours_2 <- scran::modelGeneVar(x = fts[["proteins"]],
+                                  assay.type = "log_intensity_normalized")
+plot_mean_variance(dec = dec_ours_2)
 
 # Concatenate the decomposition into SE object ----------------------------
 if (all.equal(rownames(se_margalit), rownames(dec_margalit)))
   rowData(se_margalit) <- cbind(rowData(se_margalit), dec_margalit)
-if (all.equal(rownames(fts[["proteins"]]), rownames(dec_ours)))
-  rowData(fts[["proteins"]]) <- cbind(rowData(fts[["proteins"]]), dec_ours)
+if (all.equal(rownames(fts[["proteins"]]), rownames(dec_ours_2)))
+  rowData(fts[["proteins"]]) <- cbind(rowData(fts[["proteins"]]), dec_ours_2)
 
-# Visualizing the model ---------------------------------------------------
-ggplot(dplyr::as_tibble(rowData(fts[["proteins"]])),
-       aes(x = mean, y = total)) +
-  geom_point(size = 2, alpha = 0.5) +
-  geom_line(aes(y = tech), size = 1.5, col = "blue") +
-  scale_x_continuous(breaks = scales::pretty_breaks(8)) +
-  scale_y_continuous(breaks = scales::pretty_breaks(8)) +
-  labs(x = "Mean of the log(intensity) normalized",
-       y = "Variance of the log(intensity)\n normalized")
-
-chosen <- ((rowData(fts[["proteins"]])$mean < 22) |
-             (rowData(fts[["proteins"]])$mean > 29))
-table(chosen)
-rowData(fts[["proteins"]][chosen, ])
-assay(fts[["proteins"]][chosen, ], "log_intensity_normalized")
-
-dec_ours_2 <- scran::modelGeneVar(x = fts[["proteins"]][!chosen, ],
-                                  assay.type = "log_intensity_normalized")
-
-ggplot(dplyr::as_tibble(dec_ours_2),
-       aes(x = mean, y = total)) +
-  geom_point(size = 2, alpha = 0.5) +
-  geom_line(aes(y = tech), size = 1.5, col = "blue") +
-  scale_x_continuous(breaks = scales::pretty_breaks(8)) +
-  scale_y_continuous(breaks = scales::pretty_breaks(8)) +
-  labs(x = "Mean of the log(intensity) normalized",
-       y = "Variance of the log(intensity)\n normalized")
 
 # Save the objects --------------------------------------------------------
 saveRDS(object = fts, file = file.path(path_data, "fts_processsed.rds"))
