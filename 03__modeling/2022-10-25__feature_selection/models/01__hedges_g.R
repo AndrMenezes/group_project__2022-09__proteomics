@@ -38,7 +38,7 @@ effect_sizes <- as.matrix(effect_sizes)
 #       Hedges G Formula
 ######################################
 
-# Hedges G = Cohen's D * (1 - (3 / 4 * (n1 + n1) - 9))
+# Hedges G = Cohen's D * (1 - (3 / (4 * (n1 + n1) - 9)))
 
 # Cohen's D   = (M1 - M2) / SD_pooled
 # n1          = Group 1 Sample Size
@@ -55,3 +55,32 @@ effect_sizes <- as.matrix(effect_sizes)
 
 # sd1   = Group 1 Standard Deviation
 # sd2   = Group 2 Standard Deviation
+
+######################################
+#           Sanity Check
+######################################
+# Using Formula on Protein 1 for Ampicillin vs. Control ------------------------
+# Getting means
+m_1 <- mean(normalised_proteins[1, 1:3])
+m_2 <- mean(normalised_proteins[1, 10:12])
+
+# Getting standard deviations & squaring
+sd_1 <- sd(normalised_proteins[1, 1:3])
+sd_2 <- sd(normalised_proteins[1, 10:12])
+
+sd_1 <- sd_1^2
+sd_2 <- sd_2^2
+
+# Calculating pooled standard deviation
+pooled_sd <- sqrt((sd_1 + sd_2)/2)
+
+# Calculating Cohen's D
+D <- (m_1 - m_2) / pooled_sd
+
+# Applying Hedges Correction
+G <- D * (1 - (3/(4*(3+3) - 9)))
+
+G
+
+# Using Hedges G function on Protein 1 for Ampicillin vs. Control -------------
+hedges_g(normalised_proteins[1, 1:3], normalised_proteins[1, 10:12])$Hedges_g
