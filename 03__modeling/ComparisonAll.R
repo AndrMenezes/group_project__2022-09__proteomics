@@ -5,6 +5,7 @@ library(ggplot2)
 library(ggrepel)
 library(cowplot)
 library(tidyverse)
+library(openxlsx)
 
 # Reading Data ------------------------------------------------------------
 path_data <- "./"
@@ -116,21 +117,16 @@ Approaches <- c("P", "Pbased", "newP", "newPbased", "FDR", "FDRbased")
 Ampicillin_proteinDE <- cbind(Approaches, Ampicillin)
 Ampicillin_proteinDE <- as.data.frame(Ampicillin_proteinDE)
 
-# #create a summary table for topGene and protein
-# standard_Pvalue <- P("Ampicillin", "yes") |> select(Protein, Gene)
-# standard_Pvalue_based <- Pbased("Ampicillin", "yes") |> select(Protein, Gene)
-# new_Pvalue <- newP("Ampicillin", "yes") |> select(Protein, Gene)
-# new_Pvalue_based <- newPbased("Ampicillin", "yes") |> select(Protein, Gene)
-# FDR_ <- FDR("Ampicillin", "yes") |> select(Protein, Gene)
-# FDR_based <- FDRbased("Ampicillin", "yes") |> select(Protein, Gene)
-# DE <- rbind(standard_Pvalue, standard_Pvalue_based, new_Pvalue, new_Pvalue_based, FDR_, FDR_based)
-# ###approach <- rep('standard_Pvalue', 'standard_Pvalue_based', 'new_Pvalue', 'new_Pvalue_based', c(nrow(standard_Pvalue), nrow(standard_Pvalue_based), nrow(new_Pvalue), nrow(new_Pvalue_based)))
-# cbind(approach, DE)
-# write.csv(
-#   x = as.data.frame(topProtein),
-#   file = file.path(path_data, "DE_Ampicillin.csv"),
-#   row.names = FALSE)
-
+# summary table
+Pdrug <- P("Ampicillin")
+P_based_drug <- Pbased("Ampicillin")
+newP_drug <- newP("Ampicillin")
+new_Pbased_drug <- newPbased("Ampicillin")
+FDR_drug<- FDR("Ampicillin")
+FDR_based_drug <- FDRbased("Ampicillin")
+# export xlsx
+list_amp <- list("P" = Pdrug, "Pbased" = P_based_drug, "new_P" = newP_drug, "newP_based" = new_Pbased_drug, "FDR" = FDR_drug, "FDR_based" = FDR_based_drug)
+                 write.xlsx(list_amp, file = "Approaches_Ampiccilin.xlsx")
 # plotting
 p <- ggplot(Ampicillin_proteinDE, aes(x=Approaches, y=as.numeric(Ampicillin))) + 
   geom_bar(position = position_dodge(), stat="identity", width=.5, fill="tomato3") + 
@@ -147,9 +143,20 @@ save_plot(file.path("./", "Ampicillin_BarChart.png"), p)
 
 Impipenem_proteinDE <- tibble(nrow(P("Impipenem")), nrow(Pbased("Impipenem")), nrow(newP("Impipenem")), nrow(newPbased("Impipenem")), nrow(FDR("Impipenem")), nrow(FDRbased("Impipenem")))
 Imipenem <- as.numeric(Impipenem_proteinDE)
-Approaches <- c("P", "Pbased", "newP", "newPbased", "FDR", "FDRbased")
+Aproaches <- c("P", "Pbased", "newP", "newPbased", "FDR", "FDRbased")
 Impipenem_proteinDE <- cbind(Approaches, Imipenem)
 Impipenem_proteinDE <- as.data.frame(Impipenem_proteinDE)
+
+# summary table
+Pdrug <- P("Impipenem")
+P_based_drug <- Pbased("Impipenem")
+newP_drug <- newP("Impipenem")
+new_Pbased_drug <- newPbased("Impipenem")
+FDR_drug<- FDR("Impipenem")
+FDR_based_drug <- FDRbased("Impipenem")
+# export xlsx
+list_imi <- list("P" = Pdrug, "Pbased" = P_based_drug, "new_P" = newP_drug, "newP_based" = new_Pbased_drug, "FDR" = FDR_drug, "FDR_based" = FDR_based_drug)
+write.xlsx(list_amp, file = "Approaches_Imipenem.xlsx")
 
 # plotting
 
@@ -172,6 +179,17 @@ Approaches <- c("P", "Pbased", "newP", "newPbased", "FDR", "FDRbased")
 Cefotaxime_proteinDE <- cbind(Approaches, Cefotaxime)
 Cefotaxime_proteinDE <- as.data.frame(Cefotaxime_proteinDE)
 
+# summary table
+Pdrug <- P("Cefotaxime")
+P_based_drug <- Pbased("Cefotaxime")
+newP_drug <- newP("Cefotaxime")
+new_Pbased_drug <- newPbased("Cefotaxime")
+FDR_drug<- FDR("Cefotaxime")
+FDR_based_drug <- FDRbased("Cefotaxime")
+# export xlsx
+list_cef <- list("P" = Pdrug, "Pbased" = P_based_drug, "new_P" = newP_drug, "newP_based" = new_Pbased_drug, "FDR" = FDR_drug, "FDR_based" = FDR_based_drug)
+write.xlsx(list_amp, file = "Approaches_Cefotaxime.xlsx")
+
 # plotting 
 
 p <- ggplot(Cefotaxime_proteinDE, aes(x=Approaches, y=as.numeric(Cefotaxime))) + 
@@ -192,6 +210,17 @@ Ciprofloxacin <- as.numeric(Ciprofloxacin_proteinDE)
 Approaches <- c("P", "Pbased", "newP", "newPbased", "FDR", "FDRbased")
 Ciprofloxacin_proteinDE <- cbind(Approaches, Ciprofloxacin)
 Ciprofloxacin_proteinDE <- as.data.frame(Ciprofloxacin_proteinDE)
+
+# summary table
+Pdrug <- P("Ciprofloxacin")
+P_based_drug <- Pbased("Ciprofloxacin")
+newP_drug <- newP("Ciprofloxacin")
+new_Pbased_drug <- newPbased("Ciprofloxacin")
+FDR_drug<- FDR("Ciprofloxacin")
+FDR_based_drug <- FDRbased("Ciprofloxacin")
+# export xlsx
+list_cip <- list("P" = Pdrug, "Pbased" = P_based_drug, "new_P" = newP_drug, "newP_based" = new_Pbased_drug, "FDR" = FDR_drug, "FDR_based" = FDR_based_drug)
+write.xlsx(list_amp, file = "Approaches_Ciprofloxacin.xlsx")
 
 # plotting
 
@@ -227,9 +256,10 @@ save_plot(file.path("./", "ProteinDE_BarChart.png"), tot)
 
 # see topGene | choose approaches and treatment
 P("Ciprofloxacin", "yes")$Gene
+P("Ampicillin", "yes")$Gene
 
 # see topGene | choose approaches and treatment
-P("Ciprofloxacin", "yes")$Protein
+P("Ampicillin", "yes")$Protein
 
 # Comparison between two selected approaches -- Common Genes
-intersect((P("Ciprofloxacin", "yes"))$Gene, (Pbased("Ciprofloxacin", "yes")$Gene))
+intersect((P("Ciprofloxacin", "yes"))$Gene, (P("Ampicillin", "yes")$Gene))
