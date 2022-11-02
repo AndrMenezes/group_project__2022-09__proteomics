@@ -138,7 +138,7 @@ ciprofloxacin_plot <- ciprofloxacin_plot +
                   force = 2)
 
 # Exporting -------------------------------------------------------------------
-export_path <- "./03__modeling/2022-10-14__multiple_comparisons/models"
+export_path <- "./03__modeling/2022-10-14__multiple_comparisons/models/orginal_data/"
 
 # Exporting data
 sheets <- list("Ampicillin" = ampicillin_control,
