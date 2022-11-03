@@ -1,11 +1,7 @@
 # 2022-11-02 Using Limma on the QFeatures Log Intensity Normalized Data
 suppressMessages(library(QFeatures))
 suppressMessages(library(dplyr))
-library(tidyr)
 library(limma)
-library(ggplot2)
-library(ggrepel)
-library(cowplot)
 
 path_data <- "./03__modeling/2022-10-14__workflow/processing/processed_data"
 
