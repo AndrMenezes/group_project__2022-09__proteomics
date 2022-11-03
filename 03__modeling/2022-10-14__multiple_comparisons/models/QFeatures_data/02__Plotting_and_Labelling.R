@@ -9,8 +9,6 @@ path_data <- "./03__modeling/2022-10-14__workflow/processing/processed_data"
 
 fts <- readRDS(file.path(path_data, "fts_processed.rds"))
 
-path_data <- "./03__modeling/2022-10-14__workflow/processing/processed_data"
-
 # Selecting and plotting only the variable proteins ---------------------------
 # Focusing on the RowData
 all_results <- data.frame(rowData(fts[["proteins"]]))
