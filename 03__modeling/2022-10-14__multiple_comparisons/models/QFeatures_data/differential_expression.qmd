@@ -1,0 +1,449 @@
+---
+title: "Differential expression analysis"
+author: "André F. B. Menezes, Beatrice Tropea"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+toc: true
+number-sections: true
+format:
+  html:
+    html-math-method: katex
+    code-tools: true
+    self-contained: true
+    code-fold: true
+    code-summary: "Show the code"
+execute:
+  warning: false
+---
+
+
+# Introduction {#sec-intro}
+
+In this report we will perform a differential expression analysis of proteins with a biological relevance exctracted . 
+
+```{r}
+fts <- readRDS(file = "../data/fts_processed.rds")
+fts[["proteins"]]
+rowData(fts[["proteins"]])
+se <- fts[["proteins"]]
+mean(assay(se, "log2_normalized"))
+# Filters out the variable proteins
+chosen_proteins <- rownames(se)[rowData(se)$bio > 0]
+dim(se)
+length(chosen_proteins)
+```
+## Perform DE analysis using limma package
+```{r}
+se_curr <- se[chosen_proteins, ]
+assay(se)
+g <- factor(colData(se_curr)$group)
+g <- relevel(g, ref = "Control")
+
+design_matrix <- model.matrix(~ g)
+colnames(design_matrix) <- levels(g)
+
+# Fitting linear model --------------------------------------------------------
+fit <- limma::lmFit(object = assay(se_curr, "log2_normalized"), design_matrix)
+fit <- limma::eBayes(fit)
+
+ampicillin_control <- limma::topTable(fit, coef = "Ampicillin", number = Inf,
+                               sort.by = "none", confint = TRUE)
+cefotaxime_control <- limma::topTable(fit, coef = "Cefotaxime", number = Inf,
+                               sort.by = "none", confint = TRUE)
+impipenem_control <- limma::topTable(fit, coef = "Impipenem", number = Inf,
+                              sort.by = "none", confint = TRUE)
+ciprofloxacin_control <- limma::topTable(fit, coef = "Ciprofloxacin", number = Inf,
+                                  sort.by = "none", confint = TRUE)
+
+```
+
+```{r}
+suppressMessages(library(QFeatures))
+suppressMessages(library(dplyr))
+library(tidyr)
+library(limma)
+
+# Selecting necessary columns and renaming them
+amp <- ampicillin_control |>
+  select(logFC, P.Value, adj.P.Val) |>
+  rename("logFC" = logFC, "P_value" = P.Value, 
+         "FDR" = adj.P.Val)
+Protein <- row.names(amp)
+amp <- cbind(Protein, 'Treatment'="Ampicillin", amp)
+
+cef <- cefotaxime_control |>
+  select(logFC, P.Value, adj.P.Val) |>
+  rename("logFC" = logFC, "P_value" = P.Value, 
+         "FDR" = adj.P.Val)
+Protein <- row.names(cef)
+cef <- cbind(Protein, 'Treatment'="Cefotaxime", cef)
+
+imp <- impipenem_control |>
+  select(logFC, P.Value, adj.P.Val) |>
+  rename("logFC" = logFC, "P_value" = P.Value, 
+         "FDR" = adj.P.Val)
+Protein <- row.names(imp)
+imp <- cbind(Protein, 'Treatment'="Impipenem", imp)
+
+cip <- ciprofloxacin_control |>
+  select(logFC, P.Value, adj.P.Val) |>
+  rename("logFC" = logFC, "P_value" = P.Value, 
+         "FDR" = adj.P.Val)
+Protein <- row.names(cip)
+cip <- cbind(Protein, 'Treatment'="Ciprofloxacin", cip)
+
+# Creating data frame
+limma_data <- rbind(amp, cef, imp, cip)
+
+```
+
+```{r}
+# exporting data
+library(openxlsx)
+write.xlsx(
+  x = limma_data,
+  file = file.path("./", "Qfeatures_Limma.xlsx"),
+  rowNames = FALSE)
+```
+
+# VolcanoPlot
+
+```{R}
+library(ggplot2)
+library(ggrepel)
+#Ampicillin
+data_summarized <- limma_data |>
+  filter(Treatment %in% c("Ampicillin")) |>
+  select(Protein, logFC, P_value)
+
+  dfa1 <-  data_summarized %>%
+  filter((logFC) >= (0.5) & (P_value) <= (0.05)) %>%
+  arrange(desc(logFC)) %>%
+  head(10)
+
+dfa2 <-  data_summarized %>%
+  filter(((logFC) <= -(0.5)) & (P_value) <= (0.05)) %>%
+  arrange(logFC) %>%
+  head(10)
+
+dfa <- rbind(dfa1, dfa2[ ,])
+
+p1 <- ggplot(data_summarized, aes((logFC), -log(P_value,10)), options(ggrepel.max.overlaps = Inf)) + # -log10 conversion
+  geom_point(size = 0.005, col="gray") +
+  xlab(expression("log"[2]*"FC")) + 
+  ylab(expression("-log"[10]*"pvalue")) +
+  ggtitle("Control Vs Ampicillin") +
+  geom_vline(xintercept=c(-0.5, 0.5), linetype = "dashed", col="black") +
+  geom_hline(yintercept=-log10(0.05), linetype = "dashed", col="black") +
+  geom_point(data = dfa,
+             shape = 21,
+             size = 0.5,
+             fill = "red",
+             colour = "red") +
+  geom_text_repel(data=dfa,
+                  aes(x=logFC,
+                      y=-log(P_value,10),
+                      label=Protein),
+                  size=1.5,
+                  color="black") +
+  theme_bw()
+
+save_plot(file.path("./", "QVolcanoPlot_Ampicillin.png"), p1)
+```
+
+```{R}
+#Imipenem
+
+data_summarized2 <- limma_data |>
+  filter(Treatment %in% c("Impipenem")) |>
+  select(Protein, logFC, P_value)
+
+  dfi1 <-  data_summarized2 %>%
+  filter((logFC) >= (0.5) & (P_value) <= (0.05)) %>%
+  arrange(desc(logFC)) %>%
+  head(10)
+
+dfi2 <-  data_summarized2 %>%
+  filter(((logFC) <= -(0.5)) & (P_value) <= (0.05)) %>%
+  arrange(logFC) %>%
+  head(10)
+
+dfi <- rbind(dfi1, dfi2[ ,])
+  
+p2 <- ggplot(data_summarized2, aes((logFC), -log(P_value,10)), options(ggrepel.max.overlaps = Inf)) + # -log10 conversion
+  geom_point(size = 0.005, col="gray") +
+  xlab(expression("log"[2]*"FC")) +
+  ylab(expression("-log"[10]*"pvalue")) +
+  ggtitle("Control Vs Imipenem") +
+  geom_vline(xintercept=c(-0.5, 0.5), linetype = "dashed", col="black") +
+  geom_hline(yintercept=-log10(0.05), linetype = "dashed", col="black") +
+  geom_point(data = dfi,
+             shape = 21,
+             size = 0.5,
+             fill = "red",
+             colour = "red") +
+  geom_text_repel(data=dfi,
+                  aes(x=logFC,
+                      y=-log(P_value,10),
+                      label=Protein),
+                  size=1.5,
+                  color="black") +
+  theme_bw()
+
+save_plot(file.path("./", "QVolcanoPlot_Imipenem.png"), p2)
+```
+```{R}
+#Cefotaxime
+
+data_summarized3 <- limma_data |>
+  filter(Treatment %in% c("Cefotaxime")) |>
+  select(Protein, logFC, P_value)
+
+  dfce1 <-  data_summarized3 %>%
+  filter((logFC) >= (0.5) & (P_value) <= (0.05)) %>%
+  arrange(desc(logFC)) %>%
+  head(10)
+
+dfce2 <-  data_summarized3 %>%
+  filter(((logFC) <= -(0.5)) & (P_value) <= (0.05)) %>%
+  arrange(logFC) %>%
+  head(10)
+
+dfce <- rbind(dfce1, dfce2[ ,])
+
+p3 <- ggplot(data_summarized3, aes((logFC), -log(P_value,10)), options(ggrepel.max.overlaps = Inf)) + # -log10 conversion
+  geom_point(size = 0.005, col="gray") +
+  xlab(expression("log"[2]*"FC")) +
+  ylab(expression("-log"[10]*"pvalue")) +
+  ggtitle("Control Vs Cefotaxime") +
+  geom_vline(xintercept=c(-0.5, 0.5), linetype = "dashed", col="black") +
+  geom_hline(yintercept=-log10(0.05), linetype = "dashed", col="black") +
+  geom_point(data = dfce,
+             shape = 21,
+             size = 0.5,
+             fill = "red",
+             colour = "red") +
+  geom_text_repel(data=dfce,
+                  aes(x=logFC,
+                      y=-log(P_value,10),
+                      label=Protein),
+                  size=1.5,
+                  color="black") +
+  theme_bw()
+
+save_plot(file.path("./", "QVolcanoPlot_Cefotaxime.png"), p3)
+```
+          
+```{R}
+#Ciprofloxacin
+data_summarized4 <- limma_data |>
+  filter(Treatment %in% c("Ciprofloxacin")) |>
+  select(Protein, logFC, P_value)
+
+  dfci1 <-  data_summarized %>%
+  filter((logFC) >= (0.5) & (P_value) <= (0.05)) %>%
+  arrange(desc(logFC)) %>%
+  head(10)
+
+dfci2 <-  data_summarized %>%
+  filter(((logFC) <= -(0.5)) & (P_value) <= (0.05)) %>%
+  arrange(logFC) %>%
+  head(10)
+
+dfci <- rbind(dfci1, dfci2[ ,])
+  
+p4 <- ggplot(data_summarized, aes((logFC), -log(P_value,10)), options(ggrepel.max.overlaps = Inf)) + # -log10 conversion
+  geom_point(size = 0.005, col="gray") +
+  xlab(expression("log"[2]*"FC")) +
+  ylab(expression("-log"[10]*"pvalue")) +
+  ggtitle("Control Vs Ciprofloxacin") +
+  geom_vline(xintercept=c(-0.5, 0.5), linetype = "dashed", col="black") +
+  geom_hline(yintercept=-log10(0.05), linetype = "dashed", col="black") +
+  geom_point(data = dfci,
+             shape = 21,
+             size = 0.5,
+             fill = "red",
+             colour = "red") +
+  geom_text_repel(data=dfci,
+                  aes(x=logFC,
+                      y=-log(P_value,10),
+                      label=Protein),
+                  size=1.5,
+                  color="black") +
+  theme_bw()
+
+save_plot(file.path("./", "QVolcanoPlot_Ciprofloxacin.png"), p4)
+```
+
+# Comparison with results showed in the paper '..'
+
+```{R}
+library(readxl)
+library(writexl)
+dataFiona <- read_xlsx(file.path("./", "all_results.xlsx"))
+
+# ----USAGE: to perform the selected analysis -> corresponding function(treatment)
+#   in which treatment= "Ampicillin"|"Impipenem"|"Cefotaxime"|"Ciprofloxacin"------------
+
+### perform traditional analysis with |logFC| > 0.5 & pvalue < 0.05 (sorting by pvalue)
+P <- function(treatment, data, name="no") {
+  data_filtered <- data |>
+    filter(Treatment %in% c(treatment)) |>
+    select(c(Protein, logFC, P_value))
+
+df1 <- data_filtered %>%
+  filter(((logFC) >= (0.5)) & ((P_value) <= (0.05))) %>%
+  arrange(P_value)
+  if (name=="yes") {df1 <- df1 %>% head(10)}
+
+df2 <-  data_filtered %>%
+  filter(((logFC) <= -(0.5)) & ((P_value) <= (0.05))) %>%
+  arrange(P_value)
+  if (name=="yes") {df2 <- df2 %>% head(10)}
+
+df <- rbind(df1, df2[ ,])
+return(df)}
+
+### perform traditional analysis with |logFC| > 0.5 & pvalue < 0.05 (sorting by logFC - paper)
+Original <- function(treatment, data, name="no") {
+  data_filtered <- data |>
+    filter(Treatment %in% c(treatment)) |>
+    select(c(Protein, logFC, P_value))
+  
+  df1 <- data_filtered %>%
+    filter(((logFC) >= (0.5)) & ((P_value) <= (0.05))) %>%
+    arrange(desc(logFC))
+  if (name=="yes") {df1 <- df1 %>% head(10)}
+  
+  df2 <-  data_filtered %>%
+    filter(((logFC) <= -(0.5)) & ((P_value) <= (0.05))) %>%
+    arrange(logFC)
+  if (name=="yes") {df2 <- df2 %>% head(10)}
+  
+  df <- rbind(df1, df2[ ,])
+  return(df)}
+
+### perform more restrictive analysis with |logFC| > 0.5 & pvalue < 0.005
+newP <- function(treatment, data, name="no") {
+  data_filtered <- data |>
+    filter(Treatment %in% c(treatment)) |>
+    select(c(Protein, logFC, P_value))
+  
+df1 <- data_filtered  %>%
+  filter((logFC) >= (0.5) & (P_value) <= (0.005)) %>%
+  arrange(desc(logFC))
+if (name=="yes") {df1 <- df1 %>% head(10)}
+
+df2 <-  data_filtered %>%
+  filter(((logFC) <= -(0.5)) & (P_value) <= (0.005)) %>%
+  arrange(logFC) 
+if (name=="yes") {df2 <- df2 %>% head(10)}
+
+df <- rbind(df1, df2[ ,])
+return(df)}
+
+### perform analysis with |logFC| > 0.5 & p value adjustment (FDR < 0.1)
+FDR <- function(treatment, data, name="no") {
+  data_filtered <- data |>
+    filter(Treatment %in% c(treatment)) |>
+    select(c(Protein, logFC, FDR))
+  
+df1 <-  data_filtered %>%
+  filter((logFC) >= (0.5) & (FDR) <= (0.05)) %>%
+  arrange(FDR)
+if (name=="yes") {df1 <- df1 %>% head(10)}
+
+df2 <-  data_filtered %>%
+  filter(((logFC) <= -(0.5)) & (FDR) <= (0.1)) %>%
+  arrange(FDR)
+if (name=="yes") {df2 <- df2 %>% head(10)}
+
+df <- rbind(df1, df2[ ,])
+return(df)}
+```
+
+## Protein Differential Expressed in each Treatment based on standard cutoff of Pvalue <= 0.05 & |logFC| >= 0.5 - Bar Chart
+
+```{R}
+# Fiona Rules----------------------------------------------------------------------------------
+
+Ampicillin <- as.numeric(tibble(nrow(P("Ampicillin", dataFiona)), nrow(P("Ampicillin", limma_data))))
+Approaches <- c("FionaData", "newData")
+Ampicillin_proteinDE_P <- cbind(Approaches, Ampicillin)
+Ampicillin_proteinDE_P <- as.data.frame(Ampicillin_proteinDE_P)
+
+Impipenem <- as.numeric(tibble(nrow(P("Impipenem", dataFiona)), nrow(P("Impipenem", limma_data))))
+Approaches <- c("FionaData", "newData")
+Impipenem_proteinDE_P <- cbind(Approaches, Impipenem)
+Impipenem_proteinDE_P <- as.data.frame(Impipenem_proteinDE_P)
+
+Cefotaxime <- as.numeric(tibble(nrow(P("Cefotaxime", dataFiona)), nrow(P("Cefotaxime", limma_data))))
+Approaches <- c("FionaData", "newData")
+Cefotaxime_proteinDE_P <- cbind(Approaches, Cefotaxime)
+Cefotaxime_proteinDE_P <- as.data.frame(Cefotaxime_proteinDE_P)
+
+Ciprofloxacin <- as.numeric(tibble(nrow(P("Ciprofloxacin", dataFiona)), nrow(P("Ciprofloxacin", limma_data))))
+Approaches <- c("FionaData", "newData")
+Ciprofloxacin_proteinDE_P <- cbind(Approaches, Ciprofloxacin)
+Ciprofloxacin_proteinDE_P <- as.data.frame(Ciprofloxacin_proteinDE_P)
+
+sumupCC <- right_join(Cefotaxime_proteinDE_P , Ciprofloxacin_proteinDE_P, by="Approaches")
+sumupAI <- right_join(Ampicillin_proteinDE_P, Impipenem_proteinDE_P, by="Approaches")
+sumup <- right_join(sumupAI, sumupCC, by="Approaches")
+graph <- sumup %>% pivot_longer(!Approaches, names_to = 'Treatment')
+
+tot1 <- graph %>%
+  ggplot(aes(x = Approaches, y = as.numeric(value), 
+             fill = Treatment)) +
+  ylab(expression("# Protein DE")) +
+  ggtitle("Comparison Dataset using cutoff of pvalue <= 0.05") +
+  geom_bar(position = position_dodge(), stat="identity") +
+  geom_text(aes(label = value), position=position_dodge(width=0.9), size=4)
+tot1
+save_plot(file.path("./", "ProteinDE_BarChart_StandardP.png"), tot1)
+```
+## Protein Differential Expressed in each Treatment based on cutoff of Pvalue <= 0.005 & |logFC| >= 0.5 - Bar Chart
+
+```{R}
+
+Ampicillin <- as.numeric(tibble(nrow(newP("Ampicillin", dataFiona)), nrow(newP("Ampicillin", limma_data))))
+Approaches <- c("FionaData", "newData")
+Ampicillin_proteinDE_newP <- cbind(Approaches, Ampicillin)
+Ampicillin_proteinDE_newP <- as.data.frame(Ampicillin_proteinDE_newP)
+
+Impipenem<- as.numeric(tibble(nrow(newP("Impipenem", dataFiona)), nrow(newP("Impipenem", limma_data))))
+Approaches <- c("FionaData", "newData")
+Impipenem_proteinDE_newP <- cbind(Approaches, Impipenem)
+Impipenem_proteinDE_newP <- as.data.frame(Impipenem_proteinDE_newP)
+
+Cefotaxime <- as.numeric(tibble(nrow(newP("Cefotaxime", dataFiona)), nrow(newP("Cefotaxime", limma_data))))
+Approaches <- c("FionaData", "newData")
+Cefotaxime_proteinDE_newP <- cbind(Approaches, Cefotaxime)
+Cefotaxime_proteinDE_newP <- as.data.frame(Cefotaxime_proteinDE_newP)
+
+Ciprofloxacin <- as.numeric(tibble(nrow(newP("Ciprofloxacin", dataFiona)), nrow(newP("Ciprofloxacin", limma_data))))
+Approaches <- c("FionaData", "newData")
+Ciprofloxacin_proteinDE_newP <- cbind(Approaches, Ciprofloxacin)
+Ciprofloxacin_proteinDE_newP <- as.data.frame(Ciprofloxacin_proteinDE_newP)
+# Summary Bar Chart of how many differential expressed protein each approaches identify for each treatment
+
+## preparing table of data
+sumupCC <- right_join(Cefotaxime_proteinDE_newP , Ciprofloxacin_proteinDE_newP, by="Approaches")
+sumupAI <- right_join(Ampicillin_proteinDE_newP, Impipenem_proteinDE_newP, by="Approaches")
+sumup <- right_join(sumupAI, sumupCC, by="Approaches")
+graph <- sumup %>% pivot_longer(!Approaches, names_to = 'Treatment')
+
+## plotting
+tot2 <- graph %>%
+  ggplot(aes(x = Approaches, y = as.numeric(value), 
+             fill = Treatment)) +
+  ylab(expression("# Protein DE")) +
+  ggtitle("Comparison Dataset using cutoff of pvalue <= 0.005") +
+  geom_bar(position = position_dodge(), stat="identity") +
+  geom_text(aes(label = value), position=position_dodge(width=0.9), size=4)
+tot2
+save_plot(file.path("./", "ProteinDE_BarChart_newP.png"), tot2)
+```
+```{R}
+Original("Ciprofloxacin", dataFiona, "yes")
+Original("Ciprofloxacin", limma_data, "yes")
+```
