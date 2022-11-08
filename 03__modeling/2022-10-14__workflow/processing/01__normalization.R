@@ -14,8 +14,8 @@ assayNames(se)[1L] <- "intensity"
 head(assay(se, 1))
 
 # Performing the normalization --------------------------------------------
-assay(se, "log_intensity_normalized") <- normalizeCyclicLoess(
-  x = assay(se, "log_intensity_imputed"), method = "fast")
+assay(se, "log2_normalized") <- normalizeCyclicLoess(
+  x = assay(se, "log2_imputed"), method = "fast")
 se
 fts[["proteins"]] <- se
 
