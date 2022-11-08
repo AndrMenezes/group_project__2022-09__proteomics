@@ -21,7 +21,7 @@ fts <- readRDS(file.path(path_data, "fts_processsed.rds"))
 
 # Modeling the relationship mean vs variance of proteins ------------------
 dec_ours <- scran::modelGeneVar(x = fts[["proteins"]],
-                                assay.type = "log_intensity_normalized")
+                                assay.type = "log2_normalized")
 dec_margalit <- scran::modelGeneVar(x = se_margalit,
                                     assay.type = "log_intensity")
 
@@ -47,14 +47,14 @@ print(to_remove)
 table(chosen)
 rowData(fts[["proteins"]][to_remove, ])
 assay(fts[["proteins"]][to_remove, ], "intensity")
-assay(fts[["proteins"]][to_remove, ], "log_intensity_normalized")
+assay(fts[["proteins"]][to_remove, ], "log2_normalized")
 
 # Removing the two proteins with lower (greater) mean (m < 22 and m > 29) 
 chosen <- !(rownames(fts[["proteins"]]) %in% to_remove)
 fts[["proteins"]] <- fts[["proteins"]][chosen, ]
 
 dec_ours_2 <- scran::modelGeneVar(x = fts[["proteins"]],
-                                  assay.type = "log_intensity_normalized")
+                                  assay.type = "log2_normalized")
 plot_mean_variance(dec = dec_ours_2)
 
 # Concatenate the decomposition into SE object ----------------------------
