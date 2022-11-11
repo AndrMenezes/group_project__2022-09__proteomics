@@ -18,7 +18,7 @@ se <- fts[["proteins"]]
 colData(se) <- colData(fts)
 
 # Organizing the data to compare pre and post normalization ---------------
-pivotting_data <- function(se, i = "log_intensity_imputed") {
+pivotting_data <- function(se, i = "log2_imputed") {
   tb <- assay(se, i) |>
     t() |>
     dplyr::as_tibble() |>
@@ -34,8 +34,8 @@ pivotting_data <- function(se, i = "log_intensity_imputed") {
 
 data_pivotted <- dplyr::bind_rows(
   pivotting_data(se = se, i = "intensity"),
-  pivotting_data(se = se, i = "log_intensity_imputed"),
-  pivotting_data(se = se, i = "log_intensity_normalized"),
+  pivotting_data(se = se, i = "log2_imputed"),
+  pivotting_data(se = se, i = "log2_normalized"),
   pivotting_data(se = se_fiona, i = "log_intensity")) |> 
   dplyr::mutate(variable = dplyr::case_when(
     variable == "log_intensity" ~ "Margalit et. al (2022)",
@@ -76,9 +76,9 @@ save_plot(filename = file.path(path_res, "results",
 
 # PCA plot ----------------------------------------------------------------
 pca_non_normalized <- scater::calculatePCA(
-  x = se, exprs_values = "log_intensity_imputed")
+  x = se, exprs_values = "log2_imputed")
 pca_normalized <- scater::calculatePCA(
-  x = se, exprs_values = "log_intensity_normalized")
+  x = se, exprs_values = "log2_normalized")
 pca_fiona <- scater::calculatePCA(
   x = se_fiona, exprs_values = "log_intensity")
 
@@ -114,9 +114,9 @@ save_plot(filename = file.path(path_res, "results", "pca_comparison.png"),
 
 set.seed(666)
 umap_non_normalized <- scater::calculateUMAP(
-  x = se, exprs_values = "log_intensity_imputed")
+  x = se, exprs_values = "log2_imputed")
 umap_normalized <- scater::calculateUMAP(
-  x = se, exprs_values = "log_intensity_normalized")
+  x = se, exprs_values = "log2_normalized")
 umap_fiona <- scater::calculateUMAP(
   x = se_fiona, exprs_values = "log_intensity")
 colnames(umap_non_normalized) <- colnames(umap_normalized) <- colnames(

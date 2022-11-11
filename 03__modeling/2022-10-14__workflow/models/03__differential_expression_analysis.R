@@ -147,6 +147,35 @@ ggplot(data_de_pivotted, aes(x = diff_rank)) +
   labs(x = "Difference in the rank of the p-value", y = "Density")
 
 
+# Volcano plots -----------------------------------------------------------
+
+volcano_plot <- function(data, cutoff_logfc = 0.5,
+                         cutoff_pvalue = 0.005, top_de = 10) {
+  data_labelled <- data |> 
+    dplyr::filter(abs(log_fc) >= cutoff_logfc, p_value <= cutoff_pvalue) |> 
+    dplyr::arrange(-abs(log_fc)) |> 
+    head(top_de)
+  p <- ggplot(data, aes(x = log_fc, y = -log10(p_value))) +
+    geom_point(size = 2, shape = 21, col = "black", fill = "grey69") +
+    geom_point(data = data_labelled, shape = 21, size = 2, fill = "red",
+               colour = "black") +
+    geom_text_repel(data = data_labelled, aes(label = protein), size = 4,
+                    color = "black") +
+    geom_vline(xintercept = c(-cutoff_logfc, cutoff_logfc), linetype = "dashed",
+               col = "black") +
+    geom_hline(yintercept = -log10(cutoff_pvalue), linetype = "dashed",
+               col = "black") +
+    labs(x = expression("log"[2]*"FC"), y = expression("-log"[10]*"p-value")) +
+    scale_x_continuous(breaks = scales::pretty_breaks(8)) +
+    scale_y_continuous(breaks = scales::pretty_breaks(6))
+  
+  p
+}
+volcano_plot(data = dplyr::filter(data_de_limma, group == "Ampicillin"))
+volcano_plot(data = dplyr::filter(data_de_limma, group == "Cefotaxime"))
+volcano_plot(data = dplyr::filter(data_de_limma, group == "Impipenem"))
+volcano_plot(data = dplyr::filter(data_de_limma, group == "Ciprofloxacin"))
+
 # Comparing the total of DE proteins according to method ------------------
 p_total_de_proteins <- data_de |> 
   dplyr::filter(p_value <= 0.005) |> 
@@ -276,12 +305,12 @@ for (g in groups) {
   # Selecting the corresponding columns
   chosen_cols <- colData(fts)$group %in% c("Control", g)
   fts_curr <- fts[, chosen_cols]
-  
+
   # Selecting the proteins
   most_de_fiona <- de_proteins[de_proteins$group == g, "fiona"]
   most_de_limma <- de_proteins[de_proteins$group == g, "ours"]
   
-  # Get the intensity values pivotted in a long format for all levels
+  # Get the intensity values pivoted in a long format for all levels
   pivotted_fiona <- pivot_qfeatures(fts = fts_curr,
                                     chosen_proteins = most_de_fiona)
   pivotted_limma <- pivot_qfeatures(fts = fts_curr,
