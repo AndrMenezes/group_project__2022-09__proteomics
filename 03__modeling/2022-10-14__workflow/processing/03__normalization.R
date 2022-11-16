@@ -9,15 +9,18 @@ path_data <- "./03__modeling/2022-10-14__workflow/processing/processed_data"
 
 # Import data -------------------------------------------------------------
 fts <- readRDS(file.path(path_data, "fts_processsed.rds"))
-se <- fts[["proteins"]]
-assayNames(se)[1L] <- "intensity"
-head(assay(se, 1))
+assayNames(fts[["proteins_median"]])[1L] <- "intensity"
+assayNames(fts[["proteins_mean"]])[1L] <- "intensity"
+assayNames(fts[["proteins_sum"]])[1L] <- "intensity"
+head(assay(fts[["proteins_sum"]], 1))
 
 # Performing the normalization --------------------------------------------
-assay(se, "log2_normalized") <- normalizeCyclicLoess(
-  x = assay(se, "log2_imputed"), method = "fast")
-se
-fts[["proteins"]] <- se
+assay(fts[["proteins_median"]], "log2_normalized") <- normalizeCyclicLoess(
+  x = assay(fts[["proteins_median"]], "log2_imputed"), method = "fast")
+assay(fts[["proteins_mean"]], "log2_normalized") <- normalizeCyclicLoess(
+  x = assay(fts[["proteins_mean"]], "log2_imputed"), method = "fast")
+assay(fts[["proteins_sum"]], "log2_normalized") <- normalizeCyclicLoess(
+  x = assay(fts[["proteins_sum"]], "log2_imputed"), method = "fast")
 
 # Save SE object with normalized intensities ------------------------------
 saveRDS(object = fts, file = file.path(path_data, "fts_processsed.rds"))

@@ -11,19 +11,19 @@ fts <- readRDS(file.path(path_data, "fts_processsed.rds"))
 
 # Calculating Hedges G --------------------------------------------------------
 ampicillin <- apply(
-  assay(fts[["proteins"]], i = "log2_normalized"), 1,
+  assay(fts[["proteins_median"]], i = "log2_normalized"), 1,
   function(z)  effectsize::hedges_g(z[1:3], z[10:12])$Hedges_g)
 
 cefotaxime <- apply(
-  assay(fts[["proteins"]], i = "log2_normalized"), 1,
+  assay(fts[["proteins_median"]], i = "log2_normalized"), 1,
   function(x) effectsize::hedges_g(x[4:6], x[10:12])$Hedges_g)
 
 ciprofloxacin <- apply(
-  assay(fts[["proteins"]], i = "log2_normalized"), 1,
+  assay(fts[["proteins_median"]], i = "log2_normalized"), 1,
   function(x) effectsize::hedges_g(x[7:9], x[10:12])$Hedges_g)
 
 impipenem <- apply(
-  assay(fts[["proteins"]], i = "log2_normalized"), 1,
+  assay(fts[["proteins_median"]], i = "log2_normalized"), 1,
   function(x) effectsize::hedges_g(x[13:15], x[10:12])$Hedges_g)
 
 # Organize the results in a data frame
@@ -32,8 +32,8 @@ colnames(effect_sizes) <- paste0("hedges_g__", colnames(effect_sizes))
 head(effect_sizes)
 
 # Concatenating
-if (all.equal(rownames(fts[["proteins"]]), rownames(effect_sizes)))
-  rowData(fts[["proteins"]]) <- cbind(rowData(fts[["proteins"]]), effect_sizes)
+if (all.equal(rownames(fts[["proteins_median"]]), rownames(effect_sizes)))
+  rowData(fts[["proteins_median"]]) <- cbind(rowData(fts[["proteins_median"]]), effect_sizes)
 
 
 # Saving ------------------------------------------------------------------
