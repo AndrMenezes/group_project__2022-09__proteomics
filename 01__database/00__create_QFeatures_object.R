@@ -72,34 +72,4 @@ col_data <- DataFrame(group = group_names,
                       row.names = paste0("Sample_",
                                          seq_len(length(group_names))))
 # Creating a SummarizedExperiment for PSMs level --------------------------
-row_data <- pivotted_psms[, c(1:4)]
-m_psms <- as.matrix(pivotted_psms[, -c(1:4)])
-colnames(m_psms) <- rownames(col_data)
-se_psms <- SummarizedExperiment(assays = list(intensity = m_psms),
-                                rowData = row_data, colData = col_data)
-
-# Creating the QFeature object --------------------------------------------
-# fts <- QFeatures(list(psms = se_psms), colData = col_data)
-colnames(pivotted_psms)[5:19] <- rownames(col_data)
-fts <- readQFeatures(table = pivotted_psms, ecol = 5:19, name = "psms")
-colData(fts) <- col_data
-
-# Aggregate data at peptide level -----------------------------------------
-# rows: peptides sequences and columns: samples
-fts <- aggregateFeatures(object = fts, i = "psms", fcol = "modified_sequence",
-                         name = "peptides", fun = colMedians, na.rm = TRUE)
-head(assay(fts[[2L]], 2))
-rowData(fts[[2L]])
-
-# The same as:
-# pivotted__peptides <- tidyr::pivot_wider(
-#   data = data_raw,
-#   id_cols = c(modified_sequence, protein),
-#   names_from = experiment,
-#   values_from = intensity,
-#   values_fn = sum)
-
-# Save the data -----------------------------------------------------------
-saveRDS(object = fts,
-        file = file.path(path_data, "processed_data", "QFeature_obj.rds"))
-
+row_data <- pivot |> |> |> 
