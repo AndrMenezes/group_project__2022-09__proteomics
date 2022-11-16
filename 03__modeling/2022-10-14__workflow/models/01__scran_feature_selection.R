@@ -20,7 +20,7 @@ se_margalit <- readRDS("./01__database/processed_data/se_margalit.rds")
 fts <- readRDS(file.path(path_data, "fts_processsed.rds"))
 
 # Modeling the relationship mean vs variance of proteins ------------------
-dec_ours <- scran::modelGeneVar(x = fts[["proteins"]],
+dec_ours <- scran::modelGeneVar(x = fts[["proteins_median"]],
                                 assay.type = "log2_normalized")
 dec_margalit <- scran::modelGeneVar(x = se_margalit,
                                     assay.type = "log_intensity")
@@ -53,15 +53,16 @@ assay(fts[["proteins"]][to_remove, ], "log2_normalized")
 chosen <- !(rownames(fts[["proteins"]]) %in% to_remove)
 fts[["proteins"]] <- fts[["proteins"]][chosen, ]
 
-dec_ours_2 <- scran::modelGeneVar(x = fts[["proteins"]],
+dec_ours_2 <- scran::modelGeneVar(x = fts[["proteins_median"]],
                                   assay.type = "log2_normalized")
 plot_mean_variance(dec = dec_ours_2)
 
 # Concatenate the decomposition into SE object ----------------------------
 if (all.equal(rownames(se_margalit), rownames(dec_margalit)))
   rowData(se_margalit) <- cbind(rowData(se_margalit), dec_margalit)
-if (all.equal(rownames(fts[["proteins"]]), rownames(dec_ours_2)))
-  rowData(fts[["proteins"]]) <- cbind(rowData(fts[["proteins"]]), dec_ours_2)
+if (all.equal(rownames(fts[["proteins_median"]]), rownames(dec_ours_2)))
+  rowData(fts[["proteins_median"]]) <- cbind(
+    rowData(fts[["proteins_median"]]), dec_ours_2)
 
 
 # Save the objects --------------------------------------------------------

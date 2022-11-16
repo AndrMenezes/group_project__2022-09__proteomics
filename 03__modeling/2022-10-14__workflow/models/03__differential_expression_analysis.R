@@ -19,7 +19,7 @@ se_fiona <- readRDS("./01__database/processed_data/se_processed.rds")
 
 
 # Limma analysis on processed data ----------------------------------------
-se <- fts[["proteins"]]
+se <- fts[["proteins_median"]]
 
 # Filters out the most variable proteins
 chosen_proteins <- rownames(se)[rowData(se)$bio > 0]
