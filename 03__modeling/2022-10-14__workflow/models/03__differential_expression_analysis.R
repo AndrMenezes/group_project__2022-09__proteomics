@@ -19,11 +19,6 @@ se_fiona <- readRDS("./01__database/processed_data/se_processed.rds")
 
 
 # Limma analysis on processed data ----------------------------------------
-se <- fts[["proteins_median"]]
-
-# Filters out the most variable proteins
-chosen_proteins <- rownames(se)[rowData(se)$bio > 0]
-se_curr <- se[chosen_proteins, ]
 
 # Creating the design matrix
 g <- factor(colData(fts)$group)
@@ -31,8 +26,9 @@ g <- relevel(g, ref = "Control")
 design_matrix <- model.matrix(~ g)
 colnames(design_matrix) <- gsub("g", "", colnames(design_matrix))
 
-fit <- limma::lmFit(object = assay(se, "log2_normalized"),
-                    design = design_matrix)
+fit <- limma::lmFit(
+  object = assay(fts[["proteins_median"]], "log2_normalized"),
+  design = design_matrix)
 fit <- limma::eBayes(fit)
 ampicillin <- limma::topTable(fit, coef = "Ampicillin", number = Inf,
                               sort.by = "none", confint = TRUE)
@@ -159,8 +155,8 @@ volcano_plot <- function(data, cutoff_logfc = 0.5,
     geom_point(size = 2, shape = 21, col = "black", fill = "grey69") +
     geom_point(data = data_labelled, shape = 21, size = 2, fill = "red",
                colour = "black") +
-    geom_text_repel(data = data_labelled, aes(label = protein), size = 4,
-                    color = "black") +
+    ggrepel::geom_text_repel(
+      data = data_labelled, aes(label = protein), size = 4, color = "black") +
     geom_vline(xintercept = c(-cutoff_logfc, cutoff_logfc), linetype = "dashed",
                col = "black") +
     geom_hline(yintercept = -log10(cutoff_pvalue), linetype = "dashed",
@@ -171,7 +167,10 @@ volcano_plot <- function(data, cutoff_logfc = 0.5,
   
   p
 }
-volcano_plot(data = dplyr::filter(data_de_limma, group == "Ampicillin"))
+p_a <- volcano_plot(data = dplyr::filter(data_de_limma, group == "Ampicillin"))
+save_plot(filename = file.path(path_res, "volcano_plot__ampicillin.png"),
+          plot = p_a, base_width = 6, bg = "white")
+
 volcano_plot(data = dplyr::filter(data_de_limma, group == "Cefotaxime"))
 volcano_plot(data = dplyr::filter(data_de_limma, group == "Impipenem"))
 volcano_plot(data = dplyr::filter(data_de_limma, group == "Ciprofloxacin"))

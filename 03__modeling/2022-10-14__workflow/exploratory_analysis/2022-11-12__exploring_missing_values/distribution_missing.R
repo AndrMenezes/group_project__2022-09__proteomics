@@ -50,7 +50,7 @@ pivotted_ours_impu__sum <- pivotting_data(se = se_sum, i = "log2_normalized")
 
 join_pivotted <- function(data_miss, data_imputed) {
   data_miss |> 
-    dplyr::rename(value_imp = value) |> library(ggridges)
+    dplyr::rename(value_imp = value) |>
     dplyr::select(-variable) |> 
     dplyr::left_join(dplyr::rename(data_imputed, value_n_imp = value) |> 
                 dplyr::select(-variable)) |> 
@@ -83,6 +83,18 @@ p_hist_all <- ggplot(pivotted_all, aes(x = value_n_imp, fill = is_imputed)) +
 x11(); p_hist_all
 save_plot(filename = file.path(path_res, "results", "hist_all.png"),
           base_height = 6, bg = "white", plot = p_hist_all)
+
+p_hist_chosen <- pivotted_all |> 
+  dplyr::filter(method %in% c("Median", "Margalit et. al (2022)")) |>
+  dplyr::mutate(method = ifelse(method == "Median", "Ours", "Margalit et. al (2022)")) |>
+  ggplot(aes(x = value_n_imp, fill = is_imputed)) +
+  facet_wrap(~ method, scales = "free_x") +
+  geom_histogram(alpha = 0.5, bins = 50, col = "grey45") +
+  labs(x = "Log2 intensity", y = "Frequency", fill = "Is imputed?") +
+  colorspace::scale_fill_discrete_qualitative()
+# x11(); p_hist_chosen
+save_plot(filename = file.path(path_res, "results", "hist_chosen.png"),
+          base_height = 6, bg = "white", plot = p_hist_chosen)
 
 # Filtering out the 
 x11()
