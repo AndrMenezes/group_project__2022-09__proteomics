@@ -168,12 +168,26 @@ volcano_plot <- function(data, cutoff_logfc = 0.5,
   p
 }
 p_a <- volcano_plot(data = dplyr::filter(data_de_limma, group == "Ampicillin"))
+p_a <- p_a + ggtitle("Control versus Ampicillin")
 save_plot(filename = file.path(path_res, "volcano_plot__ampicillin.png"),
           plot = p_a, base_width = 6, bg = "white")
 
-volcano_plot(data = dplyr::filter(data_de_limma, group == "Cefotaxime"))
-volcano_plot(data = dplyr::filter(data_de_limma, group == "Impipenem"))
-volcano_plot(data = dplyr::filter(data_de_limma, group == "Ciprofloxacin"))
+p_ce <- volcano_plot(data = dplyr::filter(data_de_limma, group == "Cefotaxime"))
+p_ce <- p_ce + ggtitle("Control versus Cefotaxime")
+save_plot(filename = file.path(path_res, "volcano_plot__cefotaxime.png"),
+          plot = p_ce, base_width = 6, bg = "white")
+
+p_i <- volcano_plot(data = dplyr::filter(data_de_limma, group == "Impipenem"))
+p_i <- p_i + ggtitle("Control versus Impipenem")
+save_plot(filename = file.path(path_res, "volcano_plot__impipenem.png"),
+          plot = p_i, base_width = 6, bg = "white")
+
+p_ci <- volcano_plot(data = dplyr::filter(data_de_limma, group == "Ciprofloxacin"))
+p_ci <- p_ci + ggtitle("Control versus Ciprofloxacin")
+save_plot(filename = file.path(path_res, "volcano_plot__ciprofloxacin.png"),
+          plot = p_ci, base_width = 6, bg = "white")
+
+
 
 # Comparing the total of DE proteins according to method ------------------
 p_total_de_proteins <- data_de |> 
