@@ -1,4 +1,5 @@
 #' 2022-11-04: Perform DE analysis using the processed data and limma.
+rm(list = ls())
 library(ggplot2)
 library(cowplot)
 theme_set(
@@ -15,7 +16,7 @@ path_res <- file.path(local_path, "models", "results")
 
 # Importing data --------------------------------------------------------------
 fts <- readRDS(file.path(path_data, "fts_processsed.rds"))
-se_fiona <- readRDS("./01__database/processed_data/se_processed.rds")
+se_fiona <- readRDS("./01__database/processed_data/se_margalit.rds")
 
 
 # Limma analysis on processed data ----------------------------------------
@@ -34,7 +35,7 @@ ampicillin <- limma::topTable(fit, coef = "Ampicillin", number = Inf,
                               sort.by = "none", confint = TRUE)
 cefotaxime <- limma::topTable(fit, coef = "Cefotaxime", number = Inf,
                               sort.by = "none", confint = TRUE)
-impipenem <- limma::topTable(fit, coef = "Impipenem", number = Inf,
+impipenem <- limma::topTable(fit, coef = "Imipenem", number = Inf,
                              sort.by = "none", confint = TRUE)
 ciprofloxacin <- limma::topTable(fit, coef = "Ciprofloxacin", number = Inf,
                                  sort.by = "none", confint = TRUE)
@@ -45,7 +46,7 @@ data_de_limma <- dplyr::bind_rows(
                   protein = rownames(ampicillin)),
     dplyr::mutate(cefotaxime, group = "Cefotaxime",
                   protein = rownames(cefotaxime)),
-    dplyr::mutate(impipenem, group = "Impipenem",
+    dplyr::mutate(impipenem, group = "Imipenem",
                   protein = rownames(impipenem)),
     dplyr::mutate(ciprofloxacin, group = "Ciprofloxacin",
                   protein = rownames(ciprofloxacin))) |> 
@@ -58,16 +59,16 @@ data_de_limma |>
   dplyr::filter(abs(log_fc) > 0.5, p_value < 0.005)
 
 # Fiona's Student t-test --------------------------------------------------
-expr_mat <- assay(se_fiona)
+expr_mat <- assay(se_fiona, i = "log2_imputed")
 list_student_t <- lapply(seq_len(nrow(expr_mat)), function(i) {
   x_contrl <- expr_mat[i, colData(se_fiona)$group == "Control"]
   x_ampici <- expr_mat[i, colData(se_fiona)$group == "Ampicillin"]
   x_cefota <- expr_mat[i, colData(se_fiona)$group == "Cefotaxime"]
-  x_impipe <- expr_mat[i, colData(se_fiona)$group == "Impipenem"]
+  x_impipe <- expr_mat[i, colData(se_fiona)$group == "Imipenem"]
   x_ciprof <- expr_mat[i, colData(se_fiona)$group == "Ciprofloxacin"]
   tibble::tibble(
     protein = rowData(se_fiona)$protein__id[i],
-    group = c("Ampicillin", "Cefotaxime", "Impipenem", "Ciprofloxacin"),
+    group = c("Ampicillin", "Cefotaxime", "Imipenem", "Ciprofloxacin"),
     log_fc = c(mean(x_ampici - x_contrl), mean(x_cefota - x_contrl),
                mean(x_impipe - x_contrl), mean(x_ciprof - x_contrl)),
     p_value = c(t.test(x_contrl, x_ampici, var.equal = TRUE)$p.value,
@@ -177,9 +178,9 @@ p_ce <- p_ce + ggtitle("Control versus Cefotaxime")
 save_plot(filename = file.path(path_res, "volcano_plot__cefotaxime.png"),
           plot = p_ce, base_width = 6, bg = "white")
 
-p_i <- volcano_plot(data = dplyr::filter(data_de_limma, group == "Impipenem"))
-p_i <- p_i + ggtitle("Control versus Impipenem")
-save_plot(filename = file.path(path_res, "volcano_plot__impipenem.png"),
+p_i <- volcano_plot(data = dplyr::filter(data_de_limma, group == "Imipenem"))
+p_i <- p_i + ggtitle("Control versus Imipenem")
+save_plot(filename = file.path(path_res, "volcano_plot__imipenem.png"),
           plot = p_i, base_width = 6, bg = "white")
 
 p_ci <- volcano_plot(data = dplyr::filter(data_de_limma, group == "Ciprofloxacin"))
@@ -189,9 +190,56 @@ save_plot(filename = file.path(path_res, "volcano_plot__ciprofloxacin.png"),
 
 
 
+# Comparing if there are overlap -----------------------------------------
+data_proteins_overlaped <- data_de |> 
+  dplyr::filter(abs(log_fc) >= 0.5, p_value <= 0.005) |> 
+  dplyr::group_by(group, protein) |> 
+  dplyr::count(sort = TRUE) |> 
+  dplyr::ungroup()
+
+overleap_proteins <- data_proteins_overlaped |> 
+  dplyr::filter(group == "Cefotaxime", n > 1) |> 
+  dplyr::pull(protein)
+overleap_cefotaxime <- data_de |> 
+  dplyr::filter(group == "Cefotaxime",
+                protein %in% overleap_proteins) |> 
+  dplyr::arrange(protein)
+overleap_proteins <- data_proteins_overlaped |> 
+  dplyr::filter(group == "Ciprofloxacin", n > 1) |> 
+  dplyr::pull(protein)
+overleap_ciprofloxacin <- data_de |> 
+  dplyr::filter(group == "Ciprofloxacin",
+                protein %in% overleap_proteins) |> 
+  dplyr::arrange(protein)
+overleap <- dplyr::bind_rows(overleap_cefotaxime, overleap_ciprofloxacin)
+
+p_overleap <- ggplot(overleap, aes(x = protein, y = log_fc,
+                                   fill = method_label)) +
+  facet_wrap(~group, scales = "free_x") +
+  geom_col(position = position_dodge(width = 0.9), alpha = 0.6,
+           col = "black") +
+  geom_hline(yintercept = 0, col = "black", size = 1.5) +
+  geom_text(aes(label = paste0(round(log_fc, 2), " (",
+                               formatC(p_value, format = "e", digits = 1),
+                               ")")),
+            position = position_dodge(width = 0.9), vjust = -0.2,
+            size = 2) +
+  labs(x = "Protein", y = "Log Fold Change", fill = "") +
+  scale_y_continuous(breaks = scales::pretty_breaks(6), limits = c(-6.4, 2)) +
+  ggtitle("Comparison of the estimated logFC and p-value for the overleap proteins")
+save_plot(filename = file.path(path_res, "overleap_proteins.png"),
+          plot = p_overleap, base_width = 12, bg = "white")
+
+data_proteins_overlaped |> 
+  dplyr::group_by(group) |> 
+  dplyr::summarise(n = sum(n > 1))
+
+
+
+
 # Comparing the total of DE proteins according to method ------------------
 p_total_de_proteins <- data_de |> 
-  dplyr::filter(p_value <= 0.005) |> 
+  dplyr::filter(abs(log_fc) >= 0.5, p_value <= 0.005) |> 
   dplyr::group_by(method_label, group) |> 
   dplyr::count() |> 
   ggplot(aes(x = group, y = n, fill = method_label)) +
@@ -256,7 +304,7 @@ for (g in groups) {
               position = position_dodge(width = 0.9), vjust = -0.2,
               size = 4) +
     labs(x = "Protein", y = "Log Fold Change", fill = "") +
-    scale_y_continuous(breaks = scales::pretty_breaks(6), limits = y_lim_f) +
+    scale_y_continuous(breaks = scales::pretty_breaks(6), limits = y_lim_f)
     ggtitle("3 most DE proteins by Margalit et al. (2022)")
   
   p_most_de_ours <- ggplot(data_curr_o, aes(x = protein, y = log_fc,
@@ -276,6 +324,12 @@ for (g in groups) {
   fname <- paste0("most_de__", tolower(g), ".png")
   save_plot(filename = file.path(path_res, fname),
             plot = p_grided, base_width = 17, bg = "white")
+  
+  # Saving ours 3 top proteins
+  fname <- paste0("most_de_limma__", tolower(g), ".png")
+  save_plot(filename = file.path(path_res, fname),
+            plot = p_most_de_ours + ggtitle(g),
+            base_width = 10, bg = "white")
   
   # Appending most DE proteins
   list_de[[j]] <- data.frame(
