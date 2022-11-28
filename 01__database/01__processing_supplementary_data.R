@@ -1,4 +1,5 @@
 #' 2022-09-21: Creating data set in both long and filtered format and a dictionary.
+rm(list = ls())
 library(dplyr)
 library(readxl)
 
@@ -20,9 +21,9 @@ data_raw <- data_raw |>
     Cefotaxime__1 = `LFQ intensity Cefotaxime Rep 1`,
     Cefotaxime__2 = `LFQ intensity Cefotaxime Rep 2`,
     Cefotaxime__3 = `LFQ intensity Cefotaxime Rep 3`,
-    Impipenem__1 = `LFQ intensity Impipenem Rep 1`,
-    Impipenem__2 = `LFQ intensity Impipenem Rep 2`,
-    Impipenem__3 = `LFQ intensity Impipenem Rep 3`,
+    Imipenem__1 = `LFQ intensity Impipenem Rep 1`,
+    Imipenem__2 = `LFQ intensity Impipenem Rep 2`,
+    Imipenem__3 = `LFQ intensity Impipenem Rep 3`,
     Ciprofloxacin__1 = `LFQ intensity Ciprofloxacin Rep 1`,
     Ciprofloxacin__2 = `LFQ intensity Ciprofloxacin Rep 2`,
     Ciprofloxacin__3 = `LFQ intensity Ciprofloxacin Rep 3`,
@@ -50,9 +51,9 @@ data_raw_not_imputed <- data_raw_not_imputed |>
     Cefotaxime__1 = `LFQ intensity Cef_Rep1`,
     Cefotaxime__2 = `LFQ intensity Cef_Rep2`,
     Cefotaxime__3 = `LFQ intensity Cef_Rep3`,
-    Impipenem__1 = `LFQ intensity Imp_Rep2...24`,
-    Impipenem__2 = `LFQ intensity Imp_Rep2...25`,
-    Impipenem__3 = `LFQ intensity Imp_Rep3`,
+    Imipenem__1 = `LFQ intensity Imp_Rep2...24`,
+    Imipenem__2 = `LFQ intensity Imp_Rep2...25`,
+    Imipenem__3 = `LFQ intensity Imp_Rep3`,
     Ciprofloxacin__1 = `LFQ intensity cip_Rep1`,
     Ciprofloxacin__2 = `LFQ intensity Cip_Rep2`,
     Ciprofloxacin__3 = `LFQ intensity Cip_Rep3`,
@@ -61,7 +62,7 @@ data_raw_not_imputed <- data_raw_not_imputed |>
     Control__3 = `LFQ intensity Cont_Rep3`,
   ) |> 
   select(protein__name, protein__id, gene__name,
-         Ampicillin__1:Impipenem__3) |> 
+         Ampicillin__1:Imipenem__3) |> 
   mutate(protein__id = gsub(";.*", "", protein__id))
 
 # Ordering the matrices ---------------------------------------------------

@@ -57,7 +57,7 @@ samples_names <- colnames(pivotted_psms)[-c(1:4)]
 map_names <- list(
   "amp" = "Ampicillin",
   "cef" = "Cefotaxime",
-  "imp" = "Impipenem",
+  "imp" = "Imipenem",
   "cip" = "Ciprofloxacin",
   "cont" = "Control",
   "tet" = "tet"
