@@ -21,7 +21,7 @@ fts <- aggregateFeatures(object = fts, i = "peptides", fcol = "protein",
 
 # Pct the missing values
 mean(is.na(assay(fts[["peptides"]])))
-1-mean(is.na(assay(fts[["proteins"]])))
+mean(is.na(assay(fts[["proteins"]])))
 
 
 
@@ -45,7 +45,6 @@ heatmap.2(x_peptides[1:100, ], col = c("lightgray", "black"),
           scale = "none", dendrogram = "none",
           trace = "none", keysize = 0.5, key = FALSE)
 title("Missing values at peptide level")
-legend("bottom", legend = c("Present", "Missing"), fill = c("lightgray", "black"))
 graphics.off()
 
 png(file.path(path_res, "results",  "heatmap_missing_values__proteins.png"),
