@@ -235,8 +235,6 @@ data_proteins_overlaped |>
   dplyr::summarise(n = sum(n > 1))
 
 
-
-
 # Comparing the total of DE proteins according to method ------------------
 p_total_de_proteins <- data_de |> 
   dplyr::filter(abs(log_fc) >= 0.5, p_value <= 0.005) |> 
