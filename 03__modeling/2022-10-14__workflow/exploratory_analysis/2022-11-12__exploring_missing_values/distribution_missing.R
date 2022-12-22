@@ -86,7 +86,9 @@ save_plot(filename = file.path(path_res, "results", "hist_all.png"),
 
 p_hist_chosen <- pivotted_all |> 
   dplyr::filter(method %in% c("Median", "Margalit et. al (2022)")) |>
-  dplyr::mutate(method = ifelse(method == "Median", "Ours", "Margalit et. al (2022)")) |>
+  dplyr::mutate(method = ifelse(method == "Median", "Alternative",
+                                "Margalit et. al (2022)")) |>
+  dplyr::mutate(method = forcats::fct_relevel(method, "Margalit et. al (2022)")) |> 
   ggplot(aes(x = value_n_imp, fill = is_imputed)) +
   facet_wrap(~ method, scales = "free_x") +
   geom_histogram(alpha = 0.5, bins = 50, col = "grey45") +

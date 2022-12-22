@@ -29,12 +29,14 @@ sum(attr(pca_fiona, "percentVar")[1:2])
 tb <- dplyr::as_tibble(pca_normalized) |>
   dplyr::mutate(group = colData(se)$group,
                 replicate = colData(se)$replicate,
-                measure = "Ours") |>
+                measure = "Alternative") |>
   dplyr::bind_rows(
     dplyr::as_tibble(pca_fiona) |>
       dplyr::mutate(group = colData(se_fiona)$group,
                     replicate = colData(se_fiona)$replicate,
-                    measure = "Margalit et. al (2022)"))
+                    measure = "Margalit et. al (2022)")) |> 
+  dplyr::mutate(measure = forcats::fct_relevel(
+    measure, "Margalit et. al (2022)"))
 ylim <- c(min(tb$PC2) - 0.4, max(tb$PC2) + 1.5)
 
 p_pca <- ggplot(tb, aes(x = PC1, y = PC2, col = group)) +

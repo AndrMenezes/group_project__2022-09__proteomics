@@ -90,7 +90,16 @@ data_de_fiona <- do.call(rbind, list_student_t) |>
 data_de <- dplyr::bind_rows(data_de_limma, data_de_fiona) |> 
   dplyr::mutate(method_label = ifelse(method == "student_t",
                                       "Margalit et al. (2022)",
-                                      "Processed data + Limma"))
+                                      "Alternative"),
+                method_label = forcats::fct_relevel(
+                  method_label, "Margalit et al. (2022)"),
+                p_value_label = dplyr::case_when(
+                  p_value < 0.001 ~ "***",
+                  p_value >= 0.001 & p_value < 0.01 ~ "**",
+                  p_value >= 0.01 & p_value < 0.05 ~ "*",
+                  p_value >= 0.05 & p_value < 0.1 ~ ".",
+                  p_value >= 0.1 ~ " "
+                ))
 
 
 # Visualizing the difference ----------------------------------------------
@@ -211,7 +220,18 @@ overleap_ciprofloxacin <- data_de |>
   dplyr::filter(group == "Ciprofloxacin",
                 protein %in% overleap_proteins) |> 
   dplyr::arrange(protein)
-overleap <- dplyr::bind_rows(overleap_cefotaxime, overleap_ciprofloxacin)
+overleap <- dplyr::bind_rows(overleap_cefotaxime, overleap_ciprofloxacin) |> 
+  dplyr::mutate(
+    p_value_label = dplyr::case_when(
+      p_value < 0.001 ~ "***",
+      p_value >= 0.001 & p_value < 0.01 ~ "**",
+      p_value >= 0.01 & p_value < 0.05 ~ "*",
+      p_value >= 0.05 & p_value < 0.1 ~ ".",
+      p_value >= 0.1 ~ " "
+    )
+  )
+
+
 
 p_overleap <- ggplot(overleap, aes(x = protein, y = log_fc,
                                    fill = method_label)) +
@@ -219,11 +239,10 @@ p_overleap <- ggplot(overleap, aes(x = protein, y = log_fc,
   geom_col(position = position_dodge(width = 0.9), alpha = 0.6,
            col = "black") +
   geom_hline(yintercept = 0, col = "black", size = 1.5) +
-  geom_text(aes(label = paste0(round(log_fc, 2), " (",
-                               formatC(p_value, format = "e", digits = 1),
-                               ")")),
+  geom_text(aes(label = paste0(round(log_fc, 2),
+                               " (", p_value_label, ")")),
             position = position_dodge(width = 0.9), vjust = -0.2,
-            size = 2) +
+            size = 3.5) +
   labs(x = "Protein", y = "Log Fold Change", fill = "") +
   scale_y_continuous(breaks = scales::pretty_breaks(6), limits = c(-6.4, 2)) +
   ggtitle("Comparison of the estimated logFC and p-value for the overleap proteins")
@@ -297,8 +316,7 @@ for (g in groups) {
              alpha = 0.6, col = "black") +
     geom_hline(yintercept = 0, col = "black", size = 1.5) +
     geom_text(aes(label = paste0(round(log_fc, 2), " (",
-                                 formatC(p_value, format = "e", digits = 1),
-                                 ")")),
+                                 p_value_label, ")")),
               position = position_dodge(width = 0.9), vjust = -0.2,
               size = 4) +
     labs(x = "Protein", y = "Log Fold Change", fill = "") +
@@ -311,8 +329,7 @@ for (g in groups) {
              alpha = 0.6, col = "black") +
     geom_hline(yintercept = 0, col = "black", size = 1.5) +
     geom_text(aes(label = paste0(round(log_fc, 2), " (",
-                                 formatC(p_value, format = "e", digits = 1),
-                                 ")")),
+                                 p_value_label, ")")),
               position = position_dodge(width = 0.9), vjust = -0.2,
               size = 4) +
     labs(x = "Protein", y = "Log Fold Change", fill = "") +
